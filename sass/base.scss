@@ -1,0 +1,71 @@
+:root {
+  --main-color: pink;
+}
+
+
+// Resets
+body{
+  margin: 0;
+  color: var(--main-color);
+}
+
+// Floats
+
+// .container{
+//   background: red;
+//   width: 430px;
+//   margin: 0 auto;
+// }
+//
+// section{
+//   background: darkblue;
+//   margin-left: -10px;
+// }
+//
+// /* Clearfix section */
+// section:after {
+//     content:"";
+//     display:table;
+//     clear:both;
+// }
+//
+// article{
+//   background: hotpink;
+//   float:left;
+//   width: 100px;
+//   margin-left: 10px;
+// }
+
+
+// Flexbox
+
+// flex reverse
+section{
+  height: 20em;
+  background: darkblue;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  flex-wrap: wrap;
+  align-items: center ;
+}
+
+
+article{
+  background: hotpink;
+  float: left;
+  flex: 1 0 200px;
+  margin: 10px;
+  padding: 40px;
+}
+
+
+article:nth-of-type(1){
+  background: orange;
+  flex: 1 1 300px;
+}
+
+article:nth-of-type(2){
+  flex: 0 0 100px;
+  background: tan;
+}
