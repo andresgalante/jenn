@@ -9,7 +9,8 @@
   </head>
   <body>
 
-    <article class="pf-c-toast pf-is-danger" aria-label="Error alert">
+    <!-- Variation 1, identify alert with aria label on alert parent -->
+    <div role="alert" class="pf-c-toast pf-is-danger" aria-label="Error alert">
       <div class="pf-c-toast__icon">
         <i class="fas fa-home"></i>
       </div>
@@ -23,15 +24,48 @@
           <i class="fas fa-times"></i>
         </button>
       </div>
-    </article>
+    </div>
+    <!-- Variation 2, identify alert with sr-only text after the icon -->
+    <div role="alert" class="pf-c-toast pf-is-warning">
+      <div class="pf-c-toast__icon">
+        <i class="fas fa-home"></i>
+        <span class="sr-only">Warning alert</span>
+      </div>
+      <div class="pf-c-toast__message">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+      </div>
+      <div class="pf-c-toast__action">
+        <a href="#0">Do this</a>
+
+        <button>
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+    <!-- Variation 3, identify alert with aria label on icon -->
+    <div role="alert" class="pf-c-toast pf-is-success">
+      <div class="pf-c-toast__icon">
+        <i class="fas fa-home" aria-label="Success alert"></i>
+      </div>
+      <div class="pf-c-toast__message">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+      </div>
+      <div class="pf-c-toast__action">
+        <a href="#0">Do this</a>
+
+        <button>
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
 
     <div class="pf-c-dropdown">
-      
-      <button 
-      class="pf-c-btn pf-c-btn-secondary pf-c-dropdown-toggle" 
+
+      <button
+      class="pf-c-btn pf-c-btn-secondary pf-c-dropdown-toggle"
       type="button"
-      id="pf-c-dropdownMenuButton" 
-      data-toggle="pf-c-dropdown" 
+      id="pf-c-dropdownMenuButton"
+      data-toggle="pf-c-dropdown"
       aria-haspopup="true"
       aria-expanded="false">
         <i class="fas fa-ellipsis-v"></i>
@@ -42,7 +76,7 @@
         <a class="pf-c-dropdown-item" href="#">Another action</a>
         <a class="pf-c-dropdown-item" href="#">Something else here</a>
       </div>
-   
+
     </div>
 
   </body>

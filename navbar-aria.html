@@ -9,27 +9,68 @@
 </head>
 <body>
 
+
+<!-- variations within this variation that we could test -->
+<!-- <li> with role="presentation" -->
+<!-- <li> with role="none" (refer to this fun thread: https://github.com/w3c/aria-practices/issues/515)-->
+<!-- no <li> -->
+<!-- but I think for now, we can stick with role="presentation" and see how that works -->
+
+<!-- HTML and JS notes -->
+<!-- when using role="menu" and aria-haspopup, we should follow the keyboard interaction patterns that are defined:  -->
+<!-- https://www.w3.org/TR/wai-aria-practices-1.1/#menu -->
+<!-- Except, our implementation is not an exact match to what they describe... -->
+<!-- Our menu is visually persistent, and therefore should use the role="menubar" -->
+<!-- but since our menubar is not horizontal, we should add aria-orientation="vertical" -->
+<!-- tab-index="-1" would go on each <a> menu item except -->
+<!-- tab-index="0" would go on the menu item with focus, although -->
+<!-- When the user tabs away from the menu, we should set tab-index="0" to the aria-current menu item in the primary menu. -->
+<!-- Keyboard interaction -->
+<!-- copied from the url above (excluding ones that don't apply)
+      Enter, Space:
+      - When focus is on a menuitem that has a submenu, opens the submenu and places focus on its first item.
+      - Otherwise, activates the item and closes the menu.
+      Down Arrow:
+      - When focus is in a menu, moves focus to the next item, optionally wrapping from the last to the first.
+      Up Arrow:
+      - When focus is in a menu, moves focus to the previous item, optionally wrapping from the first to the last.
+      Right Arrow:
+      - When focus is in a menu and on a menuitem that has a submenu, opens the submenu and places focus on its first item.
+      - When focus is in a menu and on an item that does not have a submenu, performs the following 3 actions:
+        - DO NOTHING - none of the actions make sense in the context of a menubar that is vertical orientation
+      Left Arrow:
+      - When focus is in a submenu of an item in a menu, closes the submenu and returns focus to the parent menuitem.
+      - When focus is in a submenu of an item in a menubar, performs the following 3 actions:
+        - DO NOTHING - none of the actions make sense in the context of a menubar that is vertical orientation
+      Home: If arrow key wrapping is not supported, moves focus to the first item in the current menu or menubar.
+      End: If arrow key wrapping is not supported, moves focus to the last item in the current menu or menubar.
+      Escape: Close the menu that contains focus and return focus to the element or context, e.g., menu button or parent menuitem, from which the menu was opened.
+      Tab: Moves focus to the next element in the tab sequence, and if the item that had focus is not in a menubar, closes its menu and all open parent menu containers.
+      Shift + Tab: Moves focus to the previous element in the tab sequence, and if the item that had focus is not in a menubar, closes its menu and all open parent menu containers.
+-->
+
   <nav class="pf-c-vertical-nav" role="navigation">
 
-    <ul class="pf-c-vertical-nav__content" role="menu">
+    <ul class="pf-c-vertical-nav__content" role="menubar" aria-orientation="vertical">
 
-      <li class="pf-c-vertical-nav__item" role="none">
-        <a href="#" class="pf-c-vertical-nav__link" role="menuitem">
+      <li class="pf-c-vertical-nav__item" role="presentation">
+        <a href="#" tabindex="-1" class="pf-c-vertical-nav__link" role="menuitem">
           <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
           <span class="pf-c-vertical-nav__link-text">Home</span>
         </a>
       </li>
 
-      <li class="pf-c-vertical-nav__item" role="none">
-        <a href="#" class="pf-c-vertical-nav__link" role="menuitem">
+      <li class="pf-c-vertical-nav__item" role="presentation">
+        <a href="#" tabindex="-1" class="pf-c-vertical-nav__link" role="menuitem">
           <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
           <span class="pf-c-vertical-nav__link-text">Item</span>
         </a>
       </li>
 
-  
-      <li class="pf-c-vertical-nav__item" role="none">
-        <a href="#" aria-haspopup="true" aria-controls="submenu" role="menuitem" class="pf-c-vertical-nav__link pf-is-active" id="navbarDropdownMenuLink">
+
+      <li class="pf-c-vertical-nav__item" role="presentation">
+        <!-- NOTE: This <a> element does not have tab-index. This means that when the menu receives focus, this element will receive focus -->
+        <a href="#" aria-haspopup="true" aria-controls="submenu" aria-current="true" role="menuitem" class="pf-c-vertical-nav__link pf-is-active" id="navbarDropdownMenuLink">
           <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
           <span class="pf-c-vertical-nav__link-text">Item Active <span class="sr-only">(current navigation item)</span></span>
         </a>
@@ -37,31 +78,31 @@
         <section class="pf-vertical-sub-nav pf-is-open" aria-labelledby="navbarDropdownMenuLink">
           <h2 class="pf-vertical-sub-nav__title">Submenu title</h2>
           <ul role="menu" class="pf-vertical-sub-nav__content" id="submenu">
-            <li class="pf-vertical-sub-nav__item" role="none">
-              <a href="#" class="pf-vertical-sub-nav__link" role="menuitem">SubItem One</a>
+            <li class="pf-vertical-sub-nav__item" role="presentation">
+              <a href="#" tabindex="-1" class="pf-vertical-sub-nav__link" role="menuitem">SubItem One</a>
             </li>
-            <li class="pf-vertical-sub-nav__item" role="none">
-              <a href="#" class="pf-vertical-sub-nav__link pf-is-active" aria-current="true" role="menuitem">SubItem Two <span class="sr-only">(current navigation item)</span></a>
+            <li class="pf-vertical-sub-nav__item" role="presentation">
+              <a href="#" tabindex="-1" class="pf-vertical-sub-nav__link pf-is-active" aria-current="true" role="menuitem">SubItem Two <span class="sr-only">(current navigation item)</span></a>
             </li>
-            <li class="pf-vertical-sub-nav__item" role="none">
-              <a href="#" class="pf-vertical-sub-nav__link" role="menuitem">SubItem Three</a>
+            <li class="pf-vertical-sub-nav__item" role="presentation">
+              <a href="#" tabindex="-1" class="pf-vertical-sub-nav__link" role="menuitem">SubItem Three</a>
             </li>
-            <li class="pf-vertical-sub-nav__item" role="none">
-              <a href="#" class="pf-vertical-sub-nav__link  pf-is-disabled" aria-disabled="true" role="menuitem">SubItem Disabled <span class="sr-only">(disabled navigation item)</span></a>
+            <li class="pf-vertical-sub-nav__item" role="presentation">
+              <a href="#" tabindex="-1" class="pf-vertical-sub-nav__link  pf-is-disabled" aria-disabled="true" role="menuitem">SubItem Disabled <span class="sr-only">(disabled navigation item)</span></a>
             </li>
           </ul>
         </section>
       </li>
 
-      <li class="pf-c-vertical-nav__item" role="none">
-        <a href="#" class="pf-c-vertical-nav__link pf-is-disabled" aria-disabled="true" role="menuitem">
+      <li class="pf-c-vertical-nav__item" role="presentation">
+        <a href="#" tabindex="-1" class="pf-c-vertical-nav__link pf-is-disabled" aria-disabled="true" role="menuitem">
           <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
           <span class="pf-c-vertical-nav__link-text">Item Disabled <span class="sr-only">(disabled navigation item)</span></span>
         </a>
       </li>
 
-      <li class="pf-c-vertical-nav__item" role="none">
-        <a href="#" class="pf-c-vertical-nav__link" role="menuitem">
+      <li class="pf-c-vertical-nav__item" role="presentation">
+        <a href="#" tabindex="-1" class="pf-c-vertical-nav__link" role="menuitem">
           <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
           <span class="pf-c-vertical-nav__link-text">Item Five</span>
         </a>
