@@ -1,4 +1,4 @@
-# CSS
+# Accecibility test
 
 ``npm install``
 

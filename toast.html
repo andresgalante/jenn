@@ -9,7 +9,7 @@
   </head>
   <body>
 
-    <div class="pf-c-toast">
+    <article class="pf-c-toast pf-is-danger" aria-label="Error alert">
       <div class="pf-c-toast__icon">
         <i class="fas fa-home"></i>
       </div>
@@ -18,10 +18,31 @@
       </div>
       <div class="pf-c-toast__action">
         <a href="#0">Do this</a>
+
+        <button>
+          <i class="fas fa-times"></i>
+        </button>
       </div>
-      <div class="pf-c-close">
-        <i class="fas fa-times"></i>
+    </article>
+
+    <div class="pf-c-dropdown">
+      
+      <button 
+      class="pf-c-btn pf-c-btn-secondary pf-c-dropdown-toggle" 
+      type="button"
+      id="pf-c-dropdownMenuButton" 
+      data-toggle="pf-c-dropdown" 
+      aria-haspopup="true"
+      aria-expanded="false">
+        <i class="fas fa-ellipsis-v"></i>
+      </button>
+
+      <div class="pf-c-dropdown-menu" aria-labelledby="pf-c-dropdownMenuButton">
+        <a class="pf-c-dropdown-item" href="#">Action</a>
+        <a class="pf-c-dropdown-item" href="#">Another action</a>
+        <a class="pf-c-dropdown-item" href="#">Something else here</a>
       </div>
+   
     </div>
 
   </body>

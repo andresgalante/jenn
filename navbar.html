@@ -9,10 +9,9 @@
 </head>
 <body>
 
-
   <nav class="pf-c-vertical-nav" role="navigation">
 
-    <ul class="pf-c-vertical-nav__content" role="menu" >
+    <ul class="pf-c-vertical-nav__content">
 
       <li class="pf-c-vertical-nav__item">
         <a href="#" class="pf-c-vertical-nav__link">
@@ -29,39 +28,48 @@
       </li>
 
       <li class="pf-c-vertical-nav__item">
-        <a href="#" role="menuitem" aria-haspopup="true" aria-expanded="false" class="pf-c-vertical-nav__link pf-is-active" id="navbarDropdownMenuLink">
-          <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
-          <span class="pf-c-vertical-nav__link-text">Item Active <span class="sr-only">(current)</span></span>
+        <a href="#" aria-expanded="true" aria-expanded="true" class="pf-c-vertical-nav__link pf-is-active" id="navbarDropdownMenuLink">
+          <span class="pf-c-vertical-nav__link-icon">
+            <i class="fas fa-home"></i>
+          </span>
+          <span class="pf-c-vertical-nav__link-text">
+            Item Active <span class="sr-only">(current navigation item)</span>
+          </span>
         </a>
 
-        <section class="pf-vertical-sub-nav" aria-labelledby="navbarDropdownMenuLink">
+        <section class="pf-vertical-sub-nav pf-is-open" aria-labelledby="navbarDropdownMenuLink">
           <h2 class="pf-vertical-sub-nav__title">Submenu title</h2>
           <ul class="pf-vertical-sub-nav__content">
             <li class="pf-vertical-sub-nav__item">
               <a href="#" class="pf-vertical-sub-nav__link">SubItem One</a>
             </li>
             <li class="pf-vertical-sub-nav__item">
-              <a href="#" role="menuitem" class="pf-vertical-sub-nav__link pf-is-active" aria-selected="true">SubItem Two <span class="sr-only">(current)</span></a>
+              <a href="#" aria-expanded="true" class="pf-vertical-sub-nav__link pf-is-active">
+                SubItem Two <span class="sr-only">(current navigation item)</span>
+              </a>
             </li>
             <li class="pf-vertical-sub-nav__item">
-              <a href="#" role="menuitem" class="pf-vertical-sub-nav__link">SubItem Three</a>
+              <a href="#" class="pf-vertical-sub-nav__link">SubItem Three</a>
             </li>
             <li class="pf-vertical-sub-nav__item">
-              <a href="#" role="menuitem" class="pf-vertical-sub-nav__link  pf-is-disabled" aria-disabled="true">SubItem Disabled</a>
+              <a href="#" aria-disabled="true" class="pf-vertical-sub-nav__link  pf-is-disabled">SubItem Disabled <span class="sr-only">(disabled navigation item)</span></a>
             </li>
           </ul>
         </section>
       </li>
 
       <li class="pf-c-vertical-nav__item">
-        <a href="#" role="menuitem" class="pf-c-vertical-nav__link pf-is-disabled" aria-disabled="true">
-          <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
-          <span class="pf-c-vertical-nav__link-text">Item Disabled</span>
+        <a href="#" aria-disabled="true" class="pf-c-vertical-nav__link pf-is-disabled">
+          <span class="pf-c-vertical-nav__link-icon">
+            <i class="fas fa-home"></i></span>
+          <span class="pf-c-vertical-nav__link-text">
+            Item Disabled <span class="sr-only">(disabled navigation item)</span>
+          </span>
         </a>
       </li>
 
       <li class="pf-c-vertical-nav__item">
-        <a href="#" role="menuitem" class="pf-c-vertical-nav__link">
+        <a href="#" class="pf-c-vertical-nav__link">
           <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
           <span class="pf-c-vertical-nav__link-text">Item Five</span>
         </a>

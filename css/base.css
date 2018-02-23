@@ -15,34 +15,46 @@ body {
   background-color: transparent;
   text-rendering: optimizeLegibility; }
 
-.pf-c-vertical-nav {
-  width: 15rem; }
-  .pf-c-vertical-nav__content {
-    padding-left: 0;
-    list-style: none; }
-  .pf-c-vertical-nav__item {
-    position: relative; }
-  .pf-c-vertical-nav__link {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-align: center;
-        align-items: center;
-    padding-top: .5rem;
-    padding-bottom: .5rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    text-decoration: none;
-    color: black; }
-    .pf-c-vertical-nav__link:hover, .pf-c-vertical-nav__link:focus {
-      background-color: rgba(0, 0, 0, 0.05); }
-    .pf-c-vertical-nav__link-icon {
-      margin-right: 1rem; }
-    .pf-c-vertical-nav__link.pf-is-active {
-      position: relative;
-      color: blue;
-      background: rgba(0, 0, 0, 0.05); }
-    .pf-c-vertical-nav__link.pf-is-disabled {
-      color: grey; }
+@media (min-width: 50rem) {
+  .pf-c-vertical-nav {
+    width: 15rem; } }
+
+.pf-c-vertical-nav__content {
+  padding-left: 0;
+  list-style: none; }
+
+.pf-c-vertical-nav__item {
+  position: relative; }
+
+.pf-c-vertical-nav__link {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color: black; }
+  .pf-c-vertical-nav__link:hover, .pf-c-vertical-nav__link:focus {
+    background-color: rgba(0, 0, 0, 0.05); }
+  .pf-c-vertical-nav__link-icon {
+    margin-right: 1rem; }
+  .pf-c-vertical-nav__link.pf-is-active {
+    position: relative;
+    color: blue;
+    background: rgba(0, 0, 0, 0.05); }
+  .pf-c-vertical-nav__link.pf-is-disabled {
+    color: grey;
+    pointer-events: none; }
+    .pf-c-vertical-nav__link.pf-is-disabled:hover, .pf-c-vertical-nav__link.pf-is-disabled:focus {
+      background-color: transparent; }
+
+.pf-vertical-sub-nav {
+  display: none; }
+  .pf-vertical-sub-nav.pf-is-open {
+    display: block; }
 
 @media (min-width: 50rem) {
   .pf-vertical-sub-nav {
@@ -69,12 +81,14 @@ body {
   text-decoration: none; }
   .pf-vertical-sub-nav__link:hover, .pf-vertical-sub-nav__link:focus {
     background-color: rgba(0, 0, 0, 0.05); }
+  .pf-vertical-sub-nav__link.pf-is-disabled {
+    color: grey;
+    pointer-events: none; }
+    .pf-vertical-sub-nav__link.pf-is-disabled:hover, .pf-vertical-sub-nav__link.pf-is-disabled:focus {
+      background-color: transparent; }
   @media (min-width: 50rem) {
     .pf-vertical-sub-nav__link.pf-is-active {
       background-color: rgba(0, 0, 0, 0.05); } }
-
-.sr-only {
-  font-size: .8rem; }
 
 .pf-c-toast {
   display: -ms-flexbox;
@@ -84,35 +98,26 @@ body {
   -ms-flex-pack: justify;
       justify-content: space-between;
   border: 1px solid black; }
-
-.pf-c-toast__icon {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-      align-items: center;
-  -ms-flex-pack: center;
-      justify-content: center;
-  min-width: 4rem;
-  padding: 1rem;
-  color: #fff;
-  background-color: lightgray; }
-
-.pf-c-toast__icon--success {
-  background-color: green; }
-
-.pf-c-toast__icon--warning {
-  background-color: orange; }
-
-.pf-c-toast__icon--danger {
-  background-color: red; }
-
-.pf-c-toast__message {
-  -ms-flex-positive: 1;
-      flex-grow: 1;
-  padding: 1rem; }
-
-.pf-c-toast__action {
-  padding: 1rem; }
-
-.pf-c-toast__close {
-  padding: 1rem; }
+  .pf-c-toast__icon {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-pack: center;
+        justify-content: center;
+    min-width: 4rem;
+    padding: 1rem;
+    color: #fff;
+    background-color: lightgray; }
+  .pf-c-toast.pf-is-success {
+    background-color: green; }
+  .pf-c-toast.pf-is-warning {
+    background-color: orange; }
+  .pf-c-toast.pf-is-danger {
+    background-color: red; }
+  .pf-c-toast__message {
+    -ms-flex-positive: 1;
+        flex-grow: 1;
+    padding: 1rem; }
+  .pf-c-toast__action {
+    padding: 1rem; }

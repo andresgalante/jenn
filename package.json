@@ -1,7 +1,7 @@
 {
   "name": "CSS",
   "version": "1.0.0",
-  "description": "CSS class",
+  "description": "CSS",
   "main": "Gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

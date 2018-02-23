@@ -23,7 +23,9 @@ body {
 // // pf-c-block__element--modifier--state--PropiertyCamel
 
 .pf-c-vertical-nav {
-  width: 15rem;
+  @media (min-width: 50rem) {
+    width: 15rem;
+  }
 
   &__content {
     padding-left: 0;
@@ -44,10 +46,11 @@ body {
     text-decoration: none;
     color: black;
 
-      &:hover,
-      &:focus {
-        background-color: rgba(0,0,0,.05); //$pf-vertical-sub-nav-link-hover-bg-color;
-      }
+    &:hover,
+    &:focus {
+      background-color: rgba(0, 0, 0, 0.05); //$pf-vertical-sub-nav-link-hover-bg-color;
+   
+    }
 
     &-icon {
       // placeholderfor an icon
@@ -57,11 +60,16 @@ body {
     &.pf-is-active {
       position: relative;
       color: blue;
-      background: rgba(0,0,0,.05);
+      background: rgba(0, 0, 0, 0.05);
     }
 
     &.pf-is-disabled {
       color: grey;
+      pointer-events: none;
+      &:hover,
+      &:focus {
+        background-color: transparent;
+      }
     }
   }
 }
@@ -69,22 +77,27 @@ body {
 // Sub menu
 //
 .pf-vertical-sub-nav {
-  // display: none;
+  display: none;
+  &.pf-is-open {
+     display: block; 
+  }
 }
+
 
 .pf-vertical-sub-nav {
   @media (min-width: 50rem) {
     position: absolute;
     top: 0;
-    right: -15rem;// -$pf-vertical-sub-nav-width;
-    width: 15rem;// $pf-vertical-sub-nav-width;
-    padding: 1rem;// $pf-vertical-sub-nav-padding;
-    background: rgba(0,0,0,.05);;
+    right: -15rem; // -$pf-vertical-sub-nav-width;
+    width: 15rem; // $pf-vertical-sub-nav-width;
+    padding: 1rem; // $pf-vertical-sub-nav-padding;
+    background: rgba(0, 0, 0, 0.05);
   }
 }
 
 .pf-vertical-sub-nav__title {
   display: none;
+
   @media (min-width: 50rem) {
     display: block;
   }
@@ -104,21 +117,24 @@ body {
 
   &:hover,
   &:focus {
-    background-color: rgba(0,0,0,.05); //$pf-vertical-sub-nav-link-hover-bg-color;
+    background-color: rgba(0, 0, 0, 0.05); //$pf-vertical-sub-nav-link-hover-bg-color;
+  }
+
+  &.pf-is-disabled {
+    color: grey;
+    pointer-events: none;
+    &:hover,
+    &:focus {
+      background-color: transparent;
+    }
   }
 
   @media (min-width: 50rem) {
     &.pf-is-active {
-      background-color: rgba(0,0,0,.05);
+      background-color: rgba(0, 0, 0, 0.05);
     }
   }
 }
-
-
-.sr-only {
-  font-size: .8rem;
-}
-
 
 // toast
 
@@ -127,37 +143,35 @@ body {
   align-items: stretch;
   justify-content: space-between;
   border: 1px solid black;
-}
 
-.pf-c-toast__icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 4rem;
-  padding: 1rem;
-  color: #fff;
-  background-color: lightgray;
-}
-.pf-c-toast__icon--success {
-  background-color: green;
-}
-.pf-c-toast__icon--warning {
-  background-color: orange;
-}
-.pf-c-toast__icon--danger {
-  background-color: red;
-}
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 4rem;
+    padding: 1rem;
+    color: #fff;
+    background-color: lightgray;
+  }
 
-.pf-c-toast__message {
-  flex-grow: 1;
-  padding: 1rem;
-}
+  &.pf-is-success {
+    background-color: green;
+  }
 
-.pf-c-toast__action {
-  padding: 1rem;
-}
+  &.pf-is-warning {
+    background-color: orange;
+  }
 
-.pf-c-toast__close {
-  padding: 1rem;
-}
+  &.pf-is-danger {
+    background-color: red;
+  }
 
+  &__message {
+    flex-grow: 1;
+    padding: 1rem;
+  }
+
+  &__action {
+    padding: 1rem;
+  }
+}
