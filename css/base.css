@@ -97,14 +97,9 @@ body {
       align-items: stretch;
   -ms-flex-pack: justify;
       justify-content: space-between;
-  border: 1px solid black; }
+  border: 1px solid black;
+  margin: 1rem; }
   .pf-c-toast__icon {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-align: center;
-        align-items: center;
-    -ms-flex-pack: center;
-        justify-content: center;
     min-width: 4rem;
     padding: 1rem;
     color: #fff;
@@ -121,3 +116,27 @@ body {
     padding: 1rem; }
   .pf-c-toast__action {
     padding: 1rem; }
+
+.pf-c-btn {
+  padding: 0rem 1rem;
+  background-color: white; }
+
+.pf-c-dropdown {
+  position: relative;
+  display: inline-block; }
+  .pf-c-dropdown__menu {
+    background: brown;
+    position: absolute;
+    left: 0;
+    width: 12rem;
+    display: none;
+    background-color: white;
+    border: 1px solid grey; }
+  .pf-c-dropdown__link {
+    display: block;
+    padding: .5rem; }
+  .pf-c-dropdown.pf-is-expanded .pf-c-dropdown__menu {
+    display: block; }
+  .pf-c-dropdown.pf-to-right .pf-c-dropdown__menu {
+    right: 0;
+    left: auto; }

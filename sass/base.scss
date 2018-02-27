@@ -66,6 +66,7 @@ body {
     &.pf-is-disabled {
       color: grey;
       pointer-events: none;
+
       &:hover,
       &:focus {
         background-color: transparent;
@@ -78,11 +79,11 @@ body {
 //
 .pf-vertical-sub-nav {
   display: none;
+
   &.pf-is-open {
-     display: block; 
+    display: block;
   }
 }
-
 
 .pf-vertical-sub-nav {
   @media (min-width: 50rem) {
@@ -118,11 +119,13 @@ body {
   &:hover,
   &:focus {
     background-color: rgba(0, 0, 0, 0.05); //$pf-vertical-sub-nav-link-hover-bg-color;
+ 
   }
 
   &.pf-is-disabled {
     color: grey;
     pointer-events: none;
+
     &:hover,
     &:focus {
       background-color: transparent;
@@ -143,11 +146,12 @@ body {
   align-items: stretch;
   justify-content: space-between;
   border: 1px solid black;
+  margin: 1rem;
 
   &__icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
     min-width: 4rem;
     padding: 1rem;
     color: #fff;
@@ -174,4 +178,45 @@ body {
   &__action {
     padding: 1rem;
   }
+}
+
+// btn
+.pf-c-btn {
+  padding: 0rem 1rem;
+  background-color: white; 
+}
+
+// drop menu
+.pf-c-dropdown {
+  position: relative;
+  display: inline-block;
+
+  &__trigger {
+  }
+
+  &__menu {
+    background: brown;
+    position: absolute;
+    left: 0;
+    width: 12rem;
+    display: none;
+    background-color: white;
+    border: 1px solid grey;
+  }
+
+  &__link {
+    display: block;
+    padding: .5rem;;
+  }
+
+  &.pf-is-expanded .pf-c-dropdown__menu {
+    display: block;
+  }
+  
+  &.pf-to-right .pf-c-dropdown__menu {
+    right: 0;
+    left: auto;
+  }
+  
+
 }

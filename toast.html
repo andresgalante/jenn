@@ -1,83 +1,100 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>CSS</title>
-    <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
-    <link rel="stylesheet" href="css/base.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-  </head>
-  <body>
 
-    <!-- Variation 1, identify alert with aria label on alert parent -->
-    <div role="alert" class="pf-c-toast pf-is-danger" aria-label="Error alert">
-      <div class="pf-c-toast__icon">
-        <i class="fas fa-home"></i>
-      </div>
-      <div class="pf-c-toast__message">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-      </div>
-      <div class="pf-c-toast__action">
-        <a href="#0">Do this</a>
+<head>
+  <meta charset="utf-8">
+  <title>CSS</title>
+  <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
+  <link rel="stylesheet" href="css/base.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+</head>
 
-        <button>
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
+<body>
+
+  <!-- Variation 1, identify alert with aria label on alert parent -->
+  <div role="alert" class="pf-c-toast pf-is-danger" aria-label="Error alert">
+    <div class="pf-c-toast__icon">
+      <i class="fas fa-home"></i>
     </div>
-    <!-- Variation 2, identify alert with sr-only text after the icon -->
-    <div role="alert" class="pf-c-toast pf-is-warning">
-      <div class="pf-c-toast__icon">
-        <i class="fas fa-home"></i>
-        <span class="sr-only">Warning alert</span>
-      </div>
-      <div class="pf-c-toast__message">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-      </div>
-      <div class="pf-c-toast__action">
-        <a href="#0">Do this</a>
-
-        <button>
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
+    <div class="pf-c-toast__message">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
     </div>
-    <!-- Variation 3, identify alert with aria label on icon -->
-    <div role="alert" class="pf-c-toast pf-is-success">
-      <div class="pf-c-toast__icon">
-        <i class="fas fa-home" aria-label="Success alert"></i>
-      </div>
-      <div class="pf-c-toast__message">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-      </div>
-      <div class="pf-c-toast__action">
-        <a href="#0">Do this</a>
+    <div class="pf-c-toast__action">
+      <a href="#0">Do this</a>
 
-        <button>
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-    </div>
-
-    <div class="pf-c-dropdown">
-
-      <button
-      class="pf-c-btn pf-c-btn-secondary pf-c-dropdown-toggle"
-      type="button"
-      id="pf-c-dropdownMenuButton"
-      data-toggle="pf-c-dropdown"
-      aria-haspopup="true"
-      aria-expanded="false">
-        <i class="fas fa-ellipsis-v"></i>
+      <button>
+        <i class="fas fa-times"></i>
       </button>
+    </div>
+  </div>
 
-      <div class="pf-c-dropdown-menu" aria-labelledby="pf-c-dropdownMenuButton">
-        <a class="pf-c-dropdown-item" href="#">Action</a>
-        <a class="pf-c-dropdown-item" href="#">Another action</a>
-        <a class="pf-c-dropdown-item" href="#">Something else here</a>
+  <!-- Variation 2, identify alert with sr-only text after the icon -->
+  <div role="alert" class="pf-c-toast pf-is-warning">
+    <div class="pf-c-toast__icon">
+      <i class="fas fa-home"></i>
+      <span class="sr-only">Warning alert</span>
+    </div>
+    <div class="pf-c-toast__message">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+    </div>
+    <div class="pf-c-toast__action">
+      <a href="#0">Do this</a>
+
+      <button>
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Variation 3, identify alert with aria label on icon -->
+  <div role="alert" class="pf-c-toast pf-is-success" aria-label="Error alert">
+    <div class="pf-c-toast__icon">
+      <i class="fas fa-home" title="Success alert"></i>
+    </div>
+    <div class="pf-c-toast__message">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+    </div>
+    <div class="pf-c-toast__action">
+      <a href="#0">Do this</a>
+
+      <div class="pf-c-dropdown pf-is-expanded pf-to-right">
+        <div class="pf-c-dropdown__trigger">
+          <button class="pf-c-btn" type="button" id="dropdownMenuButton" data-toggle="pf-c-dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-ellipsis-v"></i>
+          </button>
+        </div>
+
+        <div class="pf-c-dropdown__menu" aria-labelledby="dropdownMenuButton">
+          <a class="pf-c-dropdown__link" href="#">Action</a>
+          <a class="pf-c-dropdown__link" href="#">Another action</a>
+          <a class="pf-c-dropdown__link" href="#">Something else here</a>
+        </div>
       </div>
 
     </div>
+  </div>
 
-  </body>
+  <!-- Variation X icon svg -->
+  <div role="alert" class="pf-c-toast pf-is-danger" aria-label="Error alert">
+    <div class="pf-c-toast__icon">
+      <svg aria-label="icon name" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="10" cy="10" r="10" />
+      </svg>
+    </div>
+    <div class="pf-c-toast__message">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+    </div>
+    <div class="pf-c-toast__action">
+      <a href="#0">Do this</a>
+      <button>
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
+
+
+
+
+</body>
+
 </html>
