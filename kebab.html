@@ -9,15 +9,24 @@
   </head>
   <body>
 
-    <div class="pf-c-dropdown pf-is-expanded">
+<!-- This menu is based on the Bootstrap 4 dropdown  -->
+<!-- https://getbootstrap.com/docs/4.0/components/dropdowns/ -->
+<!-- With one exception - we will not implement the Arrow keys to shift focus in the menu -->
+<!-- Instead, we will only rely on the Tab key to shift focus in the menu -->
+
+    <button>Action One</button>
+    <button>Action Two</button>
+    <!-- example of button that is expanded -->
+    <div class="pf-c-dropdown pf-is-expanded"> <!-- pf-is-expanded class is added -->
       <div class="pf-c-dropdown__trigger">
         <button
         class="pf-c-btn"
         type="button"
         id="dropdownMenuButton"
         data-toggle="pf-c-dropdown"
+        aria-label="More Actions"
         aria-haspopup="true"
-        aria-expanded="false">
+        aria-expanded="true">  <!-- attribute changes -->
         <i class="fas fa-ellipsis-v"></i>
       </button>
       </div>
@@ -28,7 +37,26 @@
         <a class="pf-c-dropdown__link" href="#">Something else here</a>
       </div>
     </div>
+    <!-- example of button that is collapsed -->
+    <div class="pf-c-dropdown">  <!-- pf-is-expanded class is removed -->
+      <div class="pf-c-dropdown__trigger">
+        <button
+        class="pf-c-btn"
+        type="button"
+        id="dropdownMenuButton"
+        data-toggle="pf-c-dropdown"
+        aria-label="More Actions"
+        aria-haspopup="true"
+        aria-expanded="false"> <!-- attribute changes -->
+        <i class="fas fa-ellipsis-v"></i>
+      </button>
+      </div>
 
-
+      <div class="pf-c-dropdown__menu" aria-labelledby="dropdownMenuButton">
+        <a class="pf-c-dropdown__link" href="#">Action</a>
+        <a class="pf-c-dropdown__link" href="#">Another action</a>
+        <a class="pf-c-dropdown__link" href="#">Something else here</a>
+      </div>
+    </div>
 </body>
 </html>
