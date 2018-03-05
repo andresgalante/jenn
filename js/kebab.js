@@ -31,9 +31,14 @@
         toggleMenu(element)
       }
     }
+    trigger.onblur = function (e) {
+      if (e.relatedTarget.className !== 'pf-c-dropdown__link' && e.relatedTarget.className !== 'pf-c-btn') {
+        toggleMenu(element)
+      }
+    }
     menuItems.forEach((menuItem) => {
       menuItem.onblur = function (e) {
-        if (e.relatedTarget.className !== 'pf-c-dropdown__link') {
+        if (e.relatedTarget.className !== 'pf-c-dropdown__link' && e.relatedTarget.className !== 'pf-c-btn') {
           toggleMenu(element)
         }
       }
