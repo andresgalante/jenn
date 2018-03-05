@@ -47,6 +47,16 @@
           toggleMenu(element, false)
         }
       }
+      menuItem.onclick = function (e) {
+        toggleMenu(element, false)
+      }
+      menuItem.onkeyup = function (e) {
+        const pressedSpace = (e.keyCode === SPACE_KEYCODE)
+        const pressedEnter = (e.keyCode === SPACE_KEYCODE)
+        if (pressedEnter || pressedSpace) {
+          toggleMenu(element, false)
+        }
+      }
     })
   })
 })()
