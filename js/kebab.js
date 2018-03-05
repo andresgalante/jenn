@@ -28,14 +28,6 @@
       e.preventDefault()
       toggleMenu(element)
     }
-    trigger.onkeyup = function (e) {
-      e.preventDefault()
-      const pressedSpace = (e.keyCode === SPACE_KEYCODE)
-      const pressedEnter = (e.keyCode === ENTER_KEYCODE)
-      if (pressedEnter || pressedSpace) {
-        toggleMenu(element)
-      }
-    }
     trigger.onblur = function (e) {
       if (e.relatedTarget.className !== 'pf-c-dropdown__link') {
         toggleMenu(element, false)
