@@ -17,46 +17,27 @@
     <button>Action One</button>
     <button>Action Two</button>
     <!-- example of button that is expanded -->
-    <div class="pf-c-dropdown pf-is-expanded"> <!-- pf-is-expanded class is added -->
+    <div class="pf-c-dropdown"> <!-- pf-is-expanded class is added -->
       <div class="pf-c-dropdown__trigger">
         <button
         class="pf-c-btn"
         type="button"
-        id="dropdownMenuButton"
+        id="dropdownMenuButton1"
         data-toggle="pf-c-dropdown"
         aria-label="More Actions"
         aria-haspopup="true"
-        aria-expanded="true">  <!-- attribute changes -->
+        aria-expanded="false">  <!-- attribute changes -->
         <i class="fas fa-ellipsis-v"></i>
-      </button>
+        </button>
       </div>
 
-      <div class="pf-c-dropdown__menu" aria-labelledby="dropdownMenuButton">
+      <div class="pf-c-dropdown__menu" aria-labelledby="dropdownMenuButton1">
         <a class="pf-c-dropdown__link" href="#">Action</a>
         <a class="pf-c-dropdown__link" href="#">Another action</a>
         <a class="pf-c-dropdown__link" href="#">Something else here</a>
       </div>
     </div>
-    <!-- example of button that is collapsed -->
-    <div class="pf-c-dropdown">  <!-- pf-is-expanded class is removed -->
-      <div class="pf-c-dropdown__trigger">
-        <button
-        class="pf-c-btn"
-        type="button"
-        id="dropdownMenuButton"
-        data-toggle="pf-c-dropdown"
-        aria-label="More Actions"
-        aria-haspopup="true"
-        aria-expanded="false"> <!-- attribute changes -->
-        <i class="fas fa-ellipsis-v"></i>
-      </button>
-      </div>
-
-      <div class="pf-c-dropdown__menu" aria-labelledby="dropdownMenuButton">
-        <a class="pf-c-dropdown__link" href="#">Action</a>
-        <a class="pf-c-dropdown__link" href="#">Another action</a>
-        <a class="pf-c-dropdown__link" href="#">Something else here</a>
-      </div>
-    </div>
+    <button>Action Four</button>
+    <script src="js/kebab.js"></script>
 </body>
 </html>

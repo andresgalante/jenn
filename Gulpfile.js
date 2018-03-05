@@ -29,7 +29,8 @@ gulp.task('bs-reload', function () {
 //Watch task
 gulp.task('watch',function() {
     gulp.watch('sass/**/*.scss',['styles']);
-    gulp.watch("*.html", ['bs-reload']);
+    gulp.watch('js/**/*.js', ['bs-reload']);
+    gulp.watch('*.html', ['bs-reload']);
 });
 
 // deploys
