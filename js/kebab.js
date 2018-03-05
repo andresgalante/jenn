@@ -31,7 +31,7 @@
     trigger.onkeyup = function (e) {
       e.preventDefault()
       const pressedSpace = (e.keyCode === SPACE_KEYCODE)
-      const pressedEnter = (e.keyCode === SPACE_KEYCODE)
+      const pressedEnter = (e.keyCode === ENTER_KEYCODE)
       if (pressedEnter || pressedSpace) {
         toggleMenu(element)
       }
@@ -48,11 +48,13 @@
         }
       }
       menuItem.onclick = function (e) {
+        e.preventDefault()
         toggleMenu(element, false)
       }
       menuItem.onkeyup = function (e) {
+        e.preventDefault()
         const pressedSpace = (e.keyCode === SPACE_KEYCODE)
-        const pressedEnter = (e.keyCode === SPACE_KEYCODE)
+        const pressedEnter = (e.keyCode === ENTER_KEYCODE)
         if (pressedEnter || pressedSpace) {
           toggleMenu(element, false)
         }
