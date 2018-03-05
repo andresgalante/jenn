@@ -8,19 +8,36 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
   </head>
   <body>
-    <ul role="menubar" id="appmenu" class="menu">
-      <li class="menu-item" role="menuitem" aria-haspopup="true">
-      Edit
-      <ul role="menu" class="menu">
-        <li class="menu-item" role="menuitem">Undo</li>
-        <li class="menu-item" role="menuitem">Redo</li>
-        <li class="menu-item" role="separator"></li>
-        <li class="menu-item" role="menuitem">Cut</li>
-        <li class="menu-item" role="menuitem">Copy</li>
-        <li class="menu-item" role="menuitem">Paste</li>
-        </ul>
-      </li>
-    </ul>
-    <script src="js/kebab2.js"></script>
-  </body>
+
+<!-- This menu is based on the Bootstrap 4 dropdown  -->
+<!-- https://getbootstrap.com/docs/4.0/components/dropdowns/ -->
+<!-- With one exception - we will not implement the Arrow keys to shift focus in the menu -->
+<!-- Instead, we will only rely on the Tab key to shift focus in the menu -->
+
+    <button>Action One</button>
+    <button>Action Two</button>
+    <!-- example of button that is expanded -->
+    <div class="pf-c-dropdown"> <!-- pf-is-expanded class is added -->
+      <div class="pf-c-dropdown__trigger">
+        <button
+        class="pf-c-btn"
+        type="button"
+        id="dropdownMenuButton1"
+        data-toggle="pf-c-dropdown"
+        aria-label="More Actions"
+        aria-haspopup="true"
+        aria-expanded="false">  <!-- attribute changes -->
+        <i class="fas fa-ellipsis-v"></i>
+        </button>
+      </div>
+
+      <div class="pf-c-dropdown__menu" aria-labelledby="dropdownMenuButton1">
+        <button class="pf-c-dropdown__link">Action</button>
+        <button class="pf-c-dropdown__link">Another action</button>
+        <button class="pf-c-dropdown__link">Something else here</button>
+      </div>
+    </div>
+    <button>Action Four</button>
+    <script src="js/kebab.js"></script>
+</body>
 </html>
