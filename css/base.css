@@ -53,7 +53,7 @@ body {
 
 .pf-vertical-sub-nav {
   display: none; }
-  .pf-vertical-sub-nav.pf-is-open {
+  .pf-vertical-sub-nav:not([aria-hidden="true"]) {
     display: block; }
 
 @media (min-width: 50rem) {

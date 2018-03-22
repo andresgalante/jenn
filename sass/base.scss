@@ -49,7 +49,7 @@ body {
     &:hover,
     &:focus {
       background-color: rgba(0, 0, 0, 0.05); //$pf-vertical-sub-nav-link-hover-bg-color;
-   
+
     }
 
     &-icon {
@@ -80,7 +80,11 @@ body {
 .pf-vertical-sub-nav {
   display: none;
 
-  &.pf-is-open {
+  // &.pf-is-open {
+  //   display: block;
+  // }
+  // rather, base display on aria-hidden
+  &:not([aria-hidden="true"]) {
     display: block;
   }
 }
@@ -119,7 +123,7 @@ body {
   &:hover,
   &:focus {
     background-color: rgba(0, 0, 0, 0.05); //$pf-vertical-sub-nav-link-hover-bg-color;
- 
+
   }
 
   &.pf-is-disabled {
@@ -183,7 +187,7 @@ body {
 // btn
 .pf-c-btn {
   padding: 0rem 1rem;
-  background-color: white; 
+  background-color: white;
 }
 
 // drop menu
@@ -212,11 +216,11 @@ body {
   &.pf-is-expanded .pf-c-dropdown__menu {
     display: block;
   }
-  
+
   &.pf-to-right .pf-c-dropdown__menu {
     right: 0;
     left: auto;
   }
-  
+
 
 }
