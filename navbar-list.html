@@ -2,12 +2,23 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>CSS</title>
+  <title>Navigation Example - aria-expanded</title>
   <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
   <link rel="stylesheet" href="css/base.css">
   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 </head>
 <body>
+
+  <header role="banner">
+      <h1>List demo</h1>
+      <ul>
+        <li>features role="list" for outermost ul</li>
+        <li>features dynamic aria-expanded on each menu anchor</li>
+        <li>features dynamic aria-current on each menu anchor</li>
+        <li>does not properly relay expanded/collapsed state in VoiceOver links menu</li>
+        <li>submenu links are however listed properly in VO links menu when they are expanded</li>
+      </ul>
+    </header>
 
   <nav class="pf-c-vertical-nav">
     <ul class="pf-c-vertical-nav__content" role="list">
@@ -166,6 +177,6 @@
     </ul>
   </nav>
   <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-  <script src="js/navbar.js"></script>
+  <script src="js/navbar-list.js"></script>
 </body>
 </html>
