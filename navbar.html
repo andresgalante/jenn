@@ -9,15 +9,11 @@
 </head>
 <body>
 
-  <nav class="pf-c-vertical-nav" role="navigation">
-  <!-- Do we still need role="navigation" for <nav> elements -->
-
+  <nav class="pf-c-vertical-nav">
     <ul class="pf-c-vertical-nav__content" role="list">
-
-      <li class="pf-c-vertical-nav__item" role="listitem">
+      <li class="pf-c-vertical-nav__item">
 
         <!-- JS NOTES for any <a> menu item that DOES NOT have a submenu-->
-
         <!-- aria-current= -->
         <!-- "true" when this menu item is the current page (i.e. active) -->
         <!-- "false" when any other menu item is the current page -->
@@ -28,14 +24,14 @@
         </a>
       </li>
 
-      <li class="pf-c-vertical-nav__item" role="listitem">
+      <li class="pf-c-vertical-nav__item">
         <a href="#" class="pf-c-vertical-nav__link">
           <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
-          <span class="pf-c-vertical-nav__link-text">Item</span>
+          <span class="pf-c-vertical-nav__link-text">Item One</span>
         </a>
       </li>
 
-      <li class="pf-c-vertical-nav__item" role="listitem">
+      <li class="pf-c-vertical-nav__item">
 
         <!-- JS NOTES for any <a> menu item that DOES have a submenu-->
 
@@ -46,40 +42,57 @@
         <!-- aria-current="false" when any other menu item is the current page -->
         <!-- except, this doesn't work in Voiceover on Mac - instead only the first aria-current attribute is recognized. Is it too much to transfer this attribute dynamically depending on menu visibility? so when the menu is hidden, the parent has ariaa-current and when the menu is visible the submenu item has aria-current -->
 
-        <a href="#" aria-expanded="true" aria-controls="navbarSubmenu3" aria-current="true" class="pf-c-vertical-nav__link pf-is-active" id="navbarDropdownMenuLink3"> <!-- pf-is-active class is added to links that are open -->
+        <a
+          href="#"
+          aria-expanded="false"
+          aria-controls="navbarSubmenu3"
+          aria-current="false"
+          class="pf-c-vertical-nav__link"
+          id="navbarDropdownMenuLink3"> <!-- pf-is-active class is added to links that are open -->
           <span class="pf-c-vertical-nav__link-icon">
             <i class="fas fa-home"></i>
           </span>
           <span class="pf-c-vertical-nav__link-text">
-            <!-- JS NOTES for any <a> element that also has aria-current, as noted above-->
-            <!-- include the following element after the menu item text string, whenever the menu item is the current page, or is a parent of the current page -->
-            <!-- <span class="sr-only">(current navigation item)</span> -->
-            Item Active <span class="sr-only">(current navigation item)</span>
+            Item Two
           </span>
         </a>
 
         <!-- JS NOTES for submenus -->
         <!-- aria-hidden="true" when the submenu is not visible -->
         <!-- aria-hidden="false" (or not included) when the submenu is visible -->
-        <section class="pf-vertical-sub-nav pf-is-open" aria-labelledby="navbarDropdownMenuLink3" id="navbarSubmenu3" aria-hidden="false"> <!-- pf-is-open class is added to sections that are open -->
+        <section
+          class="pf-vertical-sub-nav"
+          aria-hidden="true"
+          aria-labelledby="navbarDropdownMenuLink3"
+          id="navbarSubmenu3"> <!-- pf-is-open class is added to sections that are open -->
           <h2 class="pf-vertical-sub-nav__title">Submenu title</h2>
-          <ul class="pf-vertical-sub-nav__content" role="list">
-            <li class="pf-vertical-sub-nav__item" role="listitem">
-              <a href="#" class="pf-vertical-sub-nav__link">SubItem One</a>
+          <ul class="pf-vertical-sub-nav__content">
+            <li class="pf-vertical-sub-nav__item">
+              <a href="#" class="pf-vertical-sub-nav__link">
+                <span class="pf-c-vertical-nav__link-text">
+                    SubItem One
+                </span>
+              </a>
             </li>
-            <li class="pf-vertical-sub-nav__item" role="listitem">
+            <li class="pf-vertical-sub-nav__item">
 
               <!-- JS NOTES for any <a> menu item that IS IN a submenu-->
               <!-- aria-current="true" when this menu item is the current page (i.e. active) -->
               <!-- aria-current="false" when any other menu item is the current page -->
-              <a href="#" aria-current="true" class="pf-vertical-sub-nav__link pf-is-active">
-                SubItem Two <span class="sr-only">(current navigation item)</span>
+              <a href="#" aria-current="false" class="pf-vertical-sub-nav__link">
+                <span class="pf-c-vertical-nav__link-text">
+                  SubItem Two
+                </span>
               </a>
             </li>
-            <li class="pf-vertical-sub-nav__item" role="listitem">
-              <a href="#" class="pf-vertical-sub-nav__link">SubItem Three</a>
+            <li class="pf-vertical-sub-nav__item">
+              <a href="#" class="pf-vertical-sub-nav__link">
+                <span class="pf-c-vertical-nav__link-text">
+                  SubItem Three
+                </span>
+              </a>
             </li>
-            <li class="pf-vertical-sub-nav__item" role="listitem">
+            <li class="pf-vertical-sub-nav__item">
               <a href="#" aria-disabled="true" class="pf-vertical-sub-nav__link pf-is-disabled">SubItem Disabled <span class="sr-only">(disabled navigation item)</span></a>
             </li>
           </ul>
@@ -87,27 +100,44 @@
       </li>
 
       <li class="pf-c-vertical-nav__item">
-        <a href="#" aria-expanded="false" aria-controls="navbarSubmenu4" class="pf-c-vertical-nav__link" id="navbarDropdownMenuLink4">
+        <a
+          href="#"
+          aria-expanded="false"
+          aria-controls="navbarSubmenu4"
+          class="pf-c-vertical-nav__link"
+          id="navbarDropdownMenuLink4">
           <span class="pf-c-vertical-nav__link-icon">
             <i class="fas fa-home"></i>
           </span>
-          <span class="pf-c-vertical-nav__link-text">Item</span>
+          <span class="pf-c-vertical-nav__link-text">Item Three</span>
         </a>
 
-        <!-- HTML NOTES -->
-        <!-- The following menu has a variation, where aria-level is used to identify list level -->
-        <!-- Aside from the additional aria attribute, the JS updates should be the same for this section -->
-        <section class="pf-vertical-sub-nav" aria-labelledby="navbarDropdownMenuLink4" id="navbarSubmenu4" aria-hidden="false">
+        <!-- HTML NOTES
+        The following menu has a variation, where aria-level is used to identify list level
+        Aside from the additional aria attribute, the JS updates should be the same for this section -->
+        <section class="pf-vertical-sub-nav" aria-labelledby="navbarDropdownMenuLink4" id="navbarSubmenu4" aria-hidden="true">
           <h2 class="pf-vertical-sub-nav__title">Submenu title</h2>
           <ul class="pf-vertical-sub-nav__content">
             <li class="pf-vertical-sub-nav__item" aria-level="2">
-              <a href="#" class="pf-vertical-sub-nav__link">SubItem One</a>
+              <a href="#" class="pf-vertical-sub-nav__link">
+                <span class="pf-c-vertical-nav__link-text">
+                  SubItem One
+                </span>
+              </a>
             </li>
             <li class="pf-vertical-sub-nav__item" aria-level="2">
-              <a href="#" class="pf-vertical-sub-nav__link pf-is-active">SubItem Two</a>
+              <a href="#" class="pf-vertical-sub-nav__link">
+                <span class="pf-c-vertical-nav__link-text">
+                  SubItem Two
+                </span>
+              </a>
             </li>
             <li class="pf-vertical-sub-nav__item" aria-level="2">
-              <a href="#" class="pf-vertical-sub-nav__link">SubItem Three</a>
+              <a href="#" class="pf-vertical-sub-nav__link">
+                <span class="pf-c-vertical-nav__link-text">
+                  SubItem Three
+                </span>
+              </a>
             </li>
             <li class="pf-vertical-sub-nav__item" aria-level="2">
               <a href="#" aria-disabled="true" class="pf-vertical-sub-nav__link pf-is-disabled">SubItem Disabled <span class="sr-only">(disabled navigation item)</span></a>
@@ -135,6 +165,7 @@
 
     </ul>
   </nav>
-
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+  <script src="js/navbar.js"></script>
 </body>
 </html>
