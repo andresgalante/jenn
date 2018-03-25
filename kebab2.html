@@ -13,30 +13,59 @@
 <!-- https://getbootstrap.com/docs/4.0/components/dropdowns/ -->
 <!-- With one exception - we will not implement the Arrow keys to shift focus in the menu -->
 <!-- Instead, we will only rely on the Tab key to shift focus in the menu -->
+    <div>
+      <h1>Original Implementation</h1>
+      <button>Action One</button>
+      <button>Action Two</button>
+      <!-- example of button that is expanded -->
+      <div class="pf-c-dropdown"> <!-- pf-is-expanded class is added -->
+        <div class="pf-c-dropdown__trigger">
+          <button
+          class="pf-c-btn"
+          type="button"
+          id="dropdownMenuButton1"
+          data-toggle="pf-c-dropdown"
+          aria-label="More Actions"
+          aria-expanded="false">  <!-- attribute changes -->
+          <i class="fas fa-ellipsis-v"></i>
+          </button>
+        </div>
 
-    <button>Action One</button>
-    <button>Action Two</button>
-    <!-- example of button that is expanded -->
-    <div class="pf-c-dropdown"> <!-- pf-is-expanded class is added -->
-      <div class="pf-c-dropdown__trigger">
-        <button
-        class="pf-c-btn"
-        type="button"
-        id="dropdownMenuButton1"
-        data-toggle="pf-c-dropdown"
-        aria-label="More Actions"
-        aria-expanded="false">  <!-- attribute changes -->
-        <i class="fas fa-ellipsis-v"></i>
-        </button>
+        <div class="pf-c-dropdown__menu" aria-labelledby="dropdownMenuButton1">
+          <a class="pf-c-dropdown__link" href="#">Action</a>
+          <a class="pf-c-dropdown__link" href="#">Another action</a>
+          <a class="pf-c-dropdown__link" href="#">Something else here</a>
+        </div>
       </div>
-
-      <div class="pf-c-dropdown__menu" aria-labelledby="dropdownMenuButton1">
-        <a class="pf-c-dropdown__link" href="#">Action</a>
-        <a class="pf-c-dropdown__link" href="#">Another action</a>
-        <a class="pf-c-dropdown__link" href="#">Something else here</a>
-      </div>
+      <button>Action Four</button>
     </div>
-    <button>Action Four</button>
+    <div>
+      <h1>With role="button"</h1>
+      <button>Action One</button>
+      <button>Action Two</button>
+      <!-- example of button that is expanded -->
+      <div class="pf-c-dropdown"> <!-- pf-is-expanded class is added -->
+        <div class="pf-c-dropdown__trigger">
+          <button
+          role="button"
+          class="pf-c-btn"
+          type="button"
+          id="dropdownMenuButton1"
+          data-toggle="pf-c-dropdown"
+          aria-label="More Actions"
+          aria-expanded="false">  <!-- attribute changes -->
+          <i class="fas fa-ellipsis-v"></i>
+          </button>
+        </div>
+
+        <div class="pf-c-dropdown__menu" aria-labelledby="dropdownMenuButton1">
+          <a class="pf-c-dropdown__link" href="#">Action</a>
+          <a class="pf-c-dropdown__link" href="#">Another action</a>
+          <a class="pf-c-dropdown__link" href="#">Something else here</a>
+        </div>
+      </div>
+      <button>Action Four</button>
+    </div>
     <script src="js/kebab.js"></script>
 </body>
 </html>
