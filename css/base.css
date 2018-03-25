@@ -63,7 +63,7 @@ body {
     right: -15rem;
     width: 15rem;
     padding: 1rem;
-    background: rgba(0, 0, 0, 0.05); } }
+    background: #f7f7f7; } }
 
 .pf-vertical-sub-nav__title {
   display: none; }

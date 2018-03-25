@@ -10,15 +10,8 @@
 <body>
 
   <header role="banner">
-      <h1>List demo</h1>
-      <ul>
-        <li>features role="list" for outermost ul</li>
-        <li>features dynamic aria-expanded on each menu anchor</li>
-        <li>features dynamic aria-current on each menu anchor</li>
-        <li>does not properly relay expanded/collapsed state in VoiceOver links menu</li>
-        <li>submenu links are however listed properly in VO links menu when they are expanded</li>
-      </ul>
-    </header>
+    <h1>List demo</h1>
+  </header>
 
   <nav class="pf-c-vertical-nav">
     <ul class="pf-c-vertical-nav__content" role="list">
@@ -57,6 +50,7 @@
           href="#"
           role="link"
           aria-expanded="false"
+          aria-controls="navbarSubmenu3"
           aria-current="false"
           class="pf-c-vertical-nav__link"
           id="navbarDropdownMenuLink3"> <!-- pf-is-active class is added to links that are open -->
@@ -104,7 +98,7 @@
               </a>
             </li>
             <li class="pf-vertical-sub-nav__item">
-              <a href="#" aria-disabled="true" class="pf-vertical-sub-nav__link pf-is-disabled">Engineering</a>
+              <a href="#" aria-disabled="true" class="pf-vertical-sub-nav__link pf-is-disabled">Engineering <span class="sr-only">(disabled navigation item)</span></a>
             </li>
           </ul>
         </section>
@@ -115,6 +109,7 @@
           href="#"
           role="link"
           aria-expanded="false"
+          aria-controls="navbarSubmenu4"
           class="pf-c-vertical-nav__link"
           id="navbarDropdownMenuLink4">
           <span class="pf-c-vertical-nav__link-icon">
@@ -151,7 +146,7 @@
               </a>
             </li>
             <li class="pf-vertical-sub-nav__item" aria-level="2">
-              <a href="#" aria-disabled="true" class="pf-vertical-sub-nav__link pf-is-disabled">Stain Removal</a>
+              <a href="#" aria-disabled="true" class="pf-vertical-sub-nav__link pf-is-disabled">Stain Removal <span class="sr-only">(disabled navigation item)</span></a>
             </li>
           </ul>
         </section>
@@ -162,7 +157,7 @@
           <span class="pf-c-vertical-nav__link-icon">
             <i class="fas fa-home"></i></span>
           <span class="pf-c-vertical-nav__link-text">
-            Culture
+            Culture <span class="sr-only">(disabled navigation item)</span>
           </span>
         </a>
       </li>
@@ -176,6 +171,15 @@
 
     </ul>
   </nav>
+  <main>
+    <ul>
+      <li>features role="list" for outermost ul</li>
+      <li>features dynamic aria-expanded on each menu anchor</li>
+      <li>features dynamic aria-current on each menu anchor</li>
+      <li>does not properly relay expanded/collapsed state in VoiceOver links menu</li>
+      <li>submenu links are however listed properly in VO links menu when they are expanded</li>
+    </ul>
+  </main>
   <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
   <script src="js/navbar-list.js"></script>
 </body>
