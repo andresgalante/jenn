@@ -62,15 +62,6 @@
     });
   },
 
-  removeCurrentNavItemText = function ($menuItems) {
-    $.each($menuItems, function (idx, item) {
-      let $item = getMenuItemLnk(item);
-      if ($item.is(':not([aria-disabled])') && $item.find('.sr-only').length > 0) {
-        getMenuItemLnk(item).find('.sr-only').remove();
-      }
-    });
-  },
-
   bindMenuEvents = function ($listItem, idx, $menuItems) {
     let $menuItem = $listItem.find('> a');
 
@@ -104,11 +95,7 @@
             if (!hasSubmenu($menuItem) && $menuItem.is(':not([aria-disabled])')) {
               removeActiveClasses($menuItems);
               removeAriaCurrent($menuItems);
-              removeCurrentNavItemText($menuItems);
               $menuItem.addClass('pf-is-active').attr('aria-current', true);
-
-              $menuItem.find('.pf-c-vertical-nav__link-text').append('<span class="sr-only">(current navigation item)</span>');
-              let menuItemText = $menuItem.find('.pf-c-vertical-nav__link-text').text().trim();
 
               if (menuItemDepth($menuItem) === 1) {
                 closeOpenMenus($menuItems);
