@@ -62,15 +62,6 @@
     });
   },
 
-  assignHasPopupAttrs = function ($listItem) {
-    let $menuItem = $listItem.find('> a');
-
-    if (hasSubmenu($menuItem)) {
-      console.log('menu item has subMenu', $menuItem);
-      $menuItem.attr('aria-haspopup', 'menuitem');
-    }
-  },
-
   bindMenuEvents = function ($listItem, idx, $menuItems) {
     let $menuItem = $listItem.find('> a');
 
@@ -135,7 +126,7 @@
     $.each($menuItems, function (idx, element) {
       let $listItem = $(element);
       bindMenuEvents($listItem, idx, $menuItems);
-      // assignHasPopupAttrs($listItem);
+      getMenuItemLnk(element).attr('role', 'menuitem');
     });
   });
 

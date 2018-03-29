@@ -126,6 +126,7 @@
     $.each($menuItems, function (idx, element) {
       let $listItem = $(element);
       bindMenuEvents($listItem, idx, $menuItems);
+      getMenuItemLnk(element).attr('role', 'link');
     });
   });
 
