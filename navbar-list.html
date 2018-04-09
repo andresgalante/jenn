@@ -188,20 +188,19 @@
     <div
       id="technology-warning"
       aria-hidden="true"
-      aria-labelledby="technology-warning-title"
-      aria-live="polite"
-      role="alertdialog"
       class="pf-c-toast pf-is-warning">
-      <div class="pf-c-toast__icon">
-        <i class="fas fa-home"></i>
-        <span id="technology-warning-title" class="sr-only">Technology Warning:</span>
-      </div>
-      <div id="technology-warning-message" class="pf-c-toast__message">
-        Technology is scary, are you sure you want to proceed?
+      <div role="alert" aria-live="assertive">
+        <div class="pf-c-toast__icon">
+          <i class="fas fa-home"></i>
+          <span id="technology-warning-title" class="sr-only">Warning message:</span>
+        </div>
+        <div id="technology-warning-message" class="pf-c-toast__message">
+          Technology is scary, and may include topics that are confusing.
+        </div>
       </div>
       <div class="pf-c-toast__action">
-        <a href="#">Continue</a>
-        <button data-dismiss aria-label="Dismiss Technology Warning" style="display:inline-block;">
+        <a href="#">Exclude Confusing Topics</a>
+        <button data-dismiss aria-label="Dismiss Notification">
           <i class="fas fa-times"></i>
         </button>
       </div>
@@ -212,21 +211,18 @@
     <div
       id="entertainment-info"
       aria-hidden="true"
-      aria-labelledby="entertainment-success-title"
-      aria-describedby="entertainment-success-message"
-      aria-live="assertive"
-      role="status"
       class="pf-c-toast pf-is-success">
-      <div class="pf-c-toast__icon">
-        <i class="fas fa-home"></i>
-        <span id="entertainment-success-title" class="sr-only">Entertainment Notification:</span>
-      </div>
-      <div id="entertainment-success-message" class="pf-c-toast__message">
-        Entertainment comes in many forms like music, art, and poetry.
+      <div role="alert" aria-live="polite">
+        <div class="pf-c-toast__icon">
+          <i class="fas fa-home"></i>
+          <span id="entertainment-success-title" class="sr-only">Success message:</span>
+        </div>
+        <div id="entertainment-success-message" class="pf-c-toast__message">
+          Entertainment comes in many forms like music, art, and poetry.
+        </div>
       </div>
       <div class="pf-c-toast__action">
-        <a href="#">Close entertainment status</a>
-        <button data-dismiss aria-label="Dismiss Status Notification">
+        <button data-dismiss aria-label="Dismiss Notification">
           <i class="fas fa-times"></i>
         </button>
       </div>

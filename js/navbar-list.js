@@ -114,12 +114,12 @@
               switch (menuItemTxt) {
                 case 'Technology': {
                   popNotification($('#technology-warning'));
-                  focusFirstMenuItem($('#technology-warning'));
+                  // focusFirstMenuItem($('#technology-warning')); // don't do this for role="alert"
                   break;
                 }
                 case 'Entertainment': {
                   popNotification($('#entertainment-info'));
-                  // focusFirstMenuItem($('#entertainment-info')); // don't do this for role="status"!!
+                  // focusFirstMenuItem($('#entertainment-info')); // don't do this for role="alert"!!
                   break;
                 }
                 default: {}
