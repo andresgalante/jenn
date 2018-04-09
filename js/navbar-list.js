@@ -114,12 +114,16 @@
               switch (menuItemTxt) {
                 case 'Technology': {
                   popNotification($('#technology-warning'));
-                  // focusFirstMenuItem($('#technology-warning')); // don't do this for role="alert"
+                  setTimeout(function () {
+                    hideEl($('#technology-warning'));
+                  }, 8000);
                   break;
                 }
                 case 'Entertainment': {
                   popNotification($('#entertainment-info'));
-                  // focusFirstMenuItem($('#entertainment-info')); // don't do this for role="alert"!!
+                  setTimeout(function () {
+                    hideEl($('#entertainment-info'));
+                  }, 8000);
                   break;
                 }
                 default: {}
