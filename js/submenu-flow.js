@@ -77,7 +77,7 @@
     let $menuItem = $listItem.find('> a');
 
     $menuItem.on('focus click focusout focusin', function (event) {
-      event.preventDefault();
+      // event.preventDefault();
 
       let $subMenu = getSubMenu($menuItem);
 
@@ -86,8 +86,8 @@
         case 'focusin': {
 
           $menuItem.on('click', function (event) {
-            event.preventDefault();
-            event.stopImmediatePropagation();
+            // event.preventDefault();
+            // event.stopImmediatePropagation();
 
             if (hasSubmenu($menuItem)) {
               if ($subMenu.attr('aria-hidden') === 'true') {
