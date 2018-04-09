@@ -6,7 +6,6 @@
   },
 
   hasSubmenu = function ($menuItem) {
-    // if the menu item has a sub-menu, it will have a value for [aria-controls]
     return !!$menuItem.attr('aria-controls');
   },
 
@@ -97,7 +96,7 @@
                 closeOpenMenus($menuItems);
 
                 openMenu($menuItem, $subMenu);
-                focusFirstMenuItem($subMenu);
+                // focusFirstMenuItem($subMenu);
               } else {
                 closeMenu($menuItem, $subMenu);
               }
@@ -108,28 +107,6 @@
               removeActiveClasses($menuItems);
               removeAriaCurrent($menuItems);
               $menuItem.addClass('pf-is-active').attr('aria-current', true);
-
-              let menuItemTxt = $menuItem.find('[class*="link-text"]').text().trim();
-
-              switch (menuItemTxt) {
-                case 'Technology': {
-                  popNotification($('#technology-warning'));
-                  setTimeout(function () {
-                    hideEl($('#technology-warning'));
-                  }, 8000);
-                  focusFirstMenuItem($('#technology-warning'));
-                  break;
-                }
-                case 'Entertainment': {
-                  popNotification($('#entertainment-info'));
-                  setTimeout(function () {
-                    hideEl($('#entertainment-info'));
-                  }, 8000);
-                  // focusFirstMenuItem($('#entertainment-info')); // don't do this for role="status"!!
-                  break;
-                }
-                default: {}
-              }
 
               if (menuItemDepth($menuItem) === 1) {
                 closeOpenMenus($menuItems);

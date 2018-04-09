@@ -18,6 +18,21 @@ body {
 .nav-list-example [aria-hidden="true"] {
   display: none; }
 
+.nav-list-example .flexContainer {
+  display: -ms-flexbox;
+  display: flex; }
+
+.nav-list-example .flexSpaceAround {
+  -ms-flex-pack: distribute;
+      justify-content: space-around; }
+
+.nav-list-example .col {
+  width: 44%;
+  border: 1px solid #777777;
+  border-radius: 8px;
+  background: white;
+  padding: 20px; }
+
 @media (min-width: 50rem) {
   .pf-c-vertical-nav {
     width: 15rem; } }
