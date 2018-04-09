@@ -109,17 +109,61 @@
               removeAriaCurrent($menuItems);
               $menuItem.addClass('pf-is-active').attr('aria-current', true);
 
-              let menuItemTxt = $menuItem.find('[class*="link-text"]').text().trim();
+              let menuItemTxt = $menuItem.find('[class*="link-text"]').text().trim(),
+                $notifEl = $('#notification-element'),
+                $screenReaderNotifTitle = $notifEl.find('#notification-element-title'),
+                $screenReaderNotifMsg = $notifEl.find('#notification-element-message');
 
               switch (menuItemTxt) {
-                case 'Technology': {
-                  popNotification($('#technology-warning'));
-                  focusFirstMenuItem($('#technology-warning'));
+                case 'Alert': {
+                  // update attrs
+                  $notifEl.attr('role', 'alert');
+                  // $notifEl.attr('aria-live', 'assertive');
+
+                  // update classes
+                  $notifEl.removeClass('pf-is-success').addClass('pf-is-warning');
+
+                  // update text
+                  $screenReaderNotifTitle.html('ALERT:');
+                  $screenReaderNotifMsg.html('This is an important alert message.');
+                  $notifEl.find('.pf-c-toast__action').attr('aria-hidden', true);
+
+                  // launch notification
+                  popNotification($notifEl);
+                  focusFirstMenuItem($notifEl);
                   break;
                 }
-                case 'Entertainment': {
-                  popNotification($('#entertainment-info'));
-                  // focusFirstMenuItem($('#entertainment-info')); // don't do this for role="status"!!
+                case 'Alert Dialog': {
+                  // update attrs
+                  $notifEl.attr('role', 'alertdialog');
+                  $notifEl.attr('aria-live', 'assertive');
+
+                  // update classes
+                  $notifEl.removeClass('pf-is-success').addClass('pf-is-warning');
+
+                  // update text
+                  $screenReaderNotifTitle.html('ALERT DIALOG:');
+                  $screenReaderNotifMsg.html('This is an alert dialog.');
+                  $notifEl.find('.pf-c-toast__action').removeAttr('aria-hidden');
+
+                  // launch notification
+                  popNotification($notifEl);
+                  focusFirstMenuItem($notifEl);
+                  break;
+                }
+                case 'Status': {
+                  // update attrs
+                  $notifEl.attr('role', 'status');
+                  $notifEl.attr('aria-live', 'polite');
+
+                  // update classes
+                  $notifEl.removeClass('pf-is-warning ').addClass('pf-is-success');
+
+                  // update text
+                  $screenReaderNotifTitle.html('STATUS:');
+                  $screenReaderNotifMsg.html('This is a relaxed status update.');
+                  $notifEl.find('.pf-c-toast__action').attr('aria-hidden', true);
+                  popNotification($notifEl);
                   break;
                 }
                 default: {}

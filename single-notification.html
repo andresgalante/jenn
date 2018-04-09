@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Navigation Example</title>
+  <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
+  <link rel="stylesheet" href="css/base.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+</head>
+<body class="nav-list-example">
+
+  <header role="banner">
+    <h1>Navigation list launching submenus and notifications demo</h1>
+  </header>
+
+  <nav class="pf-c-vertical-nav">
+    <ul class="pf-c-vertical-nav__content" role="list">
+      <li class="pf-c-vertical-nav__item">
+
+        <a href="#" class="pf-c-vertical-nav__link">
+          <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
+          <span class="pf-c-vertical-nav__link-text">Alert</span>
+        </a>
+      </li>
+
+      <li class="pf-c-vertical-nav__item">
+        <a href="#" class="pf-c-vertical-nav__link">
+          <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
+          <span class="pf-c-vertical-nav__link-text">Alert Dialog</span>
+        </a>
+      </li>
+
+      <li class="pf-c-vertical-nav__item">
+        <a href="#" class="pf-c-vertical-nav__link">
+          <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
+          <span class="pf-c-vertical-nav__link-text">Status</span>
+        </a>
+      </li>
+
+    </ul>
+  </nav>
+  <main>
+
+    <!-- Variation 2, identify alertdialog with sr-only text after the icon -->
+    <div
+      id="notification-element"
+      aria-hidden="true"
+      aria-labelledby="notification-element-title"
+      aria-describedby="notification-element-message"
+      class="pf-c-toast pf-is-warning">
+      <div class="pf-c-toast__icon">
+        <i class="fas fa-home"></i>
+        <span id="notification-element-title" class="sr-only">ALERT:</span>
+      </div>
+      <div id="notification-element-message" class="pf-c-toast__message">
+        Technology is scary, are you sure you want to proceed?
+      </div>
+      <div class="pf-c-toast__action">
+        <a href="#">Continue</a>
+        <button data-dismiss aria-label="Dismiss Notification" style="display:inline-block;">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+
+  </main>
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+  <script src="js/single-notification.js"></script>
+</body>
+</html>
