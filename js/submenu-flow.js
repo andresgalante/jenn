@@ -40,7 +40,7 @@
   },
 
   getSubMenu = function ($menuItem) {
-    let subMenuSelector = '#' + $menuItem.attr('aria-controls');
+    let subMenuSelector = '#' + $menuItem.attr('aria-controls') + ' > div';
     return $(subMenuSelector);
   },
 
