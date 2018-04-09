@@ -23,6 +23,20 @@ body {
   [aria-hidden="true"]:not(.svg-inline--fa) {
     display: none;
   }
+
+  .flexContainer {
+    display: flex;
+  }
+  .flexSpaceAround {
+      justify-content: space-around;
+  }
+  .col {
+      width: 44%;
+      border: 1px solid #777777;
+      border-radius: 8px;
+      background: white;
+      padding: 20px;
+  }
 }
 
 // VERTICAL NAV
