@@ -2,15 +2,15 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Navigation Example - aria-expanded</title>
+  <title>Navigation Example</title>
   <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
   <link rel="stylesheet" href="css/base.css">
   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 </head>
-<body>
+<body class="nav-list-example">
 
   <header role="banner">
-    <h1>List demo</h1>
+    <h1>Navigation list launching submenus and notifications demo</h1>
   </header>
 
   <nav class="pf-c-vertical-nav">
@@ -171,13 +171,67 @@
   </nav>
   <main>
     <ul>
-      <li>features role="list" for outermost ul</li>
-      <li>features role="link" for each nav item's anchor</li>
-      <li>features dynamic aria-expanded on each menu anchor</li>
-      <li>features dynamic aria-current on each menu anchor</li>
+      <li>role="list" for outermost ul</li>
+      <li>role="link" for each nav item's anchor</li>
+      <li>dynamic aria-expanded on each menu anchor</li>
+      <li>dynamic aria-current for menu anchors</li>
       <li>properly relays expanded/collapsed state in VoiceOver links menu</li>
       <li>submenu links are dynamically listed properly in VO links menu once they are expanded</li>
+      <li>Technology link launches an alertdialog</li>
+      <li>Entertainment link launches a status</li>
+      <li>Adjusting aria-live didn't have a noticable impact on UX for VO in any of the toast notifications</li>
+      <li>role="status" doesn't seem to report the status info the same way alertdialog does</li>
     </ul>
+
+    <!-- Variation 2, identify alertdialog with sr-only text after the icon -->
+    <!-- adding aria-describedby causes VO to read the message twice -->
+    <div
+      id="technology-warning"
+      aria-hidden="true"
+      aria-labelledby="technology-warning-title"
+      aria-live="polite"
+      role="alertdialog"
+      class="pf-c-toast pf-is-warning">
+      <div class="pf-c-toast__icon">
+        <i class="fas fa-home"></i>
+        <span id="technology-warning-title" class="sr-only">Technology Warning:</span>
+      </div>
+      <div id="technology-warning-message" class="pf-c-toast__message">
+        Technology is scary, are you sure you want to proceed?
+      </div>
+      <div class="pf-c-toast__action">
+        <a href="#">Continue</a>
+        <button data-dismiss aria-label="Dismiss Technology Warning" style="display:inline-block;">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Variation 2, identify status with sr-only text after the icon -->
+    <!-- adding aria-describedby causes VO to read the message twice -->
+    <div
+      id="entertainment-info"
+      aria-hidden="true"
+      aria-labelledby="entertainment-success-title"
+      aria-describedby="entertainment-success-message"
+      aria-live="assertive"
+      role="status"
+      class="pf-c-toast pf-is-success">
+      <div class="pf-c-toast__icon">
+        <i class="fas fa-home"></i>
+        <span id="entertainment-success-title" class="sr-only">Entertainment Notification:</span>
+      </div>
+      <div id="entertainment-success-message" class="pf-c-toast__message">
+        Entertainment comes in many forms like music, art, and poetry.
+      </div>
+      <div class="pf-c-toast__action">
+        <a href="#">Close entertainment status</a>
+        <button data-dismiss aria-label="Dismiss Status Notification">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+
   </main>
   <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
   <script src="js/navbar-list.js"></script>

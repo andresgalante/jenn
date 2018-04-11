@@ -18,6 +18,13 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+.nav-list-example {
+  // Keep visual interface and screen reader in lock-step
+  [aria-hidden="true"] {
+    display: none;
+  }
+}
+
 // VERTICAL NAV
 
 // // pf-c-block__element--modifier--state--PropiertyCamel
@@ -221,6 +228,4 @@ body {
     right: 0;
     left: auto;
   }
-
-
 }
