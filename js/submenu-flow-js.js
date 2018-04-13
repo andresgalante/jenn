@@ -35,6 +35,10 @@
     return $(item).find('> a');
   },
 
+  focusFirstMenuItem = function ($element) {
+    $element.find('a:first').trigger('focus');
+  },
+
   getSubMenu = function ($menuItem) {
     let subMenuSelector = '#' + $menuItem.attr('aria-controls');
     return $(subMenuSelector);
@@ -73,6 +77,7 @@
     let $menuItem = $listItem.find('> a');
 
     $menuItem.on('focusout focusin', function (event) {
+      event.preventDefault();
 
       let $subMenu = getSubMenu($menuItem);
 
@@ -81,6 +86,8 @@
         case 'focusin': {
 
           $menuItem.on('click', function (event) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
 
             if (hasSubmenu($menuItem)) {
               if ($subMenu.attr('aria-hidden') === 'true') {
@@ -89,6 +96,7 @@
                 closeOpenMenus($menuItems);
 
                 openMenu($menuItem, $subMenu);
+                focusFirstMenuItem($subMenu);
               } else {
                 closeMenu($menuItem, $subMenu);
               }
