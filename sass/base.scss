@@ -20,7 +20,7 @@ body {
 
 .nav-list-example {
   // Keep visual interface and screen reader in lock-step
-  [aria-hidden="true"] {
+  [aria-hidden="true"]:not(.svg-inline--fa) {
     display: none;
   }
 }

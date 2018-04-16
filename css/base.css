@@ -15,7 +15,7 @@ body {
   background-color: transparent;
   text-rendering: optimizeLegibility; }
 
-.nav-list-example [aria-hidden="true"] {
+.nav-list-example [aria-hidden="true"]:not(.svg-inline--fa) {
   display: none; }
 
 @media (min-width: 50rem) {
