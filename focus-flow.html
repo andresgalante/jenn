@@ -16,7 +16,12 @@
     <nav id="back-to-nav">
       <a role="link" href="#display-none">Navigate to "display none" section</a><br>
       <a role="link" href="#hidden">Navigate to "hidden" section</a><br>
-      <a role="link" href="#aria-hidden">Navigate to "aria-hidden" section</a>
+      <a role="link" href="#aria-hidden">Navigate to "aria-hidden" section</a><br>
+      <a role="link" href="#visible">Navigate to a visible section</a><br>
+      <a
+        role="link"
+        href="#aria-controls-visible"
+        aria-controls="aria-controls-visible">Aria-controls a visible section</a>
     </nav>
 
     <a href="#" role="link" style="margin-top:25px;display:inline-block;">*Focusable Element</a>
@@ -50,6 +55,7 @@
     <ol>
       <li>In all cases, when selecting a link that utilizes a named anchor, the underlying tab index is shifted. Focus flow moves to the point in the source where the target element exists. If the target element has focusable children, they will become the next focusable item, otherwise picking up on whatever comes next in the documents source order.</li>
       <li>To control the focus flow from purely an HTML perspective, we must ensure the target element is visible in the sense that it's display property isn't set to "none" and it doesn't feature a "hidden" property.</li>
+      <li>Using aria-controls along with named anchors has a default behavior of displaying a "Jump" menu in VO. This information is doubled up when presented.</li>
     </ol>
 
     <div style="border:1px solid black;">
@@ -68,6 +74,16 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       </section>
 
+      <section id="visible">
+        <h4>This section represents a standard visible element</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </section>
+
+      <section id="aria-controls-visible">
+        <h4>This section is bound by aria-controls</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </section>
+
       <a href="#back-to-nav" role="link">Back to navigation</a>
     </div>
 
@@ -75,10 +91,6 @@
       <li><a href="#" role="link">Next focusable link - 02</a></li>
       <li><a href="#" role="link">Next focusable link - 03</a></li>
       <li><a href="#" role="link">Next focusable link - 04</a></li>
-      <li><a href="#" role="link">Next focusable link - 05</a></li>
-      <li><a href="#" role="link">Next focusable link - 06</a></li>
-      <li><a href="#" role="link">Next focusable link - 07</a></li>
-      <li><a href="#" role="link">Next focusable link - 08</a></li>
     </ul>
 
   </main>
