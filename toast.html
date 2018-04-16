@@ -13,7 +13,7 @@
   <!-- Variation 1, identify alert with aria label on alert parent -->
   <article class="pf-c-toast pf-is-danger">
     <div role="alert" aria-live="assertive" aria-label="Error alert">
-      <div class="pf-c-toast__icon">
+      <div class="pf-c-toast__icon" aria-hidden="true">
         <i class="fas fa-home"></i>
       </div>
       <div class="pf-c-toast__message">
@@ -30,8 +30,9 @@
   </article>
 
   <!-- Variation 2, identify alert with sr-only text after the icon -->
+  <!-- the alternative text for the icon seems to work best with this variation -->
   <article class="pf-c-toast pf-is-warning">
-    <div class="pf-c-toast__icon">
+    <div class="pf-c-toast__icon" aria-hidden="true">
       <i class="fas fa-home"></i>
     </div>
     <div class="pf-c-toast__message" role="alert" aria-live="assertive">
@@ -98,6 +99,30 @@
     </div>
   </article>
 
+  <!-- Variation 5 using dialog instead of article -->
+  <!-- should role="dialog" be included -->
+  <div
+    role="dialog"
+    class="pf-c-toast pf-is-warning"
+    aria-labelledby="dialog1Title"
+    aria-describedby="dialog1Message">
+    <div class="pf-c-toast__icon" aria-hidden="true">
+      <i class="fas fa-home"></i>
+    </div>
+    <div class="pf-c-toast__message" role="alert" aria-live="assertive">
+      <span id="dialog1Title" class="sr-only">Warning alert:</span>
+      <span id="dialog1Message">
+        Something bad could happen, but you have the ability to stop it.
+      </span>
+    </div>
+    <div class="pf-c-toast__action">
+      <a href="#0">Stop It</a>
+
+      <button aria-label="Dismiss Message">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
   <script src="js/kebab.js"></script>
 </aside>
 </body>
