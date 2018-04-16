@@ -117,7 +117,6 @@
                   setTimeout(function () {
                     hideEl($('#technology-warning'));
                   }, 8000);
-                  focusFirstMenuItem($('#technology-warning'));
                   break;
                 }
                 case 'Entertainment': {
@@ -125,7 +124,6 @@
                   setTimeout(function () {
                     hideEl($('#entertainment-info'));
                   }, 8000);
-                  // focusFirstMenuItem($('#entertainment-info')); // don't do this for role="status"!!
                   break;
                 }
                 default: {}
