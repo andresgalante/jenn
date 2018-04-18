@@ -14,20 +14,22 @@
   },
 
   hideEl = function ($element) {
-    $element.attr('aria-hidden', true);
+    $element.attr('hidden', 'hidden');
   },
 
   showEl = function ($element) {
-    $element.attr('aria-hidden', false);
+    $element.removeAttr('hidden');
   },
 
   openMenu = function ($menuItem, $subMenu) {
     $menuItem.attr('aria-expanded', true);
+    $subMenu.addClass('pf-is-open');
     showEl($subMenu);
   },
 
   closeMenu = function ($menuItem, $subMenu) {
     $menuItem.attr('aria-expanded', false);
+    $subMenu.removeClass('pf-is-open');
     hideEl($subMenu);
   },
 
@@ -82,7 +84,7 @@
           $menuItem.on('click', function (event) {
 
             if (hasSubmenu($menuItem)) {
-              if ($subMenu.attr('aria-hidden') === 'true') {
+              if ($subMenu.attr('hidden') === 'hidden') {
 
                 // first close any subMenus that are already open
                 closeOpenMenus($menuItems);

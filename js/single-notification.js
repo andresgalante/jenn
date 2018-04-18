@@ -1,57 +1,12 @@
 (function ($) {
   'use strict';
 
-  let menuItemDepth = function ($menuItem) {
-    return $menuItem.parents('li').length;
-  },
-
-  hasSubmenu = function ($menuItem) {
-    // if the menu item has a sub-menu, it will have a value for [aria-controls]
-    return !!$menuItem.attr('aria-controls');
-  },
-
-  subMenuIsVisible = function ($subMenu) {
-    return !!$subMenu.is(':visible');
-  },
-
-  hideEl = function ($element) {
-    $element.attr('aria-hidden', true);
-  },
-
-  showEl = function ($element) {
-    $element.attr('aria-hidden', false);
-  },
-
-  openMenu = function ($menuItem, $subMenu) {
-    $menuItem.attr('aria-expanded', true);
-    showEl($subMenu);
-  },
-
-  closeMenu = function ($menuItem, $subMenu) {
-    $menuItem.attr('aria-expanded', false);
-    hideEl($subMenu);
-  },
-
-  getMenuItemLnk = function (item) {
+  let getMenuItemLnk = function (item) {
     return $(item).find('> a');
   },
 
   focusFirstMenuItem = function ($element) {
     $element.find('a:first').trigger('focus');
-  },
-
-  getSubMenu = function ($menuItem) {
-    let subMenuSelector = '#' + $menuItem.attr('aria-controls');
-    return $(subMenuSelector);
-  },
-
-  closeOpenMenus = function ($menuItems) {
-    $.each($menuItems, function (idx, item) {
-      if (getMenuItemLnk(item).attr('aria-expanded') === 'true') {
-        let $subMenu = getSubMenu(getMenuItemLnk(item));
-        closeMenu(getMenuItemLnk(item), $subMenu);
-      }
-    });
   },
 
   removeActiveClasses = function ($menuItems) {
@@ -71,16 +26,122 @@
   },
 
   popNotification = function ($element) {
-    showEl($element);
+    $('main').append($element);
+
+    setTimeout(function () {
+      $element.remove();
+    }, 6000);
   },
+
+  alertNotifMarkup = function () {
+    return `
+      <div
+        id="alert-notification"
+        class="pf-c-toast pf-is-warning">
+        <div role="alert" aria-live="assertive">
+          <div class="pf-c-toast__icon">
+            <i class="fas fa-home"></i>
+            <span id="alert-notification-title" class="sr-only">ALERT</span>
+          </div>
+          <div id="alert-notification-message" class="pf-c-toast__message">
+            This is an important alert notification
+          </div>
+        </div>
+        <div class="pf-c-toast__action">
+          <a href="#">Dismiss Notification</a>
+          <button data-dismiss aria-label="Dismiss Notification">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+    `;
+  },
+
+  alertDialogNotifMarkup = function () {
+    return `
+      <div
+        id="alert-dialog-notification"
+        role="alertdialog"
+        aria-live="assertive"
+        class="pf-c-toast pf-is-warning">
+        <div class="pf-c-toast__icon">
+          <i class="fas fa-home"></i>
+          <span id="alert-dialog-notification-title" class="sr-only">Warning message:</span>
+        </div>
+        <div id="alert-dialog-notification-message" class="pf-c-toast__message">
+          This is an alert dialog notification
+        </div>
+        <div class="pf-c-toast__action">
+          <a href="#">Continue</a>
+          <button data-dismiss aria-label="Dismiss Notification">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+    `;
+  },
+
+  dialogNotifMarkup = function () {
+    return `
+      <dialog
+        id="dialog-notification-warning"
+        role="dialog"
+        class="pf-c-toast pf-is-warning">
+        <div role="alert" aria-live="assertive">
+          <div class="pf-c-toast__icon">
+            <i class="fas fa-home"></i>
+            <span id="dialog-notification-warning-title" class="sr-only">Warning message:</span>
+          </div>
+          <div id="dialog-notification-warning-message" class="pf-c-toast__message">
+            This is a warning dialog
+            <input type="text" placeholder="enter stuff here">
+          </div>
+        </div>
+        <div class="pf-c-toast__action">
+          <a href="#">Dismiss Notification</a>
+          <button data-dismiss aria-label="Dismiss Notification">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </dialog>
+    `;
+  },
+
+  statusNotifMarkup = function () {
+    return `
+      <div
+        id="status-notification"
+        class="pf-c-toast pf-is-success">
+        <div role="status" aria-live="polite">
+          <div class="pf-c-toast__icon">
+            <i class="fas fa-home"></i>
+            <span id="status-notification-title" class="sr-only">Success message</span>
+          </div>
+          <div id="status-notification-message" class="pf-c-toast__message">
+            This is a status notification
+          </div>
+        </div>
+        <div class="pf-c-toast__action">
+          <button data-dismiss aria-label="Dismiss Notification">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+    `;
+  },
+
+  // used to keep the focus inside a modal context
+  // tabFocusRestrictor = function (lastItem, firstItem) {
+  //   $(lastItem).blur(function() {
+  //     $(firstItem).focus();
+  //   });
+  // },
 
   bindMenuEvents = function ($listItem, idx, $menuItems) {
     let $menuItem = $listItem.find('> a');
 
     $menuItem.on('focus click focusout focusin', function (event) {
       event.preventDefault();
-
-      let $subMenu = getSubMenu($menuItem);
 
       switch (event.type) {
 
@@ -90,88 +151,32 @@
             event.preventDefault();
             event.stopImmediatePropagation();
 
-            if (hasSubmenu($menuItem)) {
-              if ($subMenu.attr('aria-hidden') === 'true') {
+            removeActiveClasses($menuItems);
+            removeAriaCurrent($menuItems);
+            $menuItem.addClass('pf-is-active').attr('aria-current', true);
 
-                // first close any subMenus that are already open
-                closeOpenMenus($menuItems);
+            let menuItemTxt = $menuItem.find('[class*="link-text"]').text().trim();
 
-                openMenu($menuItem, $subMenu);
-                focusFirstMenuItem($subMenu);
-              } else {
-                closeMenu($menuItem, $subMenu);
+            switch (menuItemTxt) {
+              case 'Alert': {
+                popNotification($(alertNotifMarkup()));
+                break;
               }
-            }
-
-            // only set as pf-is-active/aria-current if menu item isn't disabled and isn't only a gateway to submenu
-            if (!hasSubmenu($menuItem) && $menuItem.is(':not([aria-disabled])')) {
-              removeActiveClasses($menuItems);
-              removeAriaCurrent($menuItems);
-              $menuItem.addClass('pf-is-active').attr('aria-current', true);
-
-              let menuItemTxt = $menuItem.find('[class*="link-text"]').text().trim(),
-                $notifEl = $('#notification-element'),
-                $screenReaderNotifTitle = $notifEl.find('#notification-element-title'),
-                $screenReaderNotifMsg = $notifEl.find('#notification-element-message');
-
-              switch (menuItemTxt) {
-                case 'Alert': {
-                  // update attrs
-                  $notifEl.attr('role', 'alert');
-                  // $notifEl.attr('aria-live', 'assertive');
-
-                  // update classes
-                  $notifEl.removeClass('pf-is-success').addClass('pf-is-warning');
-
-                  // update text
-                  $screenReaderNotifTitle.html('ALERT:');
-                  $screenReaderNotifMsg.html('This is an important alert message.');
-                  $notifEl.find('.pf-c-toast__action').attr('aria-hidden', true);
-
-                  // launch notification
-                  popNotification($notifEl);
-                  focusFirstMenuItem($notifEl);
-                  break;
-                }
-                case 'Alert Dialog': {
-                  // update attrs
-                  $notifEl.attr('role', 'alertdialog');
-                  $notifEl.attr('aria-live', 'assertive');
-
-                  // update classes
-                  $notifEl.removeClass('pf-is-success').addClass('pf-is-warning');
-
-                  // update text
-                  $screenReaderNotifTitle.html('ALERT DIALOG:');
-                  $screenReaderNotifMsg.html('This is an alert dialog.');
-                  $notifEl.find('.pf-c-toast__action').removeAttr('aria-hidden');
-
-                  // launch notification
-                  popNotification($notifEl);
-                  focusFirstMenuItem($notifEl);
-                  break;
-                }
-                case 'Status': {
-                  // update attrs
-                  $notifEl.attr('role', 'status');
-                  $notifEl.attr('aria-live', 'polite');
-
-                  // update classes
-                  $notifEl.removeClass('pf-is-warning ').addClass('pf-is-success');
-
-                  // update text
-                  $screenReaderNotifTitle.html('STATUS:');
-                  $screenReaderNotifMsg.html('This is a relaxed status update.');
-                  $notifEl.find('.pf-c-toast__action').attr('aria-hidden', true);
-                  popNotification($notifEl);
-                  break;
-                }
-                default: {}
+              case 'Alert Dialog': {
+                let $alertDialogNotif = $(alertDialogNotifMarkup());
+                popNotification($alertDialogNotif);
+                focusFirstMenuItem($alertDialogNotif);
+                break;
               }
-
-              if (menuItemDepth($menuItem) === 1) {
-                closeOpenMenus($menuItems);
+              case 'Dialog': {
+                popNotification($(dialogNotifMarkup()));
+                break;
               }
+              case 'Status': {
+                popNotification($(statusNotifMarkup()));
+                break;
+              }
+              default: {}
             }
 
           });
@@ -201,9 +206,8 @@
       getMenuItemLnk(element).attr('role', 'link');
     });
 
-    $('.pf-c-toast').on('click', '[data-dismiss]', function () {
-      hideEl($(this).parents('.pf-c-toast'));
-      $(this).parents('.pf-c-toast').blur();
+    $('body').on('click', '[data-dismiss]', function () {
+      $(this).parents('.pf-c-toast').remove();
     });
   });
 

@@ -16,12 +16,14 @@
 
   openMenu = function ($menuItem, $subMenu) {
     $menuItem.attr('aria-expanded', true);
-    $subMenu.attr('aria-hidden', false);
+    $subMenu.addClass('pf-is-open');
+    $subMenu.removeAttr('hidden');
   },
 
   closeMenu = function ($menuItem, $subMenu) {
     $menuItem.attr('aria-expanded', false);
-    $subMenu.attr('aria-hidden', true);
+    $subMenu.removeClass('pf-is-open');
+    $subMenu.attr('hidden', 'hidden');
   },
 
   getMenuItemLnk = function (item) {
@@ -79,8 +81,7 @@
             event.stopImmediatePropagation();
 
             if (hasSubmenu($menuItem)) {
-              if ($subMenu.attr('aria-hidden') === 'true') {
-
+              if ($subMenu.attr('hidden') === 'hidden') {
                 // first close any subMenus that are already open
                 closeOpenMenus($menuItems);
 

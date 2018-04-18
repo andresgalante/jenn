@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="css/base.css">
   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 </head>
-<body class="nav-list-example">
+<body>
 
   <header role="banner">
     <h1>Managing focus with named anchors</h1>
@@ -46,7 +46,7 @@
 
             <section
               class="pf-vertical-sub-nav"
-              aria-hidden="true"
+              hidden
               aria-label="Science"
               id="navbarSubmenu01">
               <h2 class="pf-vertical-sub-nav__title">Science</h2>
@@ -90,7 +90,7 @@
               class="pf-vertical-sub-nav"
               aria-labelledby="navbarDropdownMenuLink02"
               id="navbarSubmenu02"
-              aria-hidden="true">
+              hidden>
               <h2 class="pf-vertical-sub-nav__title">Home and Garden</h2>
               <ul class="pf-vertical-sub-nav__content">
                 <li class="pf-vertical-sub-nav__item" aria-level="2">
@@ -142,9 +142,10 @@
 
     <div class="col">
       <ul>
-        <li>menu items with dropdown specify named anchors for submenus containers</li>
-        <li>default browser behavior can be observed, we do not use event.preventDefault() in this example</li>
-        <li>focus index is shifted upon selecting a menu item with dropdown</li>
+        <li>menu items with dropdown specify named anchors for submenus containers, for example href="navbarSubmenu01"</li>
+        <li>default browser behavior is observed, we do not use event.preventDefault() in this example</li>
+        <li>focus index is shifted upon selecting a menu item with a dropdown, but becuase the target element is hidden, focus is sort of lost until user makes a subsequent key press like right arrow or tab</li>
+        <li>Science submenu is labeled directly with aria-label="Science", and with this users are able to place focus on the submenu as a region. This is in contrast to the "Home and Garden" submenu, which uses aria-labelledby="navbarDropdownMenuLink02". The latter doesn't allow for focusing directly on the region, but a subsequent keypress places focus on the submenu header, which could be desireable.</li>
       </ul>
     </div><!-- .col -->
   </div>

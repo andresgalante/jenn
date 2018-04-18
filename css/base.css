@@ -15,18 +15,15 @@ body {
   background-color: transparent;
   text-rendering: optimizeLegibility; }
 
-.nav-list-example [aria-hidden="true"]:not(.svg-inline--fa) {
-  display: none; }
-
-.nav-list-example .flexContainer {
+.flexContainer {
   display: -ms-flexbox;
   display: flex; }
 
-.nav-list-example .flexSpaceAround {
+.flexSpaceAround {
   -ms-flex-pack: distribute;
       justify-content: space-around; }
 
-.nav-list-example .col {
+.col {
   width: 44%;
   border: 1px solid #777777;
   border-radius: 8px;
@@ -71,7 +68,7 @@ body {
 
 .pf-vertical-sub-nav {
   display: none; }
-  .pf-vertical-sub-nav:not([aria-hidden="true"]) {
+  .pf-vertical-sub-nav.pf-is-open:not([hidden]) {
     display: block; }
 
 @media (min-width: 50rem) {

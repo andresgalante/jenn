@@ -10,187 +10,194 @@
 <body>
 
   <header role="banner">
-    <h1>Menubar demo</h1>
+    <h1>Menubar with submenus demo</h1>
   </header>
 
-  <nav class="pf-c-vertical-nav">
-    <ul class="pf-c-vertical-nav__content" role="menubar">
+  <div class="flexContainer flexSpaceAround">
+      <div class="col">
+        <nav class="pf-c-vertical-nav">
+          <ul class="pf-c-vertical-nav__content" role="menubar">
 
-      <li class="pf-c-vertical-nav__item">
-        <a
-          href="#"
-          class="pf-c-vertical-nav__link">
-          <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
-          <span class="pf-c-vertical-nav__link-text">Home</span>
-        </a>
-      </li>
-
-      <li class="pf-c-vertical-nav__item">
-        <a
-          href="#"
-          class="pf-c-vertical-nav__link">
-          <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
-          <span class="pf-c-vertical-nav__link-text">Technology</span>
-        </a>
-      </li>
-
-      <li class="pf-c-vertical-nav__item">
-        <a
-          href="#"
-          aria-expanded="false"
-          aria-controls="navbarSubmenu3"
-          aria-current="false"
-          class="pf-c-vertical-nav__link"
-          role="menuitem"
-          id="navbarDropdownMenuLink3"> <!-- pf-is-active class is added to links that are open -->
-          <span class="pf-c-vertical-nav__link-icon">
-            <i class="fas fa-home"></i>
-          </span>
-          <span class="pf-c-vertical-nav__link-text">
-            Science
-          </span>
-        </a>
-
-        <section
-          class="pf-vertical-sub-nav"
-          aria-hidden="true"
-          aria-labelledby="navbarDropdownMenuLink3"
-          id="navbarSubmenu3"> <!-- pf-is-open class is added to sections that are open -->
-          <h2 class="pf-vertical-sub-nav__title">Science</h2>
-          <ul class="pf-vertical-sub-nav__content">
-            <li class="pf-vertical-sub-nav__item">
+            <li class="pf-c-vertical-nav__item">
               <a
                 href="#"
-                class="pf-vertical-sub-nav__link">
-                <span class="pf-c-vertical-nav__link-text">
-                    Environmental Science
-                </span>
+                class="pf-c-vertical-nav__link">
+                <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
+                <span class="pf-c-vertical-nav__link-text">Home</span>
               </a>
             </li>
-            <li class="pf-vertical-sub-nav__item">
+
+            <li class="pf-c-vertical-nav__item">
               <a
                 href="#"
+                class="pf-c-vertical-nav__link">
+                <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
+                <span class="pf-c-vertical-nav__link-text">Technology</span>
+              </a>
+            </li>
+
+            <li class="pf-c-vertical-nav__item">
+              <a
+                href="#"
+                aria-expanded="false"
+                aria-controls="navbarSubmenu3"
                 aria-current="false"
-                class="pf-vertical-sub-nav__link">
+                class="pf-c-vertical-nav__link"
+                role="menuitem"
+                id="navbarDropdownMenuLink3"> <!-- pf-is-active class is added to links that are open -->
+                <span class="pf-c-vertical-nav__link-icon">
+                  <i class="fas fa-home"></i>
+                </span>
                 <span class="pf-c-vertical-nav__link-text">
-                  Physical Science
+                  Science
                 </span>
               </a>
+
+              <section
+                class="pf-vertical-sub-nav"
+                hidden
+                aria-labelledby="navbarDropdownMenuLink3"
+                id="navbarSubmenu3"> <!-- pf-is-open class is added to sections that are open -->
+                <h2 class="pf-vertical-sub-nav__title">Science</h2>
+                <ul class="pf-vertical-sub-nav__content">
+                  <li class="pf-vertical-sub-nav__item">
+                    <a
+                      href="#"
+                      class="pf-vertical-sub-nav__link">
+                      <span class="pf-c-vertical-nav__link-text">
+                          Environmental Science
+                      </span>
+                    </a>
+                  </li>
+                  <li class="pf-vertical-sub-nav__item">
+                    <a
+                      href="#"
+                      aria-current="false"
+                      class="pf-vertical-sub-nav__link">
+                      <span class="pf-c-vertical-nav__link-text">
+                        Physical Science
+                      </span>
+                    </a>
+                  </li>
+                  <li class="pf-vertical-sub-nav__item">
+                    <a
+                      href="#"
+                      class="pf-vertical-sub-nav__link">
+                      <span class="pf-c-vertical-nav__link-text">
+                        Life Science
+                      </span>
+                    </a>
+                  </li>
+                  <li class="pf-vertical-sub-nav__item">
+                    <a
+                      href="#"
+                      aria-disabled="true"
+                      class="pf-vertical-sub-nav__link pf-is-disabled">
+                      Engineering
+                    </a>
+                  </li>
+                </ul>
+              </section>
             </li>
-            <li class="pf-vertical-sub-nav__item">
+
+            <li class="pf-c-vertical-nav__item">
               <a
                 href="#"
-                class="pf-vertical-sub-nav__link">
-                <span class="pf-c-vertical-nav__link-text">
-                  Life Science
+                role="link"
+                aria-expanded="false"
+                aria-controls="navbarSubmenu4"
+                class="pf-c-vertical-nav__link"
+                id="navbarDropdownMenuLink4">
+                <span class="pf-c-vertical-nav__link-icon">
+                  <i class="fas fa-home"></i>
                 </span>
+                <span class="pf-c-vertical-nav__link-text">Home and Garden</span>
               </a>
+
+              <section
+                class="pf-vertical-sub-nav"
+                aria-labelledby="navbarDropdownMenuLink4"
+                hidden
+                id="navbarSubmenu4">
+                <h2 class="pf-vertical-sub-nav__title">Home and Garden</h2>
+                <ul class="pf-vertical-sub-nav__content">
+                  <li class="pf-vertical-sub-nav__item" aria-level="2">
+                    <a
+                      href="#"
+                      class="pf-vertical-sub-nav__link">
+                      <span class="pf-c-vertical-nav__link-text">
+                        Home Improvement
+                      </span>
+                    </a>
+                  </li>
+                  <li class="pf-vertical-sub-nav__item" aria-level="2">
+                    <a
+                      href="#"
+                      class="pf-vertical-sub-nav__link">
+                      <span class="pf-c-vertical-nav__link-text">
+                        Lawn and Garden
+                      </span>
+                    </a>
+                  </li>
+                  <li class="pf-vertical-sub-nav__item" aria-level="2">
+                    <a
+                      href="#"
+                      class="pf-vertical-sub-nav__link">
+                      <span class="pf-c-vertical-nav__link-text">
+                        Green Living
+                      </span>
+                    </a>
+                  </li>
+                  <li class="pf-vertical-sub-nav__item" aria-level="2">
+                    <a
+                      href="#"
+                      aria-disabled="true"
+                      class="pf-vertical-sub-nav__link pf-is-disabled">
+                      Stain Removal
+                    </a>
+                  </li>
+                </ul>
+              </section>
             </li>
-            <li class="pf-vertical-sub-nav__item">
+
+            <li class="pf-c-vertical-nav__item">
               <a
                 href="#"
                 aria-disabled="true"
-                class="pf-vertical-sub-nav__link pf-is-disabled">
-                Engineering
+                class="pf-c-vertical-nav__link pf-is-disabled">
+                <span class="pf-c-vertical-nav__link-icon">
+                  <i class="fas fa-home"></i></span>
+                <span class="pf-c-vertical-nav__link-text">
+                  Culture
+                </span>
               </a>
             </li>
+
+            <li class="pf-c-vertical-nav__item">
+              <a
+                href="#"
+                class="pf-c-vertical-nav__link">
+                <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
+                <span class="pf-c-vertical-nav__link-text">Entertainment</span>
+              </a>
+            </li>
+
           </ul>
-        </section>
-      </li>
+        </nav>
+      </div><!-- .col -->
 
-      <li class="pf-c-vertical-nav__item">
-        <a
-          href="#"
-          role="link"
-          aria-expanded="false"
-          aria-controls="navbarSubmenu4"
-          class="pf-c-vertical-nav__link"
-          id="navbarDropdownMenuLink4">
-          <span class="pf-c-vertical-nav__link-icon">
-            <i class="fas fa-home"></i>
-          </span>
-          <span class="pf-c-vertical-nav__link-text">Home and Garden</span>
-        </a>
+      <div class="col">
+        <ul>
+          <li>features role="menubar" on the outermost ul</li>
+          <li>features role="menuitem" on each menu anchor</li>
+          <li>features dynamic aria-expanded on each menu anchor</li>
+          <li>features dynamic aria-current on each menu anchor</li>
+          <li>properly relays expanded/collapsed state in VoiceOver Form Controls menu</li>
+        </ul>
+      </div><!-- .col -->
+    </div>
 
-        <section
-          class="pf-vertical-sub-nav"
-          aria-labelledby="navbarDropdownMenuLink4"
-          aria-hidden="true"
-          id="navbarSubmenu4">
-          <h2 class="pf-vertical-sub-nav__title">Home and Garden</h2>
-          <ul class="pf-vertical-sub-nav__content">
-            <li class="pf-vertical-sub-nav__item" aria-level="2">
-              <a
-                href="#"
-                class="pf-vertical-sub-nav__link">
-                <span class="pf-c-vertical-nav__link-text">
-                  Home Improvement
-                </span>
-              </a>
-            </li>
-            <li class="pf-vertical-sub-nav__item" aria-level="2">
-              <a
-                href="#"
-                class="pf-vertical-sub-nav__link">
-                <span class="pf-c-vertical-nav__link-text">
-                  Lawn and Garden
-                </span>
-              </a>
-            </li>
-            <li class="pf-vertical-sub-nav__item" aria-level="2">
-              <a
-                href="#"
-                class="pf-vertical-sub-nav__link">
-                <span class="pf-c-vertical-nav__link-text">
-                  Green Living
-                </span>
-              </a>
-            </li>
-            <li class="pf-vertical-sub-nav__item" aria-level="2">
-              <a
-                href="#"
-                aria-disabled="true"
-                class="pf-vertical-sub-nav__link pf-is-disabled">
-                Stain Removal
-              </a>
-            </li>
-          </ul>
-        </section>
-      </li>
-
-      <li class="pf-c-vertical-nav__item">
-        <a
-          href="#"
-          aria-disabled="true"
-          class="pf-c-vertical-nav__link pf-is-disabled">
-          <span class="pf-c-vertical-nav__link-icon">
-            <i class="fas fa-home"></i></span>
-          <span class="pf-c-vertical-nav__link-text">
-            Culture
-          </span>
-        </a>
-      </li>
-
-      <li class="pf-c-vertical-nav__item">
-        <a
-          href="#"
-          class="pf-c-vertical-nav__link">
-          <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
-          <span class="pf-c-vertical-nav__link-text">Entertainment</span>
-        </a>
-      </li>
-
-    </ul>
-  </nav>
-  <main>
-    <ul>
-      <li>features role="menubar" on the outermost ul</li>
-      <li>features role="menuitem" on each menu anchor</li>
-      <li>features dynamic aria-expanded on each menu anchor</li>
-      <li>features dynamic aria-current on each menu anchor</li>
-      <li>properly relays expanded/collapsed state in VoiceOver Form Controls menu</li>
-    </ul>
-  </main>
+  <main></main>
   <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
   <script src="js/navbar-menubar.js"></script>
 </body>
