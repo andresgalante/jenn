@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Navigation Example</title>
+  <title>Submenu Focus Flow Example</title>
   <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
   <link rel="stylesheet" href="css/base.css">
   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
@@ -10,7 +10,7 @@
 <body class="nav-list-example">
 
   <header role="banner">
-    <h1>Navigation list launching submenus and notifications demo</h1>
+    <h1>Managing focus with named JavaScript</h1>
   </header>
 
   <div class="flexContainer flexSpaceAround">
@@ -35,7 +35,6 @@
             <a
               href="#"
               aria-expanded="false"
-              aria-controls="navbarSubmenu01"
               aria-current="false"
               class="pf-c-vertical-nav__link"
               id="navbarDropdownMenuLink01">
@@ -79,7 +78,6 @@
             <a
               href="#"
               aria-expanded="false"
-              aria-controls="navbarSubmenu02"
               class="pf-c-vertical-nav__link"
               id="navbarDropdownMenuLink02">
               <span class="pf-c-vertical-nav__link-icon">
@@ -145,7 +143,7 @@
     <div class="col">
       <ul>
         <li>uses js to manage focus with event.preventDefault()</li>
-        <li>using either href="#" or href="#navbarSubmenu" have same behavior</li>
+        <li>using href="#" or href="#navbarSubmenuID" exhibit same behavior</li>
         <li>focus index remains on the submenu toggle upon expanding dropdown, unless we programatically shift focus to something else</li>
       </ul>
     </div><!-- .col -->

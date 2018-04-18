@@ -6,7 +6,7 @@
   },
 
   hasSubmenu = function ($menuItem) {
-    return !!$menuItem.attr('aria-controls');
+    return !!$menuItem.find('+ section').length;
   },
 
   subMenuIsVisible = function ($subMenu) {
@@ -35,15 +35,14 @@
     return $(item).find('> a');
   },
 
-  getSubMenu = function ($menuItem) {
-    let subMenuSelector = '#' + $menuItem.attr('aria-controls');
-    return $(subMenuSelector);
+  getSubMenu = function ($listItem) {
+    return $listItem.find('> a + section');
   },
 
   closeOpenMenus = function ($menuItems) {
     $.each($menuItems, function (idx, item) {
       if (getMenuItemLnk(item).attr('aria-expanded') === 'true') {
-        let $subMenu = getSubMenu(getMenuItemLnk(item));
+        let $subMenu = getSubMenu($(item));
         closeMenu(getMenuItemLnk(item), $subMenu);
       }
     });
@@ -74,7 +73,7 @@
 
     $menuItem.on('focusout focusin', function (event) {
 
-      let $subMenu = getSubMenu($menuItem);
+      let $subMenu = getSubMenu($listItem);
 
       switch (event.type) {
 
