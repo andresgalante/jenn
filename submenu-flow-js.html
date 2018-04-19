@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Submenu Focus Flow Example</title>
+  <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
+  <link rel="stylesheet" href="css/base.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+</head>
+<body class="nav-list-example">
+
+  <header role="banner">
+    <h1>Managing focus with named JavaScript</h1>
+  </header>
+
+  <div class="flexContainer flexSpaceAround">
+    <div class="col">
+      <nav class="pf-c-vertical-nav">
+        <ul class="pf-c-vertical-nav__content" role="list">
+          <li class="pf-c-vertical-nav__item">
+            <a href="#" class="pf-c-vertical-nav__link">
+              <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
+              <span class="pf-c-vertical-nav__link-text">Home</span>
+            </a>
+          </li>
+
+          <li class="pf-c-vertical-nav__item">
+            <a href="#" class="pf-c-vertical-nav__link">
+              <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
+              <span class="pf-c-vertical-nav__link-text">Technology</span>
+            </a>
+          </li>
+
+          <li class="pf-c-vertical-nav__item">
+            <a
+              href="#"
+              aria-expanded="false"
+              aria-current="false"
+              class="pf-c-vertical-nav__link"
+              id="navbarDropdownMenuLink01">
+              <span class="pf-c-vertical-nav__link-icon">
+                <i class="fas fa-home"></i>
+              </span>
+              <span class="pf-c-vertical-nav__link-text">Science</span>
+            </a>
+
+            <section
+              class="pf-vertical-sub-nav"
+              aria-hidden="true"
+              aria-labelledby="navbarDropdownMenuLink01"
+              id="navbarSubmenu01">
+              <h2 class="pf-vertical-sub-nav__title">Science</h2>
+              <ul class="pf-vertical-sub-nav__content">
+                <li class="pf-vertical-sub-nav__item">
+                  <a href="#" class="pf-vertical-sub-nav__link">
+                    <span class="pf-c-vertical-nav__link-text">Environmental Science</span>
+                  </a>
+                </li>
+                <li class="pf-vertical-sub-nav__item">
+
+                  <a href="#" aria-current="false" class="pf-vertical-sub-nav__link">
+                    <span class="pf-c-vertical-nav__link-text">Physical Science</span>
+                  </a>
+                </li>
+                <li class="pf-vertical-sub-nav__item">
+                  <a href="#" class="pf-vertical-sub-nav__link">
+                    <span class="pf-c-vertical-nav__link-text">Life Science</span>
+                  </a>
+                </li>
+                <li class="pf-vertical-sub-nav__item">
+                  <a href="#" aria-disabled="true" class="pf-vertical-sub-nav__link pf-is-disabled">Engineering</a>
+                </li>
+              </ul>
+            </section>
+          </li>
+
+          <li class="pf-c-vertical-nav__item">
+            <a
+              href="#"
+              aria-expanded="false"
+              class="pf-c-vertical-nav__link"
+              id="navbarDropdownMenuLink02">
+              <span class="pf-c-vertical-nav__link-icon">
+                <i class="fas fa-home"></i>
+              </span>
+              <span class="pf-c-vertical-nav__link-text">Home and Garden</span>
+            </a>
+
+            <section
+              class="pf-vertical-sub-nav"
+              aria-labelledby="navbarDropdownMenuLink02"
+              id="navbarSubmenu02"
+              aria-hidden="true">
+              <h2 class="pf-vertical-sub-nav__title">Home and Garden</h2>
+              <ul class="pf-vertical-sub-nav__content">
+                <li class="pf-vertical-sub-nav__item" aria-level="2">
+                  <a href="#" class="pf-vertical-sub-nav__link">
+                    <span class="pf-c-vertical-nav__link-text">
+                      Home Improvement
+                    </span>
+                  </a>
+                </li>
+                <li class="pf-vertical-sub-nav__item" aria-level="2">
+                  <a href="#" class="pf-vertical-sub-nav__link">
+                    <span class="pf-c-vertical-nav__link-text">
+                      Lawn and Garden
+                    </span>
+                  </a>
+                </li>
+                <li class="pf-vertical-sub-nav__item" aria-level="2">
+                  <a href="#" class="pf-vertical-sub-nav__link">
+                    <span class="pf-c-vertical-nav__link-text">
+                      Green Living
+                    </span>
+                  </a>
+                </li>
+                <li class="pf-vertical-sub-nav__item" aria-level="2">
+                  <a href="#" aria-disabled="true" class="pf-vertical-sub-nav__link pf-is-disabled">Stain Removal</a>
+                </li>
+              </ul>
+            </section>
+          </li>
+
+          <li class="pf-c-vertical-nav__item">
+            <a href="#" aria-disabled="true" class="pf-c-vertical-nav__link pf-is-disabled">
+              <span class="pf-c-vertical-nav__link-icon">
+                <i class="fas fa-home"></i></span>
+              <span class="pf-c-vertical-nav__link-text">Culture</span>
+            </a>
+          </li>
+
+          <li class="pf-c-vertical-nav__item">
+            <a href="#" class="pf-c-vertical-nav__link">
+              <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
+              <span class="pf-c-vertical-nav__link-text">Entertainment</span>
+            </a>
+          </li>
+
+        </ul>
+      </nav>
+    </div><!-- .col -->
+
+    <div class="col">
+      <ul>
+        <li>uses js to manage focus with event.preventDefault()</li>
+        <li>using href="#" or href="#navbarSubmenuID" exhibit same behavior</li>
+        <li>focus index remains on the submenu toggle upon expanding dropdown, unless we programatically shift focus to something else</li>
+      </ul>
+    </div><!-- .col -->
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+  <script src="js/submenu-flow-js.js"></script>
+</body>
+</html>

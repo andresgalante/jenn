@@ -6,8 +6,7 @@
   },
 
   hasSubmenu = function ($menuItem) {
-    // if the menu item has a sub-menu, it will have a value for [aria-controls]
-    return !!$menuItem.attr('aria-controls');
+    return !!$menuItem.find('+ section').length;
   },
 
   subMenuIsVisible = function ($subMenu) {
@@ -36,19 +35,14 @@
     return $(item).find('> a');
   },
 
-  focusFirstMenuItem = function ($element) {
-    $element.find('a:first').trigger('focus');
-  },
-
-  getSubMenu = function ($menuItem) {
-    let subMenuSelector = '#' + $menuItem.attr('aria-controls');
-    return $(subMenuSelector);
+  getSubMenu = function ($listItem) {
+    return $listItem.find('> a + section');
   },
 
   closeOpenMenus = function ($menuItems) {
     $.each($menuItems, function (idx, item) {
       if (getMenuItemLnk(item).attr('aria-expanded') === 'true') {
-        let $subMenu = getSubMenu(getMenuItemLnk(item));
+        let $subMenu = getSubMenu($(item));
         closeMenu(getMenuItemLnk(item), $subMenu);
       }
     });
@@ -77,18 +71,15 @@
   bindMenuEvents = function ($listItem, idx, $menuItems) {
     let $menuItem = $listItem.find('> a');
 
-    $menuItem.on('focus click focusout focusin', function (event) {
-      event.preventDefault();
+    $menuItem.on('focusout focusin', function (event) {
 
-      let $subMenu = getSubMenu($menuItem);
+      let $subMenu = getSubMenu($listItem);
 
       switch (event.type) {
 
         case 'focusin': {
 
           $menuItem.on('click', function (event) {
-            event.preventDefault();
-            event.stopImmediatePropagation();
 
             if (hasSubmenu($menuItem)) {
               if ($subMenu.attr('aria-hidden') === 'true') {
@@ -97,7 +88,6 @@
                 closeOpenMenus($menuItems);
 
                 openMenu($menuItem, $subMenu);
-                focusFirstMenuItem($subMenu);
               } else {
                 closeMenu($menuItem, $subMenu);
               }
@@ -108,28 +98,6 @@
               removeActiveClasses($menuItems);
               removeAriaCurrent($menuItems);
               $menuItem.addClass('pf-is-active').attr('aria-current', true);
-
-              let menuItemTxt = $menuItem.find('[class*="link-text"]').text().trim();
-
-              switch (menuItemTxt) {
-                case 'Technology': {
-                  popNotification($('#technology-warning'));
-                  setTimeout(function () {
-                    hideEl($('#technology-warning'));
-                  }, 8000);
-                  focusFirstMenuItem($('#technology-warning'));
-                  break;
-                }
-                case 'Entertainment': {
-                  popNotification($('#entertainment-info'));
-                  setTimeout(function () {
-                    hideEl($('#entertainment-info'));
-                  }, 8000);
-                  // focusFirstMenuItem($('#entertainment-info')); // don't do this for role="status"!!
-                  break;
-                }
-                default: {}
-              }
 
               if (menuItemDepth($menuItem) === 1) {
                 closeOpenMenus($menuItems);
