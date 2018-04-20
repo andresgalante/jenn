@@ -115,8 +115,9 @@ body {
   border: 1px solid black;
   margin: 1rem; }
   .pf-c-toast__icon {
-    min-width: 4rem;
+    width: 4rem;
     padding: 1rem;
+    float: left;
     color: #fff;
     background-color: lightgray; }
   .pf-c-toast.pf-is-success {
