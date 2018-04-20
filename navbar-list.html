@@ -69,7 +69,7 @@
                 <section
                   class="pf-vertical-sub-nav"
                   hidden
-                  aria-labelledby="navbarDropdownMenuLink3"
+                  aria-label="Science"
                   id="navbarSubmenu3"> <!-- pf-is-open class is added to sections that are open -->
                   <h2 class="pf-vertical-sub-nav__title">Science</h2>
                   <ul class="pf-vertical-sub-nav__content">
@@ -123,7 +123,7 @@
                 Aside from the additional aria attribute, the JS updates should be the same for this section -->
                 <section
                   class="pf-vertical-sub-nav"
-                  aria-labelledby="navbarDropdownMenuLink4"
+                  aria-label="Home and Garden"
                   id="navbarSubmenu4"
                   hidden>
                   <h2 class="pf-vertical-sub-nav__title">Home and Garden</h2>
@@ -179,18 +179,18 @@
 
       <div class="col">
         <ul>
-            <li>focus programatically shifts to first menu item in submenu</li>
-            <li>role="list" for outermost ul</li>
-            <li>role="link" for each nav item's anchor</li>
-            <li>dynamic aria-expanded on each menu anchor</li>
-            <li>dynamic aria-current for menu anchors</li>
-            <li>properly relays expanded/collapsed state in VoiceOver links menu</li>
-            <li>submenu links are dynamically listed properly in VO links menu once they are expanded</li>
-            <li>Technology link launches an alertdialog</li>
-            <li>Entertainment link launches a status</li>
-            <li>Adjusting aria-live didn't have a noticable impact on UX for VO in any of the toast notifications</li>
-            <li>role="status" doesn't seem to report the status info the same way alertdialog does</li>
-          </ul>
+          <li>focus programatically shifts to first menu item in submenu</li>
+          <li>role="list" for outermost ul</li>
+          <li>role="link" for each nav item's anchor</li>
+          <li>dynamic aria-expanded on each menu anchor</li>
+          <li>dynamic aria-current for menu anchors</li>
+          <li>properly relays expanded/collapsed state in VoiceOver links menu</li>
+          <li>submenu links are dynamically listed properly in VO links menu once they are expanded</li>
+          <li>aria-label used on submenu container, this causes the submenu to show up in VO landmarks rotor menu</li>
+          <li>Technology link launches an assertive alert</li>
+          <li>Entertainment link launches a polite alert, and is read aloud twice in VO for some unknown reason</li>
+          <li>removing aria-live attribute from entertainment toast fixes it being read twice, but then it default to an assertive style notification where it's spoken immediately</li>
+        </ul>
       </div>
   </div>
 

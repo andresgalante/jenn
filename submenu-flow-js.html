@@ -47,7 +47,7 @@
             <section
               class="pf-vertical-sub-nav"
               hidden
-              aria-labelledby="navbarDropdownMenuLink01"
+              aria-label="Science"
               id="navbarSubmenu01">
               <h2 class="pf-vertical-sub-nav__title">Science</h2>
               <ul class="pf-vertical-sub-nav__content">
@@ -88,7 +88,7 @@
 
             <section
               class="pf-vertical-sub-nav"
-              aria-labelledby="navbarDropdownMenuLink02"
+              aria-label="Home and Garden"
               id="navbarSubmenu02"
               hidden>
               <h2 class="pf-vertical-sub-nav__title">Home and Garden</h2>
@@ -142,6 +142,7 @@
 
     <div class="col">
       <ul>
+        <li>by using aria-label="Label Name" on the submenu container, instead of aria-labelledby="IDREF", the submenu shows up in the VoiceOver landmarks rotor menu as "Label Name Region"</li>
         <li>uses JavaScript to prevent default browser actions from happening upon menu item selection</li>
         <li>using href="#" or href="#navbarSubmenuID" exhibit same behavior</li>
         <li>focus index remains on the submenu toggle upon expanding dropdown, unless we programatically shift focus to something else. This seems to provide the best experience so far, as it's predictable where the other examples were not.</li>

@@ -10,7 +10,7 @@
 <body>
 
   <header role="banner">
-    <h1>Single notification container, with multiple types of notifications</h1>
+    <h1>Launching dialogs (not ready for testing)</h1>
   </header>
 
   <div class="flexContainer flexSpaceAround">
@@ -18,26 +18,33 @@
       <nav class="pf-c-vertical-nav">
           <ul class="pf-c-vertical-nav__content" role="list">
             <li class="pf-c-vertical-nav__item">
+
               <a href="#" class="pf-c-vertical-nav__link">
                 <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
-                <span class="pf-c-vertical-nav__link-text">Alert</span>
+                <span class="pf-c-vertical-nav__link-text">Popover Dialog</span>
+              </a>
+            </li>
+
+            <li class="pf-c-vertical-nav__item">
+              <a href="#" class="pf-c-vertical-nav__link">
+                <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
+                <span class="pf-c-vertical-nav__link-text">Modal Dialog</span>
               </a>
             </li>
             <li class="pf-c-vertical-nav__item">
               <a href="#" class="pf-c-vertical-nav__link">
                 <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
-                <span class="pf-c-vertical-nav__link-text">Status</span>
+                <span class="pf-c-vertical-nav__link-text">Alert Dialog</span>
               </a>
             </li>
+
           </ul>
         </nav>
     </div><!-- .col -->
 
     <div class="col">
       <ul>
-        <li>uses js to manage focus with event.preventDefault()</li>
-        <li>using href="#" or href="#navbarSubmenuID" exhibit same behavior</li>
-        <li>focus index remains on the submenu toggle upon expanding dropdown, unless we programatically shift focus to something else</li>
+        <li>no findings have been captured yet</li>
       </ul>
     </div>
   </div>
@@ -45,6 +52,6 @@
 
   <main></main>
   <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-  <script src="js/single-notification.js"></script>
+  <script src="js/dialog.js"></script>
 </body>
 </html>

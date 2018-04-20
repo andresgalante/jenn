@@ -4,22 +4,48 @@
     <meta charset="utf-8">
     <title>CSS</title>
     <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
+    <link rel="stylesheet" href="css/base.css">
   </head>
   <body>
 
-    <ul>
-      <li><a href="submenu-flow.html">Tab flow for standard (hidden) submenu</a></li>
-      <li><a href="visible-submenu-flow.html">Tab flow for visible submenu</a></li>
-      <li><a href="submenu-flow-js.html">Tab flow for submenu driven by JS</a></li>
-      <li><a href="single-notification.html">Single Notification Container</a></li>
-      <li><a href="navbar-list.html">Navbar as a list</a></li>
-      <li><a href="navbar-menubar.html">Navbar as a menu</a></li>
-      <li><a href="navbar-aria.html">Navbar ARIA</a></li>
-      <li><a href="toast.html">Toast</a></li>
-      <li><a href="kebab.html">Kebab</a></li>
-      <li><a href="kebab2.html">Kebab 2</a></li>
-      <li><a href="focus-flow.html">Focus flow with named anchors</a></li>
-    </ul>
+    <div class="flexContainer flexSpaceAround">
+      <nav class="col">
+        <h2>Vertical Navigation Examples</h2>
+        <ul>
+          <li><a href="navbar-list.html">Navbar as a list</a></li>
+          <li><a href="navbar-menubar.html">Navbar as a menu</a></li>
+          <li><a href="navbar-aria.html">Navbar ARIA</a></li>
+        </ul>
+        <h2>Submenu tab/focus flow examples</h2>
+        <ul>
+          <li><a href="focus-flow.html">Focus flow with named anchors</a></li>
+          <li><a href="submenu-flow.html">Tab flow for standard submenu</a></li>
+          <li><a href="visible-submenu-flow.html">Tab flow for submenu with visible container</a></li>
+          <li><a href="submenu-flow-js.html">Tab flow for submenu (focus remains on toggle)</a></li>
+        </ul>
+        <h2>Toast Notification examples</h2>
+        <ul>
+          <li><a href="single-notification.html">Dynamically Injected Notifications</a></li>
+          <li><a href="toast.html">Toast</a></li>
+        </ul>
+        <h2>Dialog Examples</h2>
+        <ul>
+          <li><a href="dialog.html">Dialogs Example</a></li>
+        </ul>
+        <h2>Kebab examples</h2>
+        <ul>
+          <li><a href="kebab.html">Kebab</a></li>
+          <li><a href="kebab2.html">Kebab 2</a></li>
+        </ul>
+      </nav><!-- .col -->
+
+      <div class="col">
+        <h1>A11y Demo App</h1>
+        <p>Introductory content forthcoming</p>
+      </div><!-- .col -->
+    </div>
+
+
 
   </body>
 </html>
