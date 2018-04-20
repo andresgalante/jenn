@@ -12,7 +12,7 @@
 
     <header role="banner">
       <h1>Focus flow with named anchors</h1>
-      <p>This page tests the default behavior for navigating, via named anchors or "hot links", to sections of content that are, in various ways, "hidden". Before selecting the links below, first tab through the elements on this page and notice the order in which elements receive focus, in particular, notice how the "Focusable Element" link receives focus in a standard fashion just by existing inline with the rest of the page content.</p>
+      <p>This page tests the default behavior (from an html perspective) for navigating, via named anchors or "hot links", to sections of content that are, in various ways, "hidden". Before selecting the links below, first tab through the elements on this page and notice the order in which elements receive focus, in particular, notice how the "Focusable Element" link receives focus in a standard fashion just by existing inline with the rest of the page content.</p>
       <p>Then, notice how selecting a link from the navigation changes the focus index which ultimately changes what item receives focus next when tabbing through the interface.</p>
     </header>
 
@@ -23,42 +23,55 @@
           <a role="link" href="#hidden">Navigate to "hidden" section</a><br>
           <a role="link" href="#aria-hidden">Navigate to "aria-hidden" section</a><br>
           <a role="link" href="#visible">Navigate to a visible section</a><br>
+          <a role="link" href="#visible-aria-label">Navigate to a visible section decorated with aria-label</a><br>
           <a
             role="link"
             href="#aria-controls-visible"
             aria-controls="aria-controls-visible">Aria-controls a visible section</a>
         </nav>
 
-        <a href="#" role="link" style="margin-top:25px;display:inline-block;">*Focusable Element</a>
+        <a href="#" role="link" style="margin-top:25px;display:inline-block;">*Focusable Element</a><br><br>
 
-        <div style="border:1px solid black;">
+        <div style="border:2px dashed #ddd;min-height: 20px;margin-bottom:20px;">
+          Inside this div is a section that sets the display property to "none"
           <section id="display-none" style="display:none;">
             <h4>This section has the display property set to "none" on its container</h4>
             <p>This has the effect of now allowing one to </p>
           </section>
+        </div>
 
+        <div style="border:2px dashed #ddd;min-height: 20px;margin-bottom:20px;">
+          Inside this div is a section that sets the hidden property
           <section id="hidden" hidden>
             <h4>This section applies the [hidden] attribute to its container</h4>
             <p>User agent stylesheets hide elements with the "hidden" attribute by default. This has the effect of both hiding them from view as well as hiding those elements from screen readers.</p>
           </section>
-
-          <section id="aria-hidden" aria-hidden="true">
-            <h4>This section applies the [aria-hidden] attribute to its container</h4>
-            <p>The attribute aria-hidden alone, reguarless of its set value, does not hide an element from view.</p>
-          </section>
-
-          <section id="visible">
-            <h4>This section represents a standard visible element</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </section>
-
-          <section id="aria-controls-visible">
-            <h4>This section is bound by aria-controls</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </section>
-
-          <a href="#main-nav" role="link">Back to navigation</a>
         </div>
+
+        <section id="aria-hidden" aria-hidden="true" style="border:2px dashed #ddd;margin-bottom:20px;">
+          <h4>This section applies the [aria-hidden] attribute to its container</h4>
+          <p>The attribute aria-hidden alone, reguarless of its set value, does not hide an element from view.</p>
+        </section>
+
+        <section id="visible" style="border:2px dashed #ddd;margin-bottom:20px;">
+          <h4>This section represents a standard visible element</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </section>
+
+        <section
+          id="visible-aria-label"
+          style="border:2px dashed #ddd;margin-bottom:20px;"
+          aria-label="Accessible Section">
+            <h4>This section features the aria-label property</h4>
+            <p>With this example, we set the aria-label property on the section element. This has the added benefit of 1) allowing focus to be placed on the "region" in VO, and 2) also causes this section to show up in the landmarks menu.</p>
+          </section>
+
+        <section id="aria-controls-visible" style="border:2px dashed #ddd;margin-bottom:20px;">
+          <h4>This section is bound by aria-controls</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </section>
+
+        <a href="#main-nav" role="link">Back to navigation</a>
 
         <ul>
           <li><a href="#" role="link">Next focusable link - 02</a></li>
@@ -71,18 +84,12 @@
         <h4>Navigating to a "display: none" element using named anchors</h4>
         <p>In this scenario, we find that because the target element is hidden from view, there is no way for the browser to calculate what the new scroll position should be, so it simply doesn't scroll anywhere, which would otherwise be the default browser behavior.</p>
         <ul>
-          <li>target element doesn't receive focus</li>
-          <li>tab index is affected</li>
-          <li>doesn't scroll</li>
+          <li>tab index is affected, but target element can't receive focus, the result is a weird "dropping the focus on the floor"</li>
+          <li>scroll position isn't adjusted as the elements position is unknown</li>
         </ul>
 
         <h4>Navigating to a "hidden" element using named anchors</h4>
-        <p>This has an almost identical experience of navigating to a "display none" element. Scroll position isn't affected and even though the target element is hidden and not able to receive focus, the focus index is impacted. For example, notice that after selecting the link to navigate to the "hidden" section, the next press of the tab shifts focus to the next focusable element in the DOM <em>following</em> the "hidden" section's container, and <i>not</i> the next focusable element following the link the selected, which in this case would be the "*Focusable Element" link.</i></em></p>
-        <ul>
-          <li>target element doesn't receive focus</li>
-          <li>tab index is affected</li>
-          <li>doesn't scroll</li>
-        </ul>
+        <p>This has a practically identical experience of navigating to a "display none" element. The main thing to notice is that after selecting the link to navigate to the "hidden" section (like a submenu for example), the next press of the tab shifts focus to the next focusable element in the DOM <em>starting</em> at the "hidden" element's position within the source, and <em>not</em> the next focusable element following the link that was selected, which in this case is illustrated by the "*Focusable Element" link.</i></em></p>
 
         <h4>Navigating to a "aria-hidden" element using named anchors</h4>
         <p>What's interesting here is that even though the target element is hidden from accessibility tooling, it remains in view as most user agent stylesheets do not automatically hide elements just because this property (aria-hidden) is set. As such, any focusable elements that exist within this example container will be next in the tab flow queue.</p>
@@ -97,7 +104,8 @@
         <ol>
           <li>In all cases, when selecting a link that utilizes a named anchor, the underlying tab index is shifted. Focus flow moves to the point in the source where the target element exists. If the target element has focusable children, they will become the next focusable item, otherwise picking up on whatever comes next in the documents source order.</li>
           <li>To control the focus flow from purely an HTML perspective, we must ensure the target element is visible in the sense that it's display property isn't set to "none" and it doesn't feature a "hidden" property.</li>
-          <li>Using aria-controls along with named anchors has a default behavior of displaying a "Jump" menu in VO. This information is doubled up when presented.</li>
+          <li>Using aria-controls along with named anchors has a default behavior of displaying a "Jump" menu in VO. This information is displays twice for a unknown reason.</li>
+          <li>When using VO arrow key navigation, the experience is enrichened quite a bit by simply setting the aria-label attribute on the target element.</li>
         </ol>
       </div><!-- .col -->
     </div>

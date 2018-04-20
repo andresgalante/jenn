@@ -33,18 +33,44 @@
     }, 6000);
   },
 
-  alertNotifMarkup = function () {
+  alertDialogMarkup = function () {
     return `
       <div
-        id="alert-notification"
+        id="alert-dialog-notification"
+        role="alertdialog"
+        aria-live="assertive"
+        class="pf-c-toast pf-is-warning">
+        <div class="pf-c-toast__icon">
+          <i class="fas fa-home"></i>
+          <span id="alert-dialog-notification-title" class="sr-only">Warning message:</span>
+        </div>
+        <div id="alert-dialog-notification-message" class="pf-c-toast__message">
+          This is an alert dialog notification
+        </div>
+        <div class="pf-c-toast__action">
+          <a href="#">Continue</a>
+          <button data-dismiss aria-label="Dismiss Notification">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+    `;
+  },
+
+  popoverDialogMarkup = function () {
+    return `
+      <dialog
+        id="dialog-notification-warning"
+        role="dialog"
         class="pf-c-toast pf-is-warning">
         <div role="alert" aria-live="assertive">
           <div class="pf-c-toast__icon">
             <i class="fas fa-home"></i>
-            <span id="alert-notification-title" class="sr-only">ALERT</span>
+            <span id="dialog-notification-warning-title" class="sr-only">Warning message:</span>
           </div>
-          <div id="alert-notification-message" class="pf-c-toast__message">
-            This is an important alert notification
+          <div id="dialog-notification-warning-message" class="pf-c-toast__message">
+            This is a warning dialog
+            <input type="text" placeholder="enter stuff here">
           </div>
         </div>
         <div class="pf-c-toast__action">
@@ -53,39 +79,42 @@
             <i class="fas fa-times"></i>
           </button>
         </div>
-      </div>
+      </dialog>
     `;
   },
 
-  statusNotifMarkup = function () {
+  modalDialogMarkup = function () {
     return `
-      <div
-        id="status-notification"
-        class="pf-c-toast pf-is-success">
-        <div role="status" aria-live="polite">
+      <dialog
+        id="dialog-notification-warning"
+        role="dialog"
+        class="pf-c-toast pf-is-warning">
+        <div role="alert" aria-live="assertive">
           <div class="pf-c-toast__icon">
             <i class="fas fa-home"></i>
-            <span id="status-notification-title" class="sr-only">Success message</span>
+            <span id="dialog-notification-warning-title" class="sr-only">Warning message:</span>
           </div>
-          <div id="status-notification-message" class="pf-c-toast__message">
-            This is a status notification
+          <div id="dialog-notification-warning-message" class="pf-c-toast__message">
+            This is a warning dialog
+            <input type="text" placeholder="enter stuff here">
           </div>
         </div>
         <div class="pf-c-toast__action">
+          <a href="#">Dismiss Notification</a>
           <button data-dismiss aria-label="Dismiss Notification">
             <i class="fas fa-times"></i>
           </button>
         </div>
-      </div>
+      </dialog>
     `;
   },
 
   // used to keep the focus inside a modal context
-  // tabFocusRestrictor = function (lastItem, firstItem) {
-  //   $(lastItem).blur(function() {
-  //     $(firstItem).focus();
-  //   });
-  // },
+  tabFocusRestrictor = function (lastItem, firstItem) {
+    $(lastItem).blur(function() {
+      $(firstItem).focus();
+    });
+  },
 
   bindMenuEvents = function ($listItem, idx, $menuItems) {
     let $menuItem = $listItem.find('> a');
@@ -108,12 +137,20 @@
             let menuItemTxt = $menuItem.find('[class*="link-text"]').text().trim();
 
             switch (menuItemTxt) {
-              case 'Alert': {
-                popNotification($(alertNotifMarkup()));
+              case 'Popover Dialog': {
+                popNotification($(popoverDialogMarkup()));
                 break;
               }
-              case 'Status': {
-                popNotification($(statusNotifMarkup()));
+              case 'Modal Dialog': {
+                let $alertDialogNotif = $(modalDialogMarkup());
+                popNotification($alertDialogNotif);
+                focusFirstMenuItem($alertDialogNotif);
+                break;
+              }
+              case 'Alert Dialog': {
+                let $alertDialogNotif = $(alertDialogMarkup());
+                popNotification($alertDialogNotif);
+                focusFirstMenuItem($alertDialogNotif);
                 break;
               }
               default: {}
