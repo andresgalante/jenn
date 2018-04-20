@@ -6,8 +6,7 @@
   },
 
   hasSubmenu = function ($menuItem) {
-    // if the menu item has a sub-menu, it will have a value for [aria-controls]
-    return !!$menuItem.attr('aria-controls');
+    return !!$menuItem.find('+ section').length;
   },
 
   subMenuIsVisible = function ($subMenu) {
@@ -15,20 +14,22 @@
   },
 
   hideEl = function ($element) {
-    $element.attr('aria-hidden', true);
+    $element.attr('hidden', 'hidden');
   },
 
   showEl = function ($element) {
-    $element.attr('aria-hidden', false);
+    $element.removeAttr('hidden');
   },
 
   openMenu = function ($menuItem, $subMenu) {
     $menuItem.attr('aria-expanded', true);
+    $subMenu.addClass('pf-is-open');
     showEl($subMenu);
   },
 
   closeMenu = function ($menuItem, $subMenu) {
     $menuItem.attr('aria-expanded', false);
+    $subMenu.removeClass('pf-is-open');
     hideEl($subMenu);
   },
 
@@ -40,15 +41,14 @@
     $element.find('a:first').trigger('focus');
   },
 
-  getSubMenu = function ($menuItem) {
-    let subMenuSelector = '#' + $menuItem.attr('aria-controls');
-    return $(subMenuSelector);
+  getSubMenu = function ($listItem) {
+    return $listItem.find('> a + section');
   },
 
   closeOpenMenus = function ($menuItems) {
     $.each($menuItems, function (idx, item) {
       if (getMenuItemLnk(item).attr('aria-expanded') === 'true') {
-        let $subMenu = getSubMenu(getMenuItemLnk(item));
+        let $subMenu = getSubMenu($(item));
         closeMenu(getMenuItemLnk(item), $subMenu);
       }
     });
@@ -71,7 +71,68 @@
   },
 
   popNotification = function ($element) {
-    showEl($element);
+    $('main').append($element);
+
+    setTimeout(function () {
+      $element.remove();
+    }, 6000);
+  },
+
+  technologyWarningMarkup = function () {
+    return `
+      <div
+        id="technology-warning"
+        class="pf-c-toast pf-is-warning">
+        <div
+          role="alert"
+          aria-live="assertive">
+
+          <div class="pf-c-toast__icon">
+            <i class="fas fa-home"></i>
+            <span id="technology-warning-title" class="sr-only">Warning message:</span>
+          </div>
+
+          <div id="technology-warning-message" class="pf-c-toast__message">
+            Technology is scary, and may include topics that are confusing.
+          </div>
+
+        </div>
+        <div class="pf-c-toast__action">
+          <a href="#">Exclude Confusing Topics</a>
+          <button data-dismiss aria-label="Dismiss Notification">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+    `;
+  },
+
+  entertainmentInfoMarkup = function () {
+    return `
+      <div
+        id="entertainment-info"
+        class="pf-c-toast pf-is-success">
+        <div
+          role="alert"
+          aria-live="polite">
+
+          <div class="pf-c-toast__icon">
+            <i class="fas fa-home"></i>
+            <span id="entertainment-success-title" class="sr-only">Success message:</span>
+          </div>
+
+          <div id="entertainment-success-message" class="pf-c-toast__message">
+            Entertainment comes in many forms like music, art, and poetry.
+          </div>
+
+        </div>
+        <div class="pf-c-toast__action">
+          <button data-dismiss aria-label="Dismiss Notification">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+    `;
   },
 
   bindMenuEvents = function ($listItem, idx, $menuItems) {
@@ -80,7 +141,7 @@
     $menuItem.on('focus click focusout focusin', function (event) {
       event.preventDefault();
 
-      let $subMenu = getSubMenu($menuItem);
+      let $subMenu = getSubMenu($listItem);
 
       switch (event.type) {
 
@@ -91,7 +152,7 @@
             event.stopImmediatePropagation();
 
             if (hasSubmenu($menuItem)) {
-              if ($subMenu.attr('aria-hidden') === 'true') {
+              if ($subMenu.attr('hidden') === 'hidden') {
 
                 // first close any subMenus that are already open
                 closeOpenMenus($menuItems);
@@ -113,19 +174,11 @@
 
               switch (menuItemTxt) {
                 case 'Technology': {
-                  popNotification($('#technology-warning'));
-                  setTimeout(function () {
-                    hideEl($('#technology-warning'));
-                  }, 8000);
-                  focusFirstMenuItem($('#technology-warning'));
+                  popNotification($(technologyWarningMarkup()));
                   break;
                 }
                 case 'Entertainment': {
-                  popNotification($('#entertainment-info'));
-                  setTimeout(function () {
-                    hideEl($('#entertainment-info'));
-                  }, 8000);
-                  // focusFirstMenuItem($('#entertainment-info')); // don't do this for role="status"!!
+                  popNotification($(entertainmentInfoMarkup()));
                   break;
                 }
                 default: {}

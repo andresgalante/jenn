@@ -18,25 +18,18 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-.nav-list-example {
-  // Keep visual interface and screen reader in lock-step
-  [aria-hidden="true"]:not(.svg-inline--fa) {
-    display: none;
-  }
-
-  .flexContainer {
-    display: flex;
-  }
-  .flexSpaceAround {
-      justify-content: space-around;
-  }
-  .col {
-      width: 44%;
-      border: 1px solid #777777;
-      border-radius: 8px;
-      background: white;
-      padding: 20px;
-  }
+.flexContainer {
+  display: flex;
+}
+.flexSpaceAround {
+    justify-content: space-around;
+}
+.col {
+    width: 44%;
+    border: 1px solid #777777;
+    border-radius: 8px;
+    background: white;
+    padding: 20px;
 }
 
 // VERTICAL NAV
@@ -97,15 +90,13 @@ body {
 }
 
 // Sub menu
-//
 .pf-vertical-sub-nav {
   display: none;
 
-  // &.pf-is-open {
-  //   display: block;
-  // }
-  // rather, base display on aria-hidden
-  &:not([aria-hidden="true"]) {
+  // base submenu display on combination of presentation class and aria attribute being set correctly
+  // this prevents scenario where menu displays for sighted users, but not for screen reader
+  // (a.k.a "The contract")
+  &.pf-is-open:not([hidden]) {
     display: block;
   }
 }

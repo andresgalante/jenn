@@ -14,29 +14,27 @@
   },
 
   hideEl = function ($element) {
-    $element.attr('aria-hidden', true);
+    $element.attr('hidden', 'hidden');
   },
 
   showEl = function ($element) {
-    $element.attr('aria-hidden', false);
+    $element.removeAttr('hidden');
   },
 
   openMenu = function ($menuItem, $subMenu) {
     $menuItem.attr('aria-expanded', true);
+    $subMenu.addClass('pf-is-open');
     showEl($subMenu);
   },
 
   closeMenu = function ($menuItem, $subMenu) {
     $menuItem.attr('aria-expanded', false);
+    $subMenu.removeClass('pf-is-open');
     hideEl($subMenu);
   },
 
   getMenuItemLnk = function (item) {
     return $(item).find('> a');
-  },
-
-  focusFirstMenuItem = function ($element) {
-    $element.find('a:first').trigger('focus');
   },
 
   getSubMenu = function ($listItem) {
@@ -89,13 +87,12 @@
             event.stopImmediatePropagation();
 
             if (hasSubmenu($menuItem)) {
-              if ($subMenu.attr('aria-hidden') === 'true') {
+              if ($subMenu.attr('hidden') === 'hidden') {
 
                 // first close any subMenus that are already open
                 closeOpenMenus($menuItems);
 
                 openMenu($menuItem, $subMenu);
-                focusFirstMenuItem($subMenu);
               } else {
                 closeMenu($menuItem, $subMenu);
               }
