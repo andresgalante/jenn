@@ -10,7 +10,7 @@
 <body>
 
   <header role="banner">
-    <h1>Managing focus with named anchors to hidden submenu container</h1>
+    <h1>Focus automatically shifted when opening submenu</h1>
   </header>
 
   <div class="flexContainer flexSpaceAround">
@@ -33,7 +33,7 @@
 
           <li class="pf-c-vertical-nav__item">
             <a
-              href="#navbarSubmenu01"
+              href="#"
               aria-expanded="false"
               aria-current="false"
               class="pf-c-vertical-nav__link"
@@ -76,7 +76,7 @@
 
           <li class="pf-c-vertical-nav__item">
             <a
-              href="#navbarSubmenu02"
+              href="#"
               aria-expanded="false"
               class="pf-c-vertical-nav__link"
               id="navbarDropdownMenuLink02">
@@ -142,14 +142,13 @@
 
     <div class="col">
       <ul>
-        <li>menu items with dropdowns specify named anchors for submenus containers, for example href="navbarSubmenu01"</li>
-        <li>default browser behavior is observed, we do not use event.preventDefault() in this example</li>
-        <li>focus index is shifted upon selecting a menu item with a dropdown, but becuase the target element is hidden, focus is sort of lost until user makes a subsequent key press like right arrow or tab</li>
-        <li>in this prototype submenus are labeled using aria-label="Label Name", and because of this the submenu is exposed as a region, allowing users to find and place focus on the submenu as a whole, and not just the menu items within</li>
+        <li>focus programatically shifts to first menu item in submenu</li>
+        <li>uses JavaScript to prevent default browser actions from happening on menu item selection</li>
+        <li>using href="#" or href="#navbarSubmenuID" exhibit same behavior</li>
       </ul>
     </div><!-- .col -->
   </div>
   <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-  <script src="js/submenu-flow.js"></script>
+  <script src="js/submenu-focus-shift.js"></script>
 </body>
 </html>

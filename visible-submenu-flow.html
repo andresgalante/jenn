@@ -6,6 +6,11 @@
   <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
   <link rel="stylesheet" href="css/base.css">
   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  <style>
+    .pf-vertical-sub-nav {
+      display: block;
+    }
+  </style>
 </head>
 <body>
 
@@ -89,7 +94,7 @@
 
             <section
               class="pf-vertical-sub-nav"
-              aria-labelledby="navbarDropdownMenuLink02"
+              aria-label="Home and Garden"
               id="navbarSubmenu02">
               <div hidden>
                 <h2 class="pf-vertical-sub-nav__title">Home and Garden</h2>
@@ -148,7 +153,7 @@
         <li>menu items with dropdown specify named anchors for submenus containers</li>
         <li>default browser behavior is observed, we do not use event.preventDefault() in this example</li>
         <li>focus index is shifted upon selecting a menu item with dropdown</li>
-        <li>Science submenu is labeled directly with aria-label="Science", and with this users are able to place focus on the submenu region by simply selecting that menu item again or pressing the right arrow key. This is in contrast to the "Home and Garden" submenu, which uses aria-labelledby="navbarDropdownMenuLink02". The latter doesn't allow for focusing directly on the region which could be problematic.</li>
+        <li>submenus labeled with aria-labelledby="IDREF" don't allow for focusing directly on the region by pressing right arrow key after selecting submenu toggle, which is problematic but I believe this could be due to a shortcoming in the implementation</li>
       </ul>
     </div><!-- .col -->
   </div>
