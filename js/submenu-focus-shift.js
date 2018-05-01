@@ -77,57 +77,36 @@
   bindMenuEvents = function ($listItem, idx, $menuItems) {
     let $menuItem = $listItem.find('> a');
 
-    $menuItem.on('focusout focusin', function (event) {
+    $menuItem.on('click', function (event) {
       event.preventDefault();
+      event.stopImmediatePropagation();
 
       let $subMenu = getSubMenu($listItem);
 
-      switch (event.type) {
+      if (hasSubmenu($menuItem)) {
+        if ($subMenu.attr('hidden') === 'hidden') {
 
-        case 'focusin': {
+          // first close any subMenus that are already open
+          closeOpenMenus($menuItems);
 
-          $menuItem.on('click', function (event) {
-            event.preventDefault();
-            event.stopImmediatePropagation();
-
-            if (hasSubmenu($menuItem)) {
-              if ($subMenu.attr('hidden') === 'hidden') {
-
-                // first close any subMenus that are already open
-                closeOpenMenus($menuItems);
-
-                openMenu($menuItem, $subMenu);
-                focusFirstMenuItem($subMenu);
-              } else {
-                closeMenu($menuItem, $subMenu);
-              }
-            }
-
-            // only set as pf-is-active/aria-current if menu item isn't disabled and isn't only a gateway to submenu
-            if (!hasSubmenu($menuItem) && $menuItem.is(':not([aria-disabled])')) {
-              removeActiveClasses($menuItems);
-              removeAriaCurrent($menuItems);
-              $menuItem.addClass('pf-is-active').attr('aria-current', true);
-
-              if (menuItemDepth($menuItem) === 1) {
-                closeOpenMenus($menuItems);
-              }
-            }
-
-          });
-
-          break;
-        }
-
-        case 'focusout': {
-          $menuItem.off('click');
-          break;
-        }
-
-        default: {
-          // console.log('unsupported event type');
+          openMenu($menuItem, $subMenu);
+          focusFirstMenuItem($subMenu);
+        } else {
+          closeMenu($menuItem, $subMenu);
         }
       }
+
+      // only set as pf-is-active/aria-current if menu item isn't disabled and isn't only a gateway to submenu
+      if (!hasSubmenu($menuItem) && $menuItem.is(':not([aria-disabled])')) {
+        removeActiveClasses($menuItems);
+        removeAriaCurrent($menuItems);
+        $menuItem.addClass('pf-is-active').attr('aria-current', true);
+
+        if (menuItemDepth($menuItem) === 1) {
+          closeOpenMenus($menuItems);
+        }
+      }
+
       return false;
     });
   };
@@ -141,10 +120,6 @@
       getMenuItemLnk(element).attr('role', 'link');
     });
 
-    $('.pf-c-toast').on('click', '[data-dismiss]', function () {
-      hideEl($(this).parents('.pf-c-toast'));
-      $(this).parents('.pf-c-toast').blur();
-    });
   });
 
 })(jQuery);

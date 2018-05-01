@@ -134,68 +134,46 @@
   bindMenuEvents = function ($listItem, idx, $menuItems) {
     let $menuItem = $listItem.find('> a');
 
-    $menuItem.on('focus click focusout focusin', function (event) {
+    $menuItem.on('click', function (event) {
       event.preventDefault();
+      event.stopImmediatePropagation();
 
       let $subMenu = getSubMenu($listItem);
 
-      switch (event.type) {
+      if (hasSubmenu($menuItem)) {
+        if ($subMenu.attr('hidden') === 'hidden') {
 
-        case 'focusin': {
+          // first close any subMenus that are already open
+          closeOpenMenus($menuItems);
 
-          $menuItem.on('click', function (event) {
-            event.preventDefault();
-            event.stopImmediatePropagation();
+          openMenu($menuItem, $subMenu);
+        } else {
+          closeMenu($menuItem, $subMenu);
+        }
+      }
 
-            if (hasSubmenu($menuItem)) {
-              if ($subMenu.attr('hidden') === 'hidden') {
+      // only set as pf-is-active/aria-current if menu item isn't disabled and isn't only a gateway to submenu
+      if (!hasSubmenu($menuItem) && $menuItem.is(':not([aria-disabled])')) {
+        removeActiveClasses($menuItems);
+        removeAriaCurrent($menuItems);
+        $menuItem.addClass('pf-is-active').attr('aria-current', true);
 
-                // first close any subMenus that are already open
-                closeOpenMenus($menuItems);
+        let menuItemTxt = $menuItem.find('[class*="link-text"]').text().trim();
 
-                openMenu($menuItem, $subMenu);
-              } else {
-                closeMenu($menuItem, $subMenu);
-              }
-            }
-
-            // only set as pf-is-active/aria-current if menu item isn't disabled and isn't only a gateway to submenu
-            if (!hasSubmenu($menuItem) && $menuItem.is(':not([aria-disabled])')) {
-              removeActiveClasses($menuItems);
-              removeAriaCurrent($menuItems);
-              $menuItem.addClass('pf-is-active').attr('aria-current', true);
-
-              let menuItemTxt = $menuItem.find('[class*="link-text"]').text().trim();
-
-              switch (menuItemTxt) {
-                case 'Technology': {
-                  popNotification($(technologyWarningMarkup()));
-                  break;
-                }
-                case 'Entertainment': {
-                  popNotification($(entertainmentInfoMarkup()));
-                  break;
-                }
-                default: {}
-              }
-
-              if (menuItemDepth($menuItem) === 1) {
-                closeOpenMenus($menuItems);
-              }
-            }
-
-          });
-
-          break;
+        switch (menuItemTxt) {
+          case 'Technology': {
+            popNotification($(technologyWarningMarkup()));
+            break;
+          }
+          case 'Entertainment': {
+            popNotification($(entertainmentInfoMarkup()));
+            break;
+          }
+          default: {}
         }
 
-        case 'focusout': {
-          $menuItem.off('click');
-          break;
-        }
-
-        default: {
-          // console.log('unsupported event type');
+        if (menuItemDepth($menuItem) === 1) {
+          closeOpenMenus($menuItems);
         }
       }
       return false;
@@ -211,9 +189,8 @@
       getMenuItemLnk(element).attr('role', 'link');
     });
 
-    $('.pf-c-toast').on('click', '[data-dismiss]', function () {
-      hideEl($(this).parents('.pf-c-toast'));
-      $(this).parents('.pf-c-toast').blur();
+    $(document).on('click', '[data-dismiss]', function () {
+      $(this).parents('.pf-c-toast').remove().blur();
     });
   });
 

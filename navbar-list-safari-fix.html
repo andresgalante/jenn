@@ -1,0 +1,201 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Navigation Example</title>
+  <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
+  <link rel="stylesheet" href="css/base.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+</head>
+<body class="nav-list-example">
+
+  <header role="banner">
+    <h1>Navigation list (with Safari fix)</h1>
+  </header>
+
+  <div class="flexContainer flexSpaceAround">
+      <div class="col">
+        <nav class="pf-c-vertical-nav">
+            <ul class="pf-c-vertical-nav__content" role="list">
+              <li class="pf-c-vertical-nav__item">
+
+                <!-- JS NOTES for any <a> menu item that DOES NOT have a submenu-->
+                <!-- aria-current= -->
+                <!-- "true" when this menu item is the current page (i.e. active) -->
+                <!-- "false" when any other menu item is the current page -->
+
+                <a href="#" class="pf-c-vertical-nav__link">
+                  <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
+                  <span class="pf-c-vertical-nav__link-text">Home</span>
+                </a>
+              </li>
+
+              <li class="pf-c-vertical-nav__item">
+                <a href="#" class="pf-c-vertical-nav__link">
+                  <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
+                  <span class="pf-c-vertical-nav__link-text">Technology</span>
+                </a>
+              </li>
+
+              <li class="pf-c-vertical-nav__item">
+
+                <!-- JS NOTES for any <a> menu item that DOES have a submenu-->
+
+                <!-- aria-expanded="true" when the submenu is visible -->
+                <!-- aria-expanded="false" when the submenu is hidden -->
+
+                <!-- aria-current="true" when a menu item in the submenu is the current page (i.e. active) -->
+                <!-- aria-current="false" when any other menu item is the current page -->
+                <!-- except, this doesn't work in Voiceover on Mac - instead only the first aria-current attribute is recognized. Is it too much to transfer this attribute dynamically depending on menu visibility? so when the menu is hidden, the parent has ariaa-current and when the menu is visible the submenu item has aria-current -->
+
+                <a
+                  href="#"
+                  aria-expanded="false"
+                  aria-controls="navbarSubmenu3"
+                  aria-current="false"
+                  class="pf-c-vertical-nav__link"
+                  id="navbarDropdownMenuLink3"> <!-- pf-is-active class is added to links that are open -->
+                  <span class="pf-c-vertical-nav__link-icon">
+                    <i class="fas fa-home"></i>
+                  </span>
+                  <span class="pf-c-vertical-nav__link-text">
+                    Science
+                  </span>
+                </a>
+
+                <!-- JS NOTES for submenus -->
+                <!-- hidden or hidden="hidden" when the submenu is not visible -->
+                <!-- hidden attribute should be removed when the submenu is visible -->
+                <section
+                  class="pf-vertical-sub-nav"
+                  hidden
+                  aria-labelledby="navbarDropdownMenuLink3"
+                  id="navbarSubmenu3"> <!-- pf-is-open class is added to sections that are open -->
+                  <h2 class="pf-vertical-sub-nav__title">Science</h2>
+                  <ul class="pf-vertical-sub-nav__content">
+                    <li class="pf-vertical-sub-nav__item">
+                      <a href="#" class="pf-vertical-sub-nav__link">
+                        <span class="pf-c-vertical-nav__link-text">
+                            Environmental Science
+                        </span>
+                      </a>
+                    </li>
+                    <li class="pf-vertical-sub-nav__item">
+
+                      <!-- JS NOTES for any <a> menu item that IS IN a submenu-->
+                      <!-- aria-current="true" when this menu item is the current page (i.e. active) -->
+                      <!-- aria-current="false" when any other menu item is the current page -->
+                      <a href="#" aria-current="false" class="pf-vertical-sub-nav__link">
+                        <span class="pf-c-vertical-nav__link-text">
+                          Physical Science
+                        </span>
+                      </a>
+                    </li>
+                    <li class="pf-vertical-sub-nav__item">
+                      <a href="#" class="pf-vertical-sub-nav__link">
+                        <span class="pf-c-vertical-nav__link-text">
+                          Life Science
+                        </span>
+                      </a>
+                    </li>
+                    <li class="pf-vertical-sub-nav__item">
+                      <a href="#" aria-disabled="true" class="pf-vertical-sub-nav__link pf-is-disabled">Engineering</a>
+                    </li>
+                  </ul>
+                </section>
+              </li>
+
+              <li class="pf-c-vertical-nav__item">
+                <a
+                  href="#"
+                  aria-expanded="false"
+                  aria-controls="navbarSubmenu4"
+                  class="pf-c-vertical-nav__link"
+                  id="navbarDropdownMenuLink4">
+                  <span class="pf-c-vertical-nav__link-icon">
+                    <i class="fas fa-home"></i>
+                  </span>
+                  <span class="pf-c-vertical-nav__link-text">Home and Garden</span>
+                </a>
+
+                <!-- HTML NOTES
+                The following menu has a variation, where aria-level is used to identify list level
+                Aside from the additional aria attribute, the JS updates should be the same for this section -->
+                <section
+                  class="pf-vertical-sub-nav"
+                  aria-labelledby="navbarDropdownMenuLink4"
+                  id="navbarSubmenu4"
+                  hidden>
+                  <h2 class="pf-vertical-sub-nav__title">Home and Garden</h2>
+                  <ul class="pf-vertical-sub-nav__content">
+                    <li class="pf-vertical-sub-nav__item" aria-level="2">
+                      <a href="#" class="pf-vertical-sub-nav__link">
+                        <span class="pf-c-vertical-nav__link-text">
+                          Home Improvement
+                        </span>
+                      </a>
+                    </li>
+                    <li class="pf-vertical-sub-nav__item" aria-level="2">
+                      <a href="#" class="pf-vertical-sub-nav__link">
+                        <span class="pf-c-vertical-nav__link-text">
+                          Lawn and Garden
+                        </span>
+                      </a>
+                    </li>
+                    <li class="pf-vertical-sub-nav__item" aria-level="2">
+                      <a href="#" class="pf-vertical-sub-nav__link">
+                        <span class="pf-c-vertical-nav__link-text">
+                          Green Living
+                        </span>
+                      </a>
+                    </li>
+                    <li class="pf-vertical-sub-nav__item" aria-level="2">
+                      <a href="#" aria-disabled="true" class="pf-vertical-sub-nav__link pf-is-disabled">Stain Removal</a>
+                    </li>
+                  </ul>
+                </section>
+              </li>
+
+              <li class="pf-c-vertical-nav__item">
+                <a href="#" aria-disabled="true" class="pf-c-vertical-nav__link pf-is-disabled">
+                  <span class="pf-c-vertical-nav__link-icon">
+                    <i class="fas fa-home"></i></span>
+                  <span class="pf-c-vertical-nav__link-text">
+                    Culture
+                  </span>
+                </a>
+              </li>
+
+              <li class="pf-c-vertical-nav__item">
+                <a href="#" class="pf-c-vertical-nav__link">
+                  <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
+                  <span class="pf-c-vertical-nav__link-text">Entertainment</span>
+                </a>
+              </li>
+
+            </ul>
+          </nav>
+      </div>
+
+      <div class="col">
+        <ul>
+          <li>role="list" for outermost ul</li>
+          <li>role="link" for each nav item's anchor</li>
+          <li>dynamic aria-expanded on each menu anchor</li>
+          <li>dynamic aria-current for menu anchors</li>
+          <li>properly relays expanded/collapsed state in VoiceOver links menu</li>
+          <li>submenu links are dynamically listed properly in VO links menu once they are expanded</li>
+          <li>aria-label used on submenu container, this causes the submenu to show up in VO landmarks rotor menu</li>
+          <li>Technology link launches an assertive alert</li>
+          <li>Entertainment link launches a polite alert, and is read aloud twice in VO for some unknown reason</li>
+          <li>removing aria-live attribute from entertainment toast fixes it being read twice, but then it default to an assertive style notification where it's spoken immediately</li>
+        </ul>
+      </div>
+  </div>
+
+
+  <main></main>
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+  <script src="js/navbar-list-safari-fix.js"></script>
+</body>
+</html>

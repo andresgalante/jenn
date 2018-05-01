@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Single Notification Container Example</title>
+  <title>Persistent Notification Container Example</title>
   <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
   <link rel="stylesheet" href="css/base.css">
   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
@@ -10,7 +10,7 @@
 <body>
 
   <header role="banner">
-    <h1>Single notification container, with multiple types of notifications</h1>
+    <h1>Persistent notification container, with multiple types of notifications</h1>
   </header>
 
   <div class="flexContainer flexSpaceAround">
@@ -20,13 +20,19 @@
             <li class="pf-c-vertical-nav__item">
               <a href="#" class="pf-c-vertical-nav__link">
                 <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
-                <span class="pf-c-vertical-nav__link-text">Alert</span>
+                <span class="pf-c-vertical-nav__link-text">Alert 1</span>
               </a>
             </li>
             <li class="pf-c-vertical-nav__item">
               <a href="#" class="pf-c-vertical-nav__link">
                 <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
-                <span class="pf-c-vertical-nav__link-text">Status</span>
+                <span class="pf-c-vertical-nav__link-text">Alert 2</span>
+              </a>
+            </li>
+            <li class="pf-c-vertical-nav__item">
+              <a href="#" class="pf-c-vertical-nav__link">
+                <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
+                <span class="pf-c-vertical-nav__link-text">Alert 3</span>
               </a>
             </li>
           </ul>
@@ -35,17 +41,19 @@
 
     <div class="col">
       <ul>
-        <li>each notification contains a child aria-live region and the notifications are injected and removed from the DOM in their entirety as they are launched and dismissed</li>
-        <li>uses js to manage focus with event.preventDefault()</li>
-        <li>using href="#" or href="#navbarSubmenuID" exhibit same behavior</li>
-        <li>focus index remains on the submenu toggle upon expanding dropdown, unless we programatically shift focus to something else</li>
+        <li>each notification is injected into and removed from a single element which is designated as an aria-live region</li>
       </ul>
     </div>
   </div>
 
 
-  <main></main>
+  <main>
+    <div class="notification-container" aria-live="polite">
+
+    </div>
+
+  </main>
   <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-  <script src="js/single-notification.js"></script>
+  <script src="js/persistent-notification-container.js"></script>
 </body>
 </html>
