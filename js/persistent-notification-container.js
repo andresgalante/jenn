@@ -28,51 +28,54 @@
   popNotification = function ($element) {
     $('main > .notification-container').append($element);
 
-    setTimeout(function () {
-      $element.remove();
-    }, 6000);
+    // https://www.w3.org/TR/wai-aria-practices/#alert => "It is also important to avoid designing alerts that disappear automatically."
+    // setTimeout(function () {
+    //   $element.remove();
+    // }, 10000);
   },
 
   alert1NotifMarkup = function () {
     return `
-      <div
-        id="alert-notification"
+      <section
+        aria-label="Alert 1 Notification Label"
+        id="alert-notification-01"
         class="pf-c-toast pf-is-warning">
-        <div role="alert">
+        <div>
           <div class="pf-c-toast__icon">
             <i class="fas fa-home"></i>
-            <span id="alert-notification-title" class="sr-only">ALERT</span>
+            <span id="alert-notification-01-title" class="sr-only">Section ALERT</span>
           </div>
-          <div id="alert-notification-message" class="pf-c-toast__message">
-            alert 1 updates
+          <div id="alert-notification-01-message" class="pf-c-toast__message">
+            This is an important alert notification in a section element
           </div>
         </div>
         <div class="pf-c-toast__action">
-          <a href="#">Dismiss Notification</a>
+          <a href="#" aria-labelledby="alert-notification-01-title">Fix Action</a>
           <button data-dismiss aria-label="Dismiss Notification">
             <i class="fas fa-times"></i>
           </button>
         </div>
-      </div>
+      </section>
     `;
   },
 
   alert2NotifMarkup = function () {
     return `
       <div
-        id="alert-notification"
+        aria-label="Alert 2 Notification Label"
+        id="alert-notification-02"
         class="pf-c-toast pf-is-warning">
         <div role="alert">
           <div class="pf-c-toast__icon">
             <i class="fas fa-home"></i>
-            <span id="alert-notification-title" class="sr-only">ALERT</span>
+            <span id="alert-notification-02-title" class="sr-only">Div ALERT</span>
           </div>
-          <div id="alert-notification-message" class="pf-c-toast__message">
-            alert 2 updates
+          <div id="alert-notification-02-message" class="pf-c-toast__message">
+            This is an important alert notification in a standard div
           </div>
         </div>
         <div class="pf-c-toast__action">
-          <a href="#">Dismiss Notification</a>
+          <a href="#" aria-labelledby="alert-notification-02-title">Fix Action</a>
           <button data-dismiss aria-label="Dismiss Notification">
             <i class="fas fa-times"></i>
           </button>
@@ -83,25 +86,26 @@
 
   alert3NotifMarkup = function () {
     return `
-      <div
-        id="alert-notification"
+      <article
+        aria-label="Alert 3 Notification Label"
+        id="alert-notification-03"
         class="pf-c-toast pf-is-warning">
-        <div role="alert">
+        <div>
           <div class="pf-c-toast__icon">
             <i class="fas fa-home"></i>
-            <span id="alert-notification-title" class="sr-only">ALERT</span>
+            <span id="alert-notification-03-title" class="sr-only">Article ALERT</span>
           </div>
-          <div id="alert-notification-message" class="pf-c-toast__message">
-            alert 3 updates
+          <div id="alert-notification-03-message" class="pf-c-toast__message">
+            This is an important alert notification in an article element
           </div>
         </div>
         <div class="pf-c-toast__action">
-          <a href="#">Dismiss Notification</a>
+          <a href="#">Fix Action</a>
           <button data-dismiss aria-label="Dismiss Notification">
             <i class="fas fa-times"></i>
           </button>
         </div>
-      </div>
+      </article>
     `;
   },
 
