@@ -38,7 +38,7 @@
 
   alert1NotifMarkup = function () {
     return `
-      <section
+      <div
         aria-label="Alert 1 Notification Label"
         id="alert-notification-01"
         class="pf-c-toast pf-is-warning">
@@ -48,7 +48,7 @@
             <span id="alert-notification-01-title" class="sr-only">ALERT 1</span>
           </div>
           <div id="alert-notification-01-message" class="pf-c-toast__message">
-            This is an important alert notification in a section element
+            This is an important alert notification
           </div>
         </div>
         <div class="pf-c-toast__action">
@@ -57,7 +57,7 @@
             <i class="fas fa-times"></i>
           </button>
         </div>
-      </section>
+      </div>
     `;
   },
 
@@ -73,7 +73,7 @@
             <span id="alert-notification-02-title" class="sr-only">ALERT 2</span>
           </div>
           <div id="alert-notification-02-message" class="pf-c-toast__message">
-            This is an important alert notification in a standard div
+            This is an important alert notification
           </div>
         </div>
         <div class="pf-c-toast__action">
@@ -88,7 +88,7 @@
 
   alert3NotifMarkup = function () {
     return `
-      <aside
+      <div
         aria-label="Alert 3 Notification Label"
         id="alert-notification-03"
         class="pf-c-toast pf-is-warning">
@@ -98,7 +98,7 @@
             <span id="alert-notification-03-title" class="sr-only">ALERT 3</span>
           </div>
           <div id="alert-notification-03-message" class="pf-c-toast__message">
-            This is an important alert notification in an aside element
+            This is an important alert notification
           </div>
         </div>
         <div class="pf-c-toast__action">
@@ -107,7 +107,7 @@
             <i class="fas fa-times"></i>
           </button>
         </div>
-      </aside>
+      </div>
     `;
   },
 
