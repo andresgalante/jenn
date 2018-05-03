@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <title>Focus Flow Example</title>
+  <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
+  <link rel="stylesheet" href="css/base.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  <style>
+    .example {
+      border: 2px dashed grey;
+    }
+  </style>
+</head>
+<body>
+  <main>
+
+    <header role="banner">
+      <h1>Aria Label Examples</h1>
+      <p>This demo illustrates the impact that adding an aria-label attribute has on various html elements.</p>
+    </header>
+
+    <div class="flexContainer flexSpaceAround">
+      <div class="col">
+
+        <div class="example">
+          <h2>Buttons with aria-label</h2>
+          <button type="button">Button without aria-label text</button>
+          <button type="button" aria-label="Aria Label Text">Button with aria-label text</button>
+          <button type="submit" aria-label="Aria Label Text">Submit Button with aria-label text</button>
+          <button type="button" aria-label="Aria Label Text">
+            <span>
+              Nested Span text
+            </span>
+            Button text
+          </button>
+        </div>
+
+        <div class="example">
+          <h2>Paragraph with aria-label</h2>
+          <p aria-label="Aria Label Text">Paragraph with aria-label text</p>
+        </div>
+
+        <div class="example">
+          <h2>Heading with aria-label</h2>
+          <h3 aria-label="Aria Label Text">Heading with aria-label text</h3>
+          <h3>Heading without aria-label Text</h3>
+        </div>
+
+        <div class="example">
+          <h2>Span with aria-label</h2>
+          <span aria-label="Aria Label Text">Span with aria-label text</span>
+          <span>Span without aria-label text</span>
+        </div>
+
+        <div class="example">
+          <h2>Article with aria-label</h2>
+          <article aria-label="Aria Label Text">Article with aria-label text</article>
+          <article>Article without aria-label text</article>
+        </div>
+
+        <div class="example">
+          <h2>Aside with aria-label</h2>
+          <aside aria-label="Aria Label Text">Aside with aria-label text</aside>
+          <aside>Aside without aria-label text</aside>
+        </div>
+
+        <div class="example">
+          <h2>Section with aria-label</h2>
+          <section aria-label="Aria Label Text">Section with aria-label text</section>
+          <section>Section without aria-label text</section>
+        </div>
+
+        <div class="example">
+          <h2>Nav with aria-label</h2>
+          <nav aria-label="Aria Label Text">Nav with aria-label text</nav>
+          <nav>Nav without aria-label text</nav>
+        </div>
+
+        <div class="example">
+          <h2>Header with aria-label</h2>
+          <header aria-label="Aria Label Text">Header with aria-label text</header>
+          <header>Header without aria-label text</header>
+        </div>
+
+        <div class="example">
+          <h2>Footer with aria-label</h2>
+          <footer aria-label="Aria Label Text">Footer with aria-label text</footer>
+          <footer>Footer without aria-label text</footer>
+        </div>
+
+      </div><!-- .col -->
+
+      <div class="col">
+        <ul>
+          <li>button's with aria-label do not read aloud the button text nodes, but instead read the aria-label along with the button's role</li>
+          <li>paragraph's with aria-label first read the aria-label, then mention it's a group, and after a subsequent keypress read aloud the paragraph text</li>
+          <li>heading's with aria-label read the heading level then the aria-label text in place of the heading text</li>
+          <li>span's with aria-label first read the aria-label text and then announce the span as a group, subsequent keypress reads aloud the normal span text</li>
+          <li>article's with aria-label first read the aria-label text and then announces it as an article, subsequent keypress reads aloud the normal article text</li>
+          <li>aside's with aria-label first read the aria-label text and then announces it as a complimentary, subsequent keypress reads aloud the normal aside text</li>
+          <li>section's with aria-label first read the aria-label text and then announces it as a region, subsequent keypress reads aloud the normal section text</li>
+          <li>nav's with aria-label first read the aria-label text and then announces it as a navigation, subsequent keypress reads aloud the normal section text</li>
+          <li>header's with aria-label first read the aria-label text and then announces it as a group, subsequent keypress reads aloud the normal header text</li>
+          <li>footer's with aria-label first read the aria-label text and then announces it as a group, subsequent keypress reads aloud the normal footer text</li>
+        </ul>
+      </div><!-- .col -->
+    </div>
+
+  </main>
+</body>
+</html>
