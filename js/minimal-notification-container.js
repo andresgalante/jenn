@@ -30,10 +30,10 @@
 
     // https://www.w3.org/TR/wai-aria-practices/#alert => "It is also important to avoid designing alerts that disappear automatically."
     // dismissing notifications to a notification drawer where they're still available wouldn't be so bad
-    setTimeout(function () {
-      $element.blur();
-      $element.remove();
-    }, 10000);
+    // setTimeout(function () {
+    //   $element.blur();
+    //   $element.remove();
+    // }, 10000);
   },
 
   alert1NotifMarkup = function () {
@@ -45,7 +45,7 @@
         <div>
           <div class="pf-c-toast__icon">
             <i class="fas fa-home"></i>
-            <span id="alert-notification-01-title" class="sr-only">ALERT</span>
+            <span id="alert-notification-01-title" class="sr-only">ALERT 1</span>
           </div>
           <div id="alert-notification-01-message" class="pf-c-toast__message">
             This is an important alert notification in a section element
@@ -70,7 +70,7 @@
         <div>
           <div class="pf-c-toast__icon">
             <i class="fas fa-home"></i>
-            <span id="alert-notification-02-title" class="sr-only">ALERT</span>
+            <span id="alert-notification-02-title" class="sr-only">ALERT 2</span>
           </div>
           <div id="alert-notification-02-message" class="pf-c-toast__message">
             This is an important alert notification in a standard div
@@ -95,7 +95,7 @@
         <div>
           <div class="pf-c-toast__icon">
             <i class="fas fa-home"></i>
-            <span id="alert-notification-03-title" class="sr-only">ALERT</span>
+            <span id="alert-notification-03-title" class="sr-only">ALERT 3</span>
           </div>
           <div id="alert-notification-03-message" class="pf-c-toast__message">
             This is an important alert notification in an aside element

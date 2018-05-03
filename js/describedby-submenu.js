@@ -190,7 +190,7 @@
     });
 
     $(document).on('click', '[data-dismiss]', function () {
-      $(this).parents('.pf-c-toast').remove().blur();
+      $(this).parents('.pf-c-toast').blur().remove();
     });
   });
 
