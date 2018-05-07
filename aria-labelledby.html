@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <title>Aria Labelledby Example</title>
+  <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
+  <link rel="stylesheet" href="css/base.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  <style>
+    .example {
+      border: 2px dashed grey;
+      margin-bottom: 12px;
+    }
+    .example h3 {
+      border-bottom: 2px solid darkgray;
+    }
+    .constant {
+      border: 3px dashed red;
+      margin: 20px;
+      padding: 6px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <main>
+
+    <header role="banner">
+      <h1>Aria Labelledby Examples</h1>
+      <p>This demo illustrates the impact of adding the aria-labelledby attribute to various types of html elements. The element below with a dashed red border is the single element that each of the test cases below will be linked to. Linking each example to this same text allows one to easily understand what changes, if any, are made by relating two elements using aria-labelledby attribute.</p>
+      <p>
+        <a href="https://www.w3.org/TR/wai-aria-1.1/#namecalculation" target="_blank">Accessible Name Calculation</a><br>
+        <a href="https://www.w3.org/TR/accname-1.1/#mapping_additional_nd_te" target="_blank">Text Alternative Computation</a>
+      </p>
+      <!-- Aria Labelledby Text -->
+      <div class="constant" id="aria-labelledby-element">vvvvv</div>
+    </header>
+
+    <div class="flexContainer flexSpaceAround">
+      <div class="col">
+
+        <h2><a href="https://www.w3.org/TR/html52/dom.html#interactive-content" target="_blank">Interactive Elements</a></h2>
+        <p></p>
+
+        <div class="example">
+          <h3>Buttons with aria-labelledby</h3>
+          <button type="button" aria-labelledby="aria-labelledby-element">Button related with aria-labelledby</button><br>
+          <button type="button">Button without aria-labelledby</button><br>
+          <button type="submit" aria-labelledby="aria-labelledby-element">Submit Button related with aria-labelledby</button><br>
+          <button type="button" aria-labelledby="aria-labelledby-element">
+            <span>
+              Nested Span in
+            </span>
+            Button related with aria-labelledby
+          </button>
+        </div>
+
+        <div class="example">
+          <h3>Range Input with aria-labelledby</h3>
+          <label id="label01">Range input related with aria-labelledby</label>
+          <input type="range" min="1" max="10" value="2" aria-labelledby="label01"><br>
+
+          <label for="range02">Range input related with standard "for" attribute</label>
+          <input type="range" min="1" max="10" value="2" id="range02"><br>
+        </div>
+
+        <div class="example">
+          <h3>Anchor with aria-labelledby</h3>
+          <a href="#" aria-labelledby="aria-labelledby-element">Anchor related with aria-labelledby</a><br>
+          <a href="#">Anchor without aria-labelledby</a>
+        </div>
+
+        <h2>Elements that have a <a href="https://www.w3.org/TR/wai-aria-1.1/#landmark_roles" target="_blank">landmark role</a></h2>
+        <p></p>
+
+        <div class="example">
+          <h3>Asides with aria-labelledby</h3>
+          <aside aria-labelledby="aria-labelledby-element">Aside related with aria-labelledby</aside>
+          <aside tabindex="0" aria-labelledby="aria-labelledby-element">Aside related with aria-labelledby and tabindex</aside>
+          <aside>Aside without aria-labelledby</aside>
+        </div>
+
+        <div class="example">
+          <h3>Sections with aria-labelledby</h3>
+          <section aria-labelledby="aria-labelledby-element">Section related with aria-labelledby</section>
+          <section>Section without aria-label text</section>
+        </div>
+
+        <div class="example">
+          <h3>Navs with aria-labelledby</h3>
+          <nav aria-labelledby="aria-labelledby-element">Nav related with aria-labelledby</nav>
+          <nav>Nav without aria-labelledby</nav>
+        </div>
+
+        <h2>Elements that have an explicit widget role</h2>
+        <p></p>
+
+        <div class="example">
+          <h3>Dialogs with aria-labelledby</h3>
+          <button id="aria-labelledby-dialog-btn" type="button">Launch dialog with aria-labelledby</button><br>
+          <button id="standard-dialog-btn" type="button">Launch dialog without aria-labelledby</button>
+
+          <dialog id="aria-labelledby-dialog" aria-labelledby="aria-labelledby-element">
+            Dialog related with aria-labelledby
+            <a href="#">Dialog Action</a>
+            <button type="button" data-dismiss>Dismiss</button>
+          </dialog>
+
+          <dialog id="standard-dialog">
+            Dialog without aria-labelledby text
+            <a href="#">Dialog Action</a>
+            <button type="button" data-dismiss>Dismiss</button>
+          </dialog>
+        </div>
+
+        <h2><a href="https://www.w3.org/TR/wai-aria-1.1/#document_structure_roles" target="_blank">Document Structure</a> (role={list,article,group,etc.})</h2>
+        <p><q cite="https://www.w3.org/TR/html52/dom.html#interactive-content">The tabindex attribute can also make any element into interactive content.</q></p>
+
+        <div class="example">
+          <h3>Headings with aria-labelledby</h3>
+          <h4 aria-labelledby="aria-labelledby-element">Heading related with aria-labelledby</h4>
+          <h4 tabindex="0" aria-labelledby="aria-labelledby-element">Heading related with aria-labelledby and tabindex</h4>
+          <h4>Heading without aria-labelledby</h4>
+        </div>
+
+        <div class="example">
+          <h3>Paragraphs with aria-labelledby</h3>
+          <p aria-labelledby="aria-labelledby-element">Paragraph related with aria-labelledby</p>
+          <p tabindex="0" aria-labelledby="aria-labelledby-element">Paragraph related with aria-labelledby and tabindex</p>
+          <p>Paragraph without aria-labelledby</p>
+        </div>
+
+        <div class="example">
+          <h3>Spans with aria-labelledby</h3>
+          <span aria-labelledby="aria-labelledby-element">Span related with aria-labelledby</span><br>
+          <span tabindex="0" aria-labelledby="aria-labelledby-element">Span related with aria-labelledby and tabindex</span><br>
+          <span>Span without aria-labelledby</span>
+        </div>
+
+        <div class="example">
+          <h3>Articles with aria-labelledby</h3>
+          <article aria-labelledby="aria-labelledby-element">Article related with aria-labelledby</article>
+          <article tabindex="0" aria-labelledby="aria-labelledby-element">Article related with aria-labelledby and tabindex</article>
+          <article>Article without aria-labelledby</article>
+        </div>
+
+        <div class="example">
+          <h3>Unordered Lists with aria-labelledby</h3>
+          <ul aria-labelledby="aria-labelledby-element">
+            <li>Unordered list related with aria-labelledby</li>
+          </ul>
+          <ul tabindex="0" aria-labelledby="aria-labelledby-element">
+            <li>Unordered list related with aria-labelledby and tabindex</li>
+          </ul>
+          <ul>
+            <li>Unordered list without aria-labelledby</li>
+          </ul>
+        </div>
+
+      </div><!-- .col -->
+
+      <div class="col">
+        <h3>VoiceOver Results</h3>
+        <h4>Elements who's text is replaced by aria-labelledby</h4>
+        <ul>
+          <li>Buttons with aria-labelledby do not read aloud the button text nodes, but instead read the aria-labelledby text, then reading the button's role.</li>
+          <li>Range input with aria-labelledby first reads the value, followed by the labelledby text, followed by the slider's role</li>
+        </ul>
+        <h4>Elements who's text is supplimented by aria-labelledby</h4>
+        <ul>
+          <li>Anchors with aria-labelledby first reads the role, then text node, followed by the labelledby text</li>
+          <li>Asides with aria-labelledby first reads the labelledby text, then the role, subsequent keypress read aloud the elements text node, adding tabindex attribute had no noticable effect on how the element was announced, but does allow focus to be placed on the region</li>
+          <li>Navs with aria-labelledby first reads the labelledby text, then the role, subsequent keypress read aloud the elements text node</li>
+          <li>Unordered Lists with aria-labelledby first reads the role, followed by the aria-labelledby text, followed by the number of items in the list, subsequent keypress reads aloud the individual list item text nodes</li>
+        </ul>
+        <h4>Elements who's text is not affected by aria-labelledby</h4>
+        <ul>
+          <li>Sections with aria-labelledby didn't read the aria-labelledby text</li>
+          <li>Dialogs with aria-labelledby simply read the contents of the dialog in source order</li>
+          <li>Headings with aria-labelledby did not read the aria-labelledby text</li>
+          <li>Paragraphs with aria-labelledby did not read the aria-labelledby text</li>
+          <li>Spans with aria-labelledby did not read the aria-labelledby text</li>
+          <li>Articles with aria-labelledby did not read the aria-labelledby text</li>
+          <li></li>
+        </ul>
+      </div><!-- .col -->
+    </div>
+
+  </main>
+  <script src="js/aria-labelledby.js"></script>
+</body>
+</html>
