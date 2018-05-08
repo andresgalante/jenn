@@ -20,6 +20,12 @@
       padding: 6px;
       display: inline-block;
     }
+    .before-content:before {
+      content: "CSS pseudo content ::before "
+    }
+    .after-content:after {
+      content: " and CSS pseudo content ::after "
+    }
   </style>
 </head>
 <body>
@@ -67,6 +73,8 @@
         <div class="example">
           <h3>Anchor with aria-labelledby</h3>
           <a href="#" aria-labelledby="aria-labelledby-element">Anchor related with aria-labelledby</a><br>
+          <a href="#" class="before-content" aria-labelledby="aria-labelledby-element">Anchor with aria-labelledby</a><br>
+          <a href="#" class="after-content" aria-labelledby="aria-labelledby-element">Anchor with aria-labelledby</a><br>
           <a href="#">Anchor without aria-labelledby</a>
         </div>
 
@@ -169,6 +177,8 @@
         <h4>Elements who's text is supplimented by aria-labelledby</h4>
         <ul>
           <li>Anchors with aria-labelledby first reads the role, then text node, followed by the labelledby text</li>
+          <li>Anchors with :before pseudo content and aria-labelledby first read the element role, then the css pseudo content, then the anchor's text node, then the aria-labelledby text. No space is added after the :before text content.</li>
+          <li>Anchors with :after pseudo content and aria-labelledby first read the element role, then the anchors text node, then the :after pseudo content, followed by the aria-labelledby text. No space is added before the :after text content.</li>
           <li>Asides with aria-labelledby first reads the labelledby text, then the role, subsequent keypress read aloud the elements text node, adding tabindex attribute had no noticable effect on how the element was announced, but does allow focus to be placed on the region</li>
           <li>Navs with aria-labelledby first reads the labelledby text, then the role, subsequent keypress read aloud the elements text node</li>
           <li>Unordered Lists with aria-labelledby first reads the role, followed by the aria-labelledby text, followed by the number of items in the list, subsequent keypress reads aloud the individual list item text nodes</li>
