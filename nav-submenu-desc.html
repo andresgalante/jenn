@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Navigation Example</title>
+  <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
+  <link rel="stylesheet" href="css/base.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+</head>
+<body class="nav-list-example">
+
+  <header role="banner">
+    <h1>Navbar with latest and greatest</h1>
+  </header>
+
+  <div class="flexContainer flexSpaceAround">
+      <div class="col">
+        <nav class="pf-c-vertical-nav">
+            <ul class="pf-c-vertical-nav__content" role="list">
+              <li class="pf-c-vertical-nav__item">
+
+                <a href="#" class="pf-c-vertical-nav__link">
+                  <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
+                  <span class="pf-c-vertical-nav__link-text">Home</span>
+                </a>
+              </li>
+
+              <li class="pf-c-vertical-nav__item">
+                <a href="#" class="pf-c-vertical-nav__link">
+                  <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
+                  <span class="pf-c-vertical-nav__link-text">Technology</span>
+                </a>
+              </li>
+
+              <li class="pf-c-vertical-nav__item">
+
+                <a
+                  href="#"
+                  aria-expanded="false"
+                  aria-controls="navbarSubmenu3"
+                  aria-current="false"
+                  class="pf-c-vertical-nav__link"
+                  role="link"
+                  id="navbarDropdownMenuLink3">
+                  <span aria-hidden="true" class="pf-c-vertical-nav__link-icon">
+                    <i class="fas fa-home"></i>
+                  </span>
+                    Science
+                </a>
+
+                <div
+                  class="pf-vertical-sub-nav"
+                  hidden
+                  aria-label="Science"
+                  id="navbarSubmenu3">
+                  <h2 class="pf-vertical-sub-nav__title" id="navbarSubmenu3Heading">Science</h2>
+                  <ul class="pf-vertical-sub-nav__content">
+                    <li class="pf-vertical-sub-nav__item">
+                      <a href="#" class="pf-vertical-sub-nav__link" aria-describedby="navbarSubmenu3Heading" role="link">
+                            Environmental Science
+                      </a>
+                    </li>
+                    <li class="pf-vertical-sub-nav__item">
+                      <a href="#" class="pf-vertical-sub-nav__link" aria-describedby="navbarSubmenu3Heading" role="link">
+                          Physical Science
+                      </a>
+                    </li>
+                    <li class="pf-vertical-sub-nav__item">
+                      <a href="#" class="pf-vertical-sub-nav__link" aria-describedby="navbarSubmenu3Heading" role="link">
+                          Life Science
+                      </a>
+                    </li>
+                    <li class="pf-vertical-sub-nav__item">
+                      <a href="#" aria-disabled="true" class="pf-vertical-sub-nav__link pf-is-disabled" aria-describedby="navbarSubmenu3Heading" role="link">Engineering</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="pf-c-vertical-nav__item">
+                <a
+                  href="#"
+                  aria-expanded="false"
+                  class="pf-c-vertical-nav__link"
+                  id="navbarDropdownMenuLink4">
+                  <span aria-hidden="true" class="pf-c-vertical-nav__link-icon">
+                    <i class="fas fa-home"></i>
+                  </span>
+                  Home and Garden
+                </a>
+
+                <div
+                  class="pf-vertical-sub-nav"
+                  aria-label="Home and Garden"
+                  id="navbarSubmenu4"
+                  hidden>
+                  <h2 class="pf-vertical-sub-nav__title" id="navbarSubmenu4Heading">Home and Garden</h2>
+                  <ul class="pf-vertical-sub-nav__content">
+                    <li class="pf-vertical-sub-nav__item" aria-level="2">
+                      <a href="#" class="pf-vertical-sub-nav__link">
+                          Home Improvement <span class="sr-only" aria-labelledby="navbarSubmenu4Heading"></span>
+                      </a>
+                    </li>
+                    <li class="pf-vertical-sub-nav__item" aria-level="2">
+                      <a href="#" class="pf-vertical-sub-nav__link">
+                          Lawn and Garden <span class="sr-only" aria-label="(Home and Garden)"></span>
+                      </a>
+                    </li>
+                    <li class="pf-vertical-sub-nav__item" aria-level="2">
+                      <a href="#" class="pf-vertical-sub-nav__link">
+                          Green Living <span class="sr-only" aria-describedby="navbarSubmenu4Heading"></span>
+                      </a>
+                    </li>
+                    <li class="pf-vertical-sub-nav__item" aria-level="2">
+                      <a href="#" aria-disabled="true" class="pf-vertical-sub-nav__link pf-is-disabled">Stain Removal</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="pf-c-vertical-nav__item">
+                <a href="#" aria-disabled="true" class="pf-c-vertical-nav__link pf-is-disabled">
+                  <span class="pf-c-vertical-nav__link-icon">
+                    <i class="fas fa-home"></i></span>
+                  <span class="pf-c-vertical-nav__link-text">
+                    Culture
+                  </span>
+                </a>
+              </li>
+
+              <li class="pf-c-vertical-nav__item">
+                <a href="#" class="pf-c-vertical-nav__link">
+                  <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
+                  <span class="pf-c-vertical-nav__link-text">Entertainment</span>
+                </a>
+              </li>
+
+            </ul>
+          </nav>
+      </div>
+
+      <div class="col">
+        <ul>
+          <li>leaves focus on element toggle</li>
+          <li>uses aria-label to identify submenu as region and thus appear in VO rotor landmark menu</li>
+        </ul>
+      </div>
+  </div>
+
+
+  <main></main>
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+  <script src="js/nav-submenu-desc.js"></script>
+</body>
+</html>
