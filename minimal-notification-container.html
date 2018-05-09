@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Minimal Notification Container Example</title>
+  <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
+  <link rel="stylesheet" href="css/base.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+</head>
+<body>
+
+  <header role="banner">
+    <h1>Minimal notification container with aria-atomic, and role attributes</h1>
+  </header>
+
+  <div class="flexContainer flexSpaceAround">
+    <div class="col">
+      <nav class="pf-c-vertical-nav">
+          <ul class="pf-c-vertical-nav__content" role="list">
+            <li class="pf-c-vertical-nav__item">
+              <a href="#" class="pf-c-vertical-nav__link">
+                <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
+                <span class="pf-c-vertical-nav__link-text">Alert 1</span>
+              </a>
+            </li>
+            <li class="pf-c-vertical-nav__item">
+              <a href="#" class="pf-c-vertical-nav__link">
+                <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
+                <span class="pf-c-vertical-nav__link-text">Alert 2</span>
+              </a>
+            </li>
+            <li class="pf-c-vertical-nav__item">
+              <a href="#" class="pf-c-vertical-nav__link">
+                <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
+                <span class="pf-c-vertical-nav__link-text">Alert 3</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+    </div><!-- .col -->
+
+    <div class="col">
+      <ul>
+        <li>each notification is injected into and removed from a single notifications container which is designated as an aria-live region</li>
+        <li>the notifications container holds the role="alert" attribute</li>
+        <li>notifications container holds the aria-atomic="false" attribute, to ensure only new changes to the region are announced</li>
+        <li>notification container is a basic division element</li>
+        <li>each notification has a slightly different sr-only text, which seems to help ensure the entire notification (including warning/alert prefix) is read each time the notification is launched, but it is not flawless</li>
+        <li>notifications are not dismissed automatically, and require user action to be removed</li>
+      </ul>
+    </div>
+  </div>
+
+  <main>
+    <div class="notification-container" aria-label="Notifications Area" role="alert" aria-atomic="false"></div>
+  </main>
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+  <script src="js/minimal-notification-container.js"></script>
+</body>
+</html>

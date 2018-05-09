@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Persistent Notification Container Example</title>
+  <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
+  <link rel="stylesheet" href="css/base.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+</head>
+<body>
+
+  <header role="banner">
+    <h1>Persistent notification container with aria-atomic, aria-live and role attributes</h1>
+  </header>
+
+  <div class="flexContainer flexSpaceAround">
+    <div class="col">
+      <nav class="pf-c-vertical-nav">
+          <ul class="pf-c-vertical-nav__content" role="list">
+            <li class="pf-c-vertical-nav__item">
+              <a href="#" class="pf-c-vertical-nav__link">
+                <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
+                <span class="pf-c-vertical-nav__link-text">Alert 1</span>
+              </a>
+            </li>
+            <li class="pf-c-vertical-nav__item">
+              <a href="#" class="pf-c-vertical-nav__link">
+                <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
+                <span class="pf-c-vertical-nav__link-text">Alert 2</span>
+              </a>
+            </li>
+            <li class="pf-c-vertical-nav__item">
+              <a href="#" class="pf-c-vertical-nav__link">
+                <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
+                <span class="pf-c-vertical-nav__link-text">Alert 3</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+    </div><!-- .col -->
+
+    <div class="col">
+      <ul>
+        <li>each notification is injected into and removed from a single notifications container which is designated as an aria-live region</li>
+        <li>the notifications container holds the role="alert" attribute</li>
+        <li>notifications container holds the aria-atomic="false" attribute, to ensure only changes to the region are announced</li>
+        <li>notifications container is a section element which carries the implicit "region" role, which exposes it in the landmarks rotor menu</li>
+        <li>notifications dismiss themselves after 10 seconds</li>
+      </ul>
+    </div>
+  </div>
+
+  <main>
+    <section class="notification-container" aria-atomic="false" aria-label="Notifications Area" role="alert" aria-live="assertive"></section>
+  </main>
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+  <script src="js/persistent-notification-container.js"></script>
+</body>
+</html>

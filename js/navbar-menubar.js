@@ -67,54 +67,32 @@
   bindMenuEvents = function ($listItem, idx, $menuItems) {
     let $menuItem = $listItem.find('> a');
 
-    $menuItem.on('focus click focusout focusin', function (event) {
+    $menuItem.on('click', function (event) {
       event.preventDefault();
+      event.stopImmediatePropagation();
 
       let $subMenu = getSubMenu($menuItem);
 
-      switch (event.type) {
+      if (hasSubmenu($menuItem)) {
+        if ($subMenu.attr('hidden') === 'hidden') {
+          // first close any subMenus that are already open
+          closeOpenMenus($menuItems);
 
-        case 'focusin': {
-
-          $menuItem.on('click', function (event) {
-            event.preventDefault();
-            event.stopImmediatePropagation();
-
-            if (hasSubmenu($menuItem)) {
-              if ($subMenu.attr('hidden') === 'hidden') {
-                // first close any subMenus that are already open
-                closeOpenMenus($menuItems);
-
-                openMenu($menuItem, $subMenu);
-                focusFirstMenuItem($subMenu);
-              } else {
-                closeMenu($menuItem, $subMenu);
-              }
-            }
-
-            // only set as pf-is-active/aria-current if menu item isn't disabled and isn't only a gateway to submenu
-            if (!hasSubmenu($menuItem) && $menuItem.is(':not([aria-disabled])')) {
-              removeActiveClasses($menuItems);
-              removeAriaCurrent($menuItems);
-              $menuItem.addClass('pf-is-active').attr('aria-current', true);
-
-              if (menuItemDepth($menuItem) === 1) {
-                closeOpenMenus($menuItems);
-              }
-            }
-
-          });
-
-          break;
+          openMenu($menuItem, $subMenu);
+          focusFirstMenuItem($subMenu);
+        } else {
+          closeMenu($menuItem, $subMenu);
         }
+      }
 
-        case 'focusout': {
-          $menuItem.off('click');
-          break;
-        }
+      // only set as pf-is-active/aria-current if menu item isn't disabled and isn't only a gateway to submenu
+      if (!hasSubmenu($menuItem) && $menuItem.is(':not([aria-disabled])')) {
+        removeActiveClasses($menuItems);
+        removeAriaCurrent($menuItems);
+        $menuItem.addClass('pf-is-active').attr('aria-current', true);
 
-        default: {
-          // console.log('unsupported event type');
+        if (menuItemDepth($menuItem) === 1) {
+          closeOpenMenus($menuItems);
         }
       }
       return false;
