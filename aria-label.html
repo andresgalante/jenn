@@ -25,14 +25,22 @@
 
         <div class="example">
           <h2>Buttons with aria-label</h2>
-          <button type="button" aria-label="Aria Label Text">Button with aria-label text</button>
-          <button type="button">Button without aria-label text</button>
-          <button type="submit" aria-label="Aria Label Text">Submit Button with aria-label text</button>
+          <!-- case: btn with aria-label and text node -->
+          <button type="button" aria-label="Aria Label Text">Button with aria-label text</button><br>
+          <!-- case: btn with only text node -->
+          <button type="button">Button without aria-label text</button><br>
+          <!-- case: submit btn with aria-label and text node -->
+          <button type="submit" aria-label="Aria Label Text">Submit Button with aria-label text</button><br>
+          <!-- case: btn with aria-label and nested text node -->
           <button type="button" aria-label="Aria Label Text">
-            <span>
-              Nested Span in
-            </span>
+            <span>Nested Span in</span>
             Button with aria-label
+          </button><br>
+          <!-- case: btn with only aria-label, without text node -->
+          <button type="button" aria-label="Aria Label Text"></button><br>
+          <!-- case: btn with aria-label and nested element with aria-label -->
+          <button type="button" aria-label="Aria Label Text">
+            <i class="fas fa-home" aria-label="Nested Aria Label Text"></i>
           </button>
         </div>
 
@@ -127,6 +135,7 @@
           <li>Buttons with aria-label do not read aloud the button text nodes, but instead read the aria-label along with the button's role.</li>
           <li>Headings with aria-label read the heading level then the aria-label text in place of the heading text.</li>
           <li>Dialogs with aria-label first read the element that's initially given focus, then the aria-label text, and mention it's a group, other text elements in the dialog are not read aloud. If the dialog doesn't have an aria-label, the dialog's full contents are ready in source order</li>
+          <li>Buttons with aria-label and no text node read the aria-label followed by the elements role</li>
         </ul>
         <h4>Elements who's text is supplimented by aria-label</h4>
         <ul>
