@@ -15,6 +15,13 @@
     });
   },
 
+  setupDialog03 = function () {
+    document.getElementById('twice-labelledby-dialog-btn').addEventListener('click', function () {
+      document.getElementById('twice-labelledby-dialog').setAttribute('open', 'open');
+      document.querySelectorAll('#twice-labelledby-dialog > button')[0].focus();
+    });
+  },
+
   setupDismissBtns = function () {
     document.querySelectorAll('[data-dismiss]').forEach(function (el) {
       el.addEventListener('click', function (event) {
@@ -28,6 +35,7 @@
   document.addEventListener("DOMContentLoaded", function(event) {
     setupDialog01();
     setupDialog02();
+    setupDialog03();
     setupDismissBtns();
   });
 })();
