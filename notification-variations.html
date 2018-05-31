@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Minimal Notification Container Example</title>
+  <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
+  <link rel="stylesheet" href="css/base.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+</head>
+<body>
+
+  <header role="banner">
+    <h1>Minimal notification container with aria-atomic, and role attributes</h1>
+  </header>
+
+  <div class="flexContainer flexSpaceAround">
+    <div class="col">
+      <nav class="pf-c-vertical-nav">
+          <ul class="pf-c-vertical-nav__content" role="list">
+            <li class="pf-c-vertical-nav__item">
+              <a href="#" class="pf-c-vertical-nav__link">
+                <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
+                <span class="pf-c-vertical-nav__link-text">Alert 1</span>
+              </a>
+            </li>
+            <li class="pf-c-vertical-nav__item">
+              <a href="#" class="pf-c-vertical-nav__link">
+                <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
+                <span class="pf-c-vertical-nav__link-text">Alert 2</span>
+              </a>
+            </li>
+            <li class="pf-c-vertical-nav__item">
+              <a href="#" class="pf-c-vertical-nav__link">
+                <span class="pf-c-vertical-nav__link-icon"><i class="fas fa-home"></i></span>
+                <span class="pf-c-vertical-nav__link-text">Alert 3</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+    </div><!-- .col -->
+
+    <div class="col">
+      <ul>
+        <li>Each notification is injected into and removed from a single notifications container</li>
+        <li>Each notification has it's own role="alert" attribute, but these are placed in different parts for each variation</li>
+        <li>Notifications are not dismissed automatically, and require user action to be removed</li>
+      </ul>
+    </div>
+  </div>
+
+  <main>
+    <aside class="notification-container" aria-label="Notifications"></div>
+  </main>
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+  <script src="js/notification-variations.js"></script>
+</body>
+</html>
