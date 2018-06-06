@@ -45,10 +45,10 @@
         <div>
           <div class="pf-c-toast__icon">
             <i class="fas fa-home"></i>
-            <span id="alert-notification-01-title" class="sr-only">ALERT 1</span>
+            <strong id="alert-notification-01-title" class="sr-only">ALERT 1</strong>
           </div>
           <div id="alert-notification-01-message" class="pf-c-toast__message">
-            This is an important alert notification with role="alert" set on the parent div.
+            This is an important alert notification with role="alert" set on the parent div, and strong element for the hidden type label.
           </div>
         </div>
         <div class="pf-c-toast__action">
@@ -72,8 +72,8 @@
             <i class="fas fa-home"></i>
           </div>
           <div id="alert-notification-02-message" class="pf-c-toast__message" role="alert">
-            <span id="alert-notification-02-title" class="sr-only">ALERT 2</span>
-            This is an important alert notification with role="alert" applied to the div that wraps the message only, and aria-label on the parent div.
+            <em id="alert-notification-02-title" class="sr-only">ALERT 2</em>
+            This is an important alert notification with role="alert" applied to the div that wraps the message only, and aria-label on the parent div, and em element for the hidden type label
           </div>
         </div>
         <div class="pf-c-toast__action">
@@ -99,7 +99,7 @@
             <span id="alert-notification-03-title" class="sr-only">ALERT 3</span>
           </div>
           <div id="alert-notification-03-message" class="pf-c-toast__message">
-            This is an important alert notification, much like alert 1, but also includes aria-label on the parent div.
+            This is an important alert notification, much like alert 1, but also includes aria-label on the parent div. The hidden type label is a span.
           </div>
         </div>
         <div class="pf-c-toast__action">
