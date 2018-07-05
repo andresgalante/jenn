@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <title>Card Variations</title>
+  <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
+  <link rel="stylesheet" href="css/base.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+</head>
+<body>
+  <h1>Card as Article</h1>
+  <article class="pf-c-card ">
+    <header class="pf-c-card__header ">
+      Fruity Desserts
+    </header>
+    <div class="pf-c-card__body ">
+      This card is all about desserts you make with fruits.
+    </div>
+  </article>
+
+  <h1>Card as Section</h1>
+  <section class="pf-c-card ">
+    <div class="pf-c-card__header ">
+      Chocolate Desserts
+    </div>
+    <div class="pf-c-card__body ">
+      This card is all about desserts you make with chocolate.
+    </div>
+  </section>
+
+  <h1>Card as list item in unordered list</h1>
+  <ul>
+    <li class="pf-c-card ">
+      <div class="pf-c-card__body ">
+        Strawberry shortcake
+      </div>
+    </li>
+    <li class="pf-c-card ">
+      <div class="pf-c-card__body ">
+        Banana pudding
+      </div>
+    </li>
+  </ul>
+
+  <h1>Card as list item in ordered list</h1>
+  <ol>
+    <li class="pf-c-card ">
+      <div class="pf-c-card__body ">
+        Keylime pie
+      </div>
+    </li>
+    <li class="pf-c-card ">
+      <div class="pf-c-card__body ">
+        Blueberry pie
+      </div>
+    </li>
+  </ol>
+
+  <h1>Card as article nested inside list item</h1>
+  <ul>
+    <li>
+      <article class="pf-c-card ">
+        <header class="pf-c-card__header ">
+          Strawberry
+        </header>
+        <div class="pf-c-card__body ">
+          Strawberry shortcake
+        </div>
+      </article>
+    </li>
+    <li>
+      <article class="pf-c-card ">
+        <header class="pf-c-card__header ">
+          Banana
+        </header>
+        <div class="pf-c-card__body ">
+          Banana pudding
+        </div>
+      </article>
+    </li>
+  </ul>
+
+  <h1>Card as section nested inside article</h1>
+  <article class="pf-c-card ">
+    <header class="pf-c-card__header ">
+      Fruity Desserts
+    </header>
+    <div class="pf-c-card__body ">
+      This card is all about desserts you make with fruits.
+      <section class="pf-c-card ">
+        <div class="pf-c-card__body ">
+          Strawberry shortcake
+        </div>
+      </section>
+      <section class="pf-c-card ">
+        <div class="pf-c-card__body ">
+          Banana pudding
+        </div>
+      </section>
+    </div>
+  </article>
+
+</body>
+</html>
