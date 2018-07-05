@@ -131,38 +131,45 @@
   </aside>
   <p>Toast notification examples are implemented using different markup.</p>
   <ul>
-      <li>Variation 1:
-        <ul>
-          <li>Parent element is an Article</li>
-          <li>Alert type is provided in the form of aria-label on the div with role="alert" that contains the icon and text message</li>
-          <li>Dismiss button includes aria-controls pointing to the parent Article element</li>
-        </ul>
-      </li>
-      <li>Variation 2:
-        <ul>
-          <li>Parent element is an Article</li>
-          <li>Alert type is included as screen-reader-only text in a span</li>
-        </ul>
-      </li>
-      <li>Variation 3:
-        <ul>
-          <li>Parent element is an Article</li>
-          <li>Alert type is included as title text for the fontawesome icon, and this text gets converted to a title element when the icon is converted to an svg element</li>
-        </ul>
-      </li>
-      <li>Variation 4:
-        <ul>
-          <li>Parent element is an Article</li>
-          <li>Alert type is included as aria-label for an svg element</li>
-        </ul>
-      </li>
-      <li>Variation 5:
-        <ul>
-          <li>Parent element is a div with role="dialog"</li>
-          <li>Alert type is included as screen-reader-only text in a span (like variation 2)</li>
-        </ul>
-      </li>
-    </ul>
+    <li>Variation 1:
+      <ul>
+        <li>Parent element is an Article</li>
+        <li>Alert type is provided in the form of aria-label on the div with role="alert" that contains the icon and text message</li>
+        <li>Dismiss button includes aria-controls pointing to the parent Article element</li>
+      </ul>
+    </li>
+    <li>Variation 2:
+      <ul>
+        <li>Parent element is an Article</li>
+        <li>Alert type is included as screen-reader-only text in a span</li>
+      </ul>
+    </li>
+    <li>Variation 3:
+      <ul>
+        <li>Parent element is an Article</li>
+        <li>Alert type is included as title text for the fontawesome icon, and this text gets converted to a title element when the icon is converted to an svg element</li>
+      </ul>
+    </li>
+    <li>Variation 4:
+      <ul>
+        <li>Parent element is an Article</li>
+        <li>Alert type is included as aria-label for an svg element</li>
+      </ul>
+    </li>
+    <li>Variation 5:
+      <ul>
+        <li>Parent element is a div with role="dialog"</li>
+        <li>Alert type is included as screen-reader-only text in a span (like variation 2)</li>
+      </ul>
+    </li>
+  </ul>
+  <article>
+    <h3><a href="https://www.w3.org/TR/wai-aria-practices/#alert" target="_blank">Offical docs for alert</a></h3>
+    <blockquote cite="https://www.w3.org/TR/wai-aria-practices/#alert">
+      <p>"It is important to note that, at this time, screen readers do not inform users of alerts that are present on the page before page load completes."</p>
+    </blockquote>
+    <p>So while these notifications are not read aloud in VO by default, what's really interesting is inspecting the different sections of the VO rotor menu, to see how these various notifications and their details are exposed.</p>
+  </article>
 
 </body>
 </html>

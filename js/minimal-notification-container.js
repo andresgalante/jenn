@@ -26,29 +26,33 @@
   },
 
   popNotification = function ($element) {
-    $('main').append($element);
+    $('main > .notification-container').append($element);
 
-    setTimeout(function () {
-      $element.remove();
-    }, 6000);
+    // https://www.w3.org/TR/wai-aria-practices/#alert => "It is also important to avoid designing alerts that disappear automatically."
+    // dismissing notifications to a notification drawer where they're still available wouldn't be so bad
+    // setTimeout(function () {
+    //   $element.blur();
+    //   $element.remove();
+    // }, 10000);
   },
 
-  alertNotifMarkup = function () {
+  alert1NotifMarkup = function () {
     return `
       <div
-        id="alert-notification"
+        aria-label="Alert 1 Notification Label"
+        id="alert-notification-01"
         class="pf-c-toast pf-is-warning">
-        <div role="alert" aria-live="assertive">
+        <div>
           <div class="pf-c-toast__icon">
             <i class="fas fa-home"></i>
-            <span id="alert-notification-title" class="sr-only">ALERT</span>
+            <span id="alert-notification-01-title" class="sr-only">ALERT 1</span>
           </div>
-          <div id="alert-notification-message" class="pf-c-toast__message">
+          <div id="alert-notification-01-message" class="pf-c-toast__message">
             This is an important alert notification
           </div>
         </div>
         <div class="pf-c-toast__action">
-          <a href="#">Dismiss Notification</a>
+          <a href="#">Fix Action</a>
           <button data-dismiss aria-label="Dismiss Notification">
             <i class="fas fa-times"></i>
           </button>
@@ -57,21 +61,48 @@
     `;
   },
 
-  statusNotifMarkup = function () {
+  alert2NotifMarkup = function () {
     return `
       <div
-        id="status-notification"
-        class="pf-c-toast pf-is-success">
-        <div role="status" aria-live="polite">
+        aria-label="Alert 2 Notification Label"
+        id="alert-notification-02"
+        class="pf-c-toast pf-is-warning">
+        <div>
           <div class="pf-c-toast__icon">
             <i class="fas fa-home"></i>
-            <span id="status-notification-title" class="sr-only">Success message</span>
+            <span id="alert-notification-02-title" class="sr-only">ALERT 2</span>
           </div>
-          <div id="status-notification-message" class="pf-c-toast__message">
-            This is a status notification
+          <div id="alert-notification-02-message" class="pf-c-toast__message">
+            This is an important alert notification
           </div>
         </div>
         <div class="pf-c-toast__action">
+          <a href="#">Fix Action</a>
+          <button data-dismiss aria-label="Dismiss Notification">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+    `;
+  },
+
+  alert3NotifMarkup = function () {
+    return `
+      <div
+        aria-label="Alert 3 Notification Label"
+        id="alert-notification-03"
+        class="pf-c-toast pf-is-warning">
+        <div>
+          <div class="pf-c-toast__icon">
+            <i class="fas fa-home"></i>
+            <span id="alert-notification-03-title" class="sr-only">ALERT 3</span>
+          </div>
+          <div id="alert-notification-03-message" class="pf-c-toast__message">
+            This is an important alert notification
+          </div>
+        </div>
+        <div class="pf-c-toast__action">
+          <a href="#">Fix Action</a>
           <button data-dismiss aria-label="Dismiss Notification">
             <i class="fas fa-times"></i>
           </button>
@@ -84,6 +115,7 @@
     let $menuItem = $listItem.find('> a');
 
     $menuItem.on('click', function (event) {
+
       event.preventDefault();
       event.stopImmediatePropagation();
 
@@ -94,12 +126,16 @@
       let menuItemTxt = $menuItem.find('[class*="link-text"]').text().trim();
 
       switch (menuItemTxt) {
-        case 'Alert': {
-          popNotification($(alertNotifMarkup()));
+        case 'Alert 1': {
+          popNotification($(alert1NotifMarkup()));
           break;
         }
-        case 'Status': {
-          popNotification($(statusNotifMarkup()));
+        case 'Alert 2': {
+          popNotification($(alert2NotifMarkup()));
+          break;
+        }
+        case 'Alert 3': {
+          popNotification($(alert3NotifMarkup()));
           break;
         }
         default: {}
@@ -107,6 +143,7 @@
 
       return false;
     });
+
   };
 
   document.addEventListener("DOMContentLoaded", function(event) {
@@ -119,7 +156,7 @@
     });
 
     $(document).on('click', '[data-dismiss]', function () {
-      $(this).parents('.pf-c-toast').remove().blur();
+      $(this).parents('.pf-c-toast').blur().remove();
     });
   });
 

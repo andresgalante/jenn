@@ -37,6 +37,10 @@
     return $(item).find('> a');
   },
 
+  focusFirstMenuItem = function ($element) {
+    $element.find('a:first').trigger('focus');
+  },
+
   getSubMenu = function ($listItem) {
     return $listItem.find('> a + section');
   },
@@ -67,13 +71,76 @@
   },
 
   popNotification = function ($element) {
-    showEl($element);
+    $('main').append($element);
+
+    setTimeout(function () {
+      $element.remove();
+    }, 6000);
+  },
+
+  technologyWarningMarkup = function () {
+    return `
+      <div
+        id="technology-warning"
+        class="pf-c-toast pf-is-warning">
+        <div
+          role="alert"
+          aria-live="assertive">
+
+          <div class="pf-c-toast__icon">
+            <i class="fas fa-home"></i>
+            <span id="technology-warning-title" class="sr-only">Warning message:</span>
+          </div>
+
+          <div id="technology-warning-message" class="pf-c-toast__message">
+            Technology is scary, and may include topics that are confusing.
+          </div>
+
+        </div>
+        <div class="pf-c-toast__action">
+          <a href="#">Exclude Confusing Topics</a>
+          <button data-dismiss aria-label="Dismiss Notification">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+    `;
+  },
+
+  entertainmentInfoMarkup = function () {
+    return `
+      <div
+        id="entertainment-info"
+        class="pf-c-toast pf-is-success">
+        <div
+          role="alert"
+          aria-live="polite">
+
+          <div class="pf-c-toast__icon">
+            <i class="fas fa-home"></i>
+            <span id="entertainment-success-title" class="sr-only">Success message:</span>
+          </div>
+
+          <div id="entertainment-success-message" class="pf-c-toast__message">
+            Entertainment comes in many forms like music, art, and poetry.
+          </div>
+
+        </div>
+        <div class="pf-c-toast__action">
+          <button data-dismiss aria-label="Dismiss Notification">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+    `;
   },
 
   bindMenuEvents = function ($listItem, idx, $menuItems) {
     let $menuItem = $listItem.find('> a');
 
     $menuItem.on('click', function (event) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
 
       let $subMenu = getSubMenu($listItem);
 
@@ -84,6 +151,7 @@
           closeOpenMenus($menuItems);
 
           openMenu($menuItem, $subMenu);
+          focusFirstMenuItem($subMenu);
         } else {
           closeMenu($menuItem, $subMenu);
         }
@@ -95,11 +163,24 @@
         removeAriaCurrent($menuItems);
         $menuItem.addClass('pf-is-active').attr('aria-current', true);
 
+        let menuItemTxt = $menuItem.find('[class*="link-text"]').text().trim();
+
+        switch (menuItemTxt) {
+          case 'Technology': {
+            popNotification($(technologyWarningMarkup()));
+            break;
+          }
+          case 'Entertainment': {
+            popNotification($(entertainmentInfoMarkup()));
+            break;
+          }
+          default: {}
+        }
+
         if (menuItemDepth($menuItem) === 1) {
           closeOpenMenus($menuItems);
         }
       }
-
       return false;
     });
   };
@@ -113,6 +194,9 @@
       getMenuItemLnk(element).attr('role', 'link');
     });
 
+    $(document).on('click', '[data-dismiss]', function () {
+      $(this).parents('.pf-c-toast').remove().blur();
+    });
   });
 
 })(jQuery);
