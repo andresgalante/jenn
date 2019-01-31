@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Alert Group Example</title>
+  <link rel="stylesheet"
+        href="https://unpkg.com/@patternfly/patternfly-next@1.0.166/patternfly.css">
+  <link rel="stylesheet"
+        href="./css/alert-group.css">
+  <script defer
+          src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+</head>
+
+<body>
+
+  <!-- Injected alerts wait for system-level announcements to finish, but not other injected alerts - cuts them off -->
+  <!-- <div class="alert-container" id="alert-container" aria-atomic="false" role="status"></div> -->
+
+  <!-- Interrupts both system-level and application-level announcements when alerts are injected -->
+  <!-- <div class="alert-container" id="alert-container" aria-atomic="false" role="alert"></div> -->
+
+  <!-- Procudes same behavior as role="status" -->
+  <!-- <div class="alert-container" id="alert-container" aria-atomic="false" aria-live="polite"></div> -->
+
+  <!-- Produces same behavior as role="alert", aria-live="assertive" is equivalent to role="alert" -->
+  <!-- <div class="alert-container" id="alert-container" aria-atomic="false" role="status" aria-live="assertive"></div> -->
+
+  <!-- reads entre alert-container contents after any change to the alert-container, as expected -->
+  <!-- <div class="alert-container" id="alert-container" aria-atomic="true" role="status"></div> -->
+
+  <header>Alert and Alert-Group Component Test</header>
+
+  <div class="alert-container"
+       id="alert-container"
+       role="region"
+       aria-atomic="false"
+       aria-live="polite"
+       aria-relevant="additions text"
+       aria-roledescription="notification region">
+  </div>
+
+  <div class="form-container">
+    <div class="form-error">Please enter your first name</div>
+    <form id="sample-form">
+      <label for="testInput">First Name (required)</label>
+      <input id="testInput"
+             type="text"
+             placeholder="ex: James">
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.js"
+          integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+          crossorigin="anonymous"></script>
+  <script src="./js/alert-group.js"></script>
+</body>
+
+</html>
