@@ -6,16 +6,15 @@
     <div class="pf-c-alert__icon">
       <i class="fas fa-check-circle" aria-hidden="true"></i>
     </div>
+
     <h4 class="pf-c-alert__title">
       <span class="pf-screen-reader">Success alert:</span>
-      Sucess loading the Alert and AlertGroup acessibility test page
+      Success loading the test page.
     </h4>
     <div class="pf-c-alert__description">
-      <p>This test page shows an ideal combination of markup attributes for announcing changes to a relevant part of a
-        webpage.
-        <a href="https://www.w3.org/TR/wai-aria-1.1/#aria-live">Read this Property Definition</a>
-      </p>
+      <p>Read the <a href="https://www.w3.org/TR/wai-aria-1.1/#aria-live">aria-live Property Definition</a></p>
     </div>
+
     <div class="pf-c-alert__action">
       <button class="pf-c-button close-btn pf-m-plain" aria-label="Close Success Alert: Loaded alert test page">
         <i class="fas fa-times" aria-hidden="true"></i>
@@ -29,15 +28,15 @@
     <div class="pf-c-alert__icon">
       <i class="fas fa-info-circle" aria-hidden="true"></i>
     </div>
+
     <h4 class="pf-c-alert__title">
       <span class="pf-screen-reader">Info alert:</span>
-      Set both aria-live and role attributes
+      Set both aria-live and role attributes.
     </h4>
     <div class="pf-c-alert__description">
-      <p>
-        While the aria-live attribute is the <em>primary</em> determination for how live regions are announced, developers should also include any corresponding <a href="https://www.w3.org/TR/wai-aria-1.1/#live_region_roles">live region role</a> for <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions#Preferring_Specialized_Live_Region_Roles">compatibility reasons</a>.
-      </p>
+      <p>The aria-live attribute is the <em>primary</em> determination of live regions.</p>
     </div>
+
     <div class="pf-c-alert__action">
       <button class="pf-c-button close-btn pf-m-plain" aria-label="Close Info Alert: Set aria-live and role attributes">
         <i class="fas fa-times" aria-hidden="true"></i>

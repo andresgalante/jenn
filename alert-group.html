@@ -29,15 +29,17 @@
   <!-- reads entre alert-container contents after any change to the alert-container, as expected -->
   <!-- <div class="alert-container" id="alert-container" aria-atomic="true" role="status"></div> -->
 
-  <header>Alert and Alert-Group Component Test</header>
+  <!-- <div class="alert-container" id="alert-container" aria-roledescription="notification region"></div> -->
+
+  <header>
+    <h1>Alert and Alert-Group Component Test</h1>
+  </header>
 
   <div class="alert-container"
        id="alert-container"
-       role="region"
        aria-atomic="false"
        aria-live="polite"
-       aria-relevant="additions text"
-       aria-roledescription="notification region">
+       aria-relevant="additions text">
   </div>
 
   <div class="form-container">
