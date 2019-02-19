@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Alert Group Example</title>
+  <title>Static Alert Group Example</title>
   <link rel="stylesheet"
         href="https://unpkg.com/@patternfly/patternfly-next@1.0.166/patternfly.css">
   <link rel="stylesheet"
@@ -40,6 +40,27 @@
        aria-atomic="false"
        aria-live="polite"
        aria-relevant="additions text">
+
+      <div class="pf-c-alert pf-m-warning" aria-label="Warning Alert" id="alert4" tabindex="-1">
+        <div class="pf-c-alert__icon">
+          <i class="fas fa-check-circle" aria-hidden="true"></i>
+        </div>
+
+        <h4 class="pf-c-alert__title">
+          <span class="pf-screen-reader">Warning alert:</span>
+          Static warning alert.
+        </h4>
+        <div class="pf-c-alert__description">
+          <p>This static alert is present on page load.</p>
+        </div>
+
+        <div class="pf-c-alert__action">
+          <button class="pf-c-button close-btn pf-m-plain" aria-label="Close Static Warning Alert">
+            <i class="fas fa-times" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+
   </div>
 
   <div class="form-container">

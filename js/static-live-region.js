@@ -70,6 +70,7 @@
   };
 
   document.addEventListener("DOMContentLoaded", function (event) {
+    const $staticAlert = $('#alert4');
     const $alertContainer = $('#alert-container');
     const $sampleForm = $('#sample-form');
     const alert1Start = 5000;
@@ -93,6 +94,8 @@
         $alertContainer.find('#alert2').remove();
       }, alert2End);
     };
+
+    $staticAlert.focus();
 
     startAlertTimers();
 

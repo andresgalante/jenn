@@ -98,7 +98,7 @@
 
   const insertAlertIntoLR = ($alertContainer, alert) => {
     insertLiveRegion($alertContainer)
-      .then((liveRegion) => wait(1000, liveRegion))
+      .then((liveRegion) => wait(200, liveRegion))
       .then((curLiveRegion) => {
         console.log('injected: ', $.parseHTML(alert)[1].getAttribute('id'));
         curLiveRegion.html(alert);
