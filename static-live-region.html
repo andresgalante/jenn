@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Static Alert Group Example</title>
+  <link rel="stylesheet"
+        href="https://unpkg.com/@patternfly/patternfly-next@1.0.166/patternfly.css">
+  <link rel="stylesheet"
+        href="./css/alert-group.css">
+  <script defer
+          src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+</head>
+
+<body>
+
+  <!-- Injected alerts wait for system-level announcements to finish, but not other injected alerts - cuts them off -->
+  <!-- <div class="alert-container" id="alert-container" aria-atomic="false" role="status"></div> -->
+
+  <!-- Interrupts both system-level and application-level announcements when alerts are injected -->
+  <!-- <div class="alert-container" id="alert-container" aria-atomic="false" role="alert"></div> -->
+
+  <!-- Procudes same behavior as role="status" -->
+  <!-- <div class="alert-container" id="alert-container" aria-atomic="false" aria-live="polite"></div> -->
+
+  <!-- Produces same behavior as role="alert", aria-live="assertive" is equivalent to role="alert" -->
+  <!-- <div class="alert-container" id="alert-container" aria-atomic="false" role="status" aria-live="assertive"></div> -->
+
+  <!-- reads entre alert-container contents after any change to the alert-container, as expected -->
+  <!-- <div class="alert-container" id="alert-container" aria-atomic="true" role="status"></div> -->
+
+  <!-- <div class="alert-container" id="alert-container" aria-roledescription="notification region"></div> -->
+
+  <header>
+    <h1>Alert and Alert-Group Component Test</h1>
+  </header>
+
+  <div class="alert-container"
+       id="alert-container"
+       aria-atomic="false"
+       aria-live="polite"
+       aria-relevant="additions text">
+
+      <div class="pf-c-alert pf-m-warning" aria-label="Warning Alert" id="alert4" tabindex="-1">
+        <div class="pf-c-alert__icon">
+          <i class="fas fa-check-circle" aria-hidden="true"></i>
+        </div>
+
+        <h4 class="pf-c-alert__title">
+          <span class="pf-screen-reader">Warning alert:</span>
+          Static warning alert.
+        </h4>
+        <div class="pf-c-alert__description">
+          <p>This static alert is present on page load.</p>
+        </div>
+
+        <div class="pf-c-alert__action">
+          <button class="pf-c-button close-btn pf-m-plain" aria-label="Close Static Warning Alert">
+            <i class="fas fa-times" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+
+  </div>
+
+  <div class="form-container">
+    <div class="form-error">Please enter your first name</div>
+    <form id="sample-form">
+      <label for="testInput">First Name (required)</label>
+      <input id="testInput"
+             type="text"
+             placeholder="ex: James">
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.js"
+          integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+          crossorigin="anonymous"></script>
+  <script src="./js/static-live-region.js"></script>
+</body>
+
+</html>

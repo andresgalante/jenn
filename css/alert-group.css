@@ -1,0 +1,19 @@
+.alert-container {
+  min-height: 50vh;
+  border: 2px dashed grey;
+}
+
+.form-container {
+  min-height: 50vh;
+  border: 2px dashed grey;
+}
+
+.form-error {
+  display: none;
+  border: 1px dashed grey;
+  color: red;
+}
+
+.sample-form {
+  width: 300px;
+}
